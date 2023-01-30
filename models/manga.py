@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from datetime import datetime
 
 class Recommendation(BaseModel):
@@ -8,7 +8,7 @@ class Recommendation(BaseModel):
     poster: str | None
     
 class Manga(BaseModel):
-    id: int
+    id: int = Field(..., alias='_id')
     malId: int
     kitsuId: int
     title: str
