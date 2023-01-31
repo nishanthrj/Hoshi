@@ -32,6 +32,14 @@ class Anime(BaseModel):
     popularity: int | None
     likes: int | None
     recommended: list[Recommendation] | None
-    
 
+class Paginations(BaseModel):
+    total: int
+    lastPage: int
+    currentPage: int
+    
+class SearchResults(BaseModel):
+    data: list[Anime] | list
+    paginations: Paginations | None
+    
 
