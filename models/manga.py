@@ -32,3 +32,13 @@ class Manga(BaseModel):
     popularity: int | None
     likes: int | None
     recommended: list[Recommendation] | None
+
+class Paginations(BaseModel):
+    total: int
+    lastPage: int
+    currentPage: int
+    
+class SearchResults(BaseModel):
+    data: list[Manga] | list
+    paginations: Paginations | None
+    
