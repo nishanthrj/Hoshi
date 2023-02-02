@@ -1,91 +1,36 @@
+def regular_clause(query, path):
+    return {
+        'text': {
+            'query': query,
+            'path': path
+        }
+    }
+
+
+def title_clause(qtype, query, boost, extra=None):
+    clause = {
+        qtype: {
+            'query': query,
+            'path': ['title', 'en', 'enjp', 'jp'],
+            'score': {'boost': {'value': boost}},
+        }
+    }
+    if extra:
+        clause[qtype][extra[0]] = extra[1]
+
+    return clause
+
+
 def build_pipeline(media_type, q=None, subtype=None, status=None,
-                   season=None, genres=None, tags=None, excluded_genres=None,
-                   excluded_tags=None, sort_by='score', sort_order='desc', page=None):
-
-    type_clause = {
-        'text': {
-            'query': subtype,
-            'path': 'type'
-        }
-    }
-
-    status_clause = {
-        'text': {
-            'query': status,
-            'path': 'status'
-        }
-    }
-
-    season_clause = {
-        'text': {
-            'query': season,
-            'path': 'status'
-        }
-    }
-
-    genres_clause = {
-        'text': {
-            'query': genres.split(',') if genres else '',
-            'path': 'genres'
-        }
-    }
-
-    tags_clause = {
-        'text': {
-            'query': tags.split(',') if tags else '',
-            'path': 'tags'
-        }
-    }
-
-    exclude_genres_clause = {
-        'text': {
-            'query': excluded_genres.split(',') if excluded_genres else '',
-            'path': 'genres'
-        }
-    }
-
-    exclude_tags_clause = {
-        'text': {
-            'query': excluded_tags.split(',') if excluded_tags else '',
-            'path': 'tags'
-        }
-    }
-
-    full_text_clause = {
-        'text': {
-            'query': q,
-            'path': ['title', 'en', 'enjp', 'jp'],
-            'score': {'boost': {'value': 1000}}
-        }
-    }
-
-    wildcard_text_clause = {
-        'wildcard': {
-            'query': f'*{q}*',
-            'path': ['title', 'en', 'enjp', 'jp'],
-            'score': {'boost': {'value': 100}},
-            'allowAnalyzedField': True
-        }
-    }
-
-    fuzzy_text_clause = {
-        'text': {
-            'query': q,
-            'path': ['title', 'en', 'enjp', 'jp'],
-            'score': {'boost': {'value': 10}},
-            'fuzzy': {}
-        }
-    }
-
+                   season=None, year=None, genres=None, tags=None, exclude_genres=None,
+                   exclude_tags=None, sort_by='score', sort_order='desc', page=1):
 
     pipeline = [
         {
             '$search': {
                 'index': 'animesearch' if media_type == 'anime' else 'mangasearch',
                 'compound': {
-                    'filter': [],
-                    'mustNot': [],
-                    'should': [],
+                    'must': []
                 },
                 'returnStoredSource': True
             }
@@ -96,14 +41,14 @@ def build_pipeline(media_type, q=None, subtype=None, status=None,
                     {'$count': 'total'},
                     {
                         '$addFields': {
-                            'lastPage': {'$toInt': {'$ceil': {'$divide': ['$total', 20]}}},
+                            'lastPage': {'$toInt': {'$floor': {'$divide': ['$total', 20]}}},
                             'currentPage': page if page else 1
                         }
                     }
                 ],
                 'data': [
                     {'$sort': {f'{sort_by}': 1 if sort_order == 'asc' else -1}},
-                    {'$skip': 20 * page if page else 0},
+                    {'$skip': 20 * page-1 if page > 1 else 0},
                     {'$limit': 20},
                 ]
             }
@@ -116,32 +61,63 @@ def build_pipeline(media_type, q=None, subtype=None, status=None,
         }
     ]
 
-    if not any([q, subtype, status, season, genres, tags, excluded_genres, excluded_tags]):
+    if not any([q, subtype, status, season, year, genres, tags, exclude_genres, exclude_tags]):
         pipeline.pop(0)
+
     else:
         if q:
-            pipeline[0]['$search']['compound']['should'] = [full_text_clause, wildcard_text_clause, fuzzy_text_clause]
+            should_clause = {'compound': {'should': []}}
+
+            text = title_clause('text', q, 1000)
+            wildcard = title_clause('wildcard', f'*{q}*', 100, ('allowAnalyzedField', True))
+            fuzzy = title_clause('text', q, 10, ('fuzzy', {}))
+
+            should_clause['compound']['should'] = [text, wildcard, fuzzy]
+            pipeline[0]['$search']['compound']['must'].append(should_clause)
             pipeline[1]['$facet']['data'].pop(0)
 
-        if subtype:
-            pipeline[0]['$search']['compound']['filter'].append(type_clause)
+        if any([year, season, genres, tags, subtype, status]):
+            filter_clause = {'compound': {'filter': []}}
+            
+            if year:
+                filter_clause['compound']['filter'].append(regular_clause(year, 'startDate'))
 
-        if status:
-            pipeline[0]['$search']['compound']['filter'].append(status_clause)
+            if season:
+                filter_clause['compound']['filter'].append(regular_clause(season, 'season'))
 
-        if season:
-            pipeline[0]['$search']['compound']['filter'].append(season_clause)
+            if genres:
+                for g in genres.split(','):
+                    filter_clause['compound']['filter'].append(
+                        regular_clause(g, 'genres'))
 
-        if genres:
-            pipeline[0]['$search']['compound']['filter'].append(genres_clause)
+            if tags:
+                for t in tags.split(','):
+                    filter_clause['compound']['filter'].append(
+                        regular_clause(t, 'tags'))
 
-        if tags:
-            pipeline[0]['$search']['compound']['filter'].append(tags_clause)
+            if subtype:
+                filter_clause['compound']['filter'].append(
+                    regular_clause(subtype, 'type'))
 
-        if excluded_genres:
-            pipeline[0]['$search']['compound']['mustNot'].append(exclude_genres_clause)
+            if status:
+                filter_clause['compound']['filter'].append(
+                    regular_clause(status, 'status'))
 
-        if excluded_tags:
-            pipeline[0]['$search']['compound']['mustNot'].append(exclude_tags_clause)
+            pipeline[0]['$search']['compound']['must'].append(filter_clause)
+
+        if any([exclude_genres, exclude_tags]):
+            mustNot_clause = {'compound': {'mustNot': []}}
+
+            if exclude_genres:
+                for xg in exclude_genres.split(','):
+                    mustNot_clause['compound']['mustNot'].append(
+                        regular_clause(xg, 'genres'))
+
+            if exclude_tags:
+                for xt in exclude_tags.split(','):
+                    mustNot_clause['compound']['mustNot'].append(
+                        regular_clause(xt, 'tags'))
+
+            pipeline[0]['$search']['compound']['must'].append(mustNot_clause)
 
     return pipeline
