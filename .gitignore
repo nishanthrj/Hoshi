@@ -6,3 +6,9 @@ venv/
 
 # Python Cache
 __pycache__/
+
+# Temporary Files
+temp/
+
+# Extra Files
+extras/
