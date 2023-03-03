@@ -3,6 +3,7 @@ venv/
 
 # Environment Variables
 .env
+.env*.local
 
 # Python Cache
 __pycache__/
@@ -12,3 +13,16 @@ temp/
 
 # Extra Files
 extras/
+
+# Node Modules
+node_modules/
+
+# Typescript
+next-env.d.ts
+
+# NextJS
+.next/
+build/
+
+# vscode
+.vscode/
