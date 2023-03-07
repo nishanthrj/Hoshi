@@ -20,6 +20,7 @@ import { useNavbarStore } from "@/app/store";
 
 export default function Navbar() {
 	const isOpen = useNavbarStore((state) => state.isOpen);
+	const loggedIn = true;
 
 	return (
 		<div className={`${isOpen ? "md:w-64" : "md:w-16"} md:transition-[width] md:duration-1000`}>
@@ -64,6 +65,69 @@ export default function Navbar() {
 							Explore
 						</span>
 					</Link>
+
+					{loggedIn ? (
+						<>
+							<Link href="/user/animelist">
+								<span className="nav-link">
+									<MdPlayArrow className="p-px text-3xl" />
+									AnimeList
+								</span>
+							</Link>
+							<Link href="/user/mangalist">
+								<span className="nav-link">
+									<MdMenuBook className="p-px text-3xl" />
+									MangaList
+								</span>
+							</Link>
+							<Link href="/user/stats">
+								<span className="nav-link">
+									<MdAutoGraph className="p-px text-3xl" />
+									Stats
+								</span>
+							</Link>
+							<Link href="/user/settings">
+								<span className="nav-link">
+									<MdSettings className="p-px text-3xl" />
+									Settings
+								</span>
+							</Link>
+
+							<div className="flex pt-6 mt-auto mb-20 border-t justify-self-end border-dark-100/25">
+								<Link
+									href="/login"
+									className="gap-3 font-semibold leading-[3rem] nav-link"
+								>
+									<div className="relative w-10 h-10">
+										<Image
+											src="/profile.png"
+											fill={true}
+											loading={'eager'}
+											alt="profile"
+											className="object-contain"
+										/>
+									</div>
+									Carbine
+								</Link>
+								<Link
+									href="/logout"
+									className="pt-[.85rem] ml-20 transition-colors duration-300 hover:text-gray-50"
+								>
+									<MdLogout className="text-xl" />
+								</Link>
+							</div>
+						</>
+					) : (
+						<Link
+							href="/login"
+							className="pt-8 mt-auto mb-24 border-t justify-self-end border-dark-100/25"
+						>
+							<span className="nav-link">
+								<MdLogin className="p-px text-3xl" />
+								Login
+							</span>
+						</Link>
+					)}
 				</nav>
 			</div>
 		</div>
