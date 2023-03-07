@@ -22,6 +22,14 @@ export default function Navbar() {
 	const isOpen = useNavbarStore((state) => state.isOpen);
 	const loggedIn = true;
 
+	isOpen
+		? document
+				.querySelector("body")
+				?.classList.add("overflow-y-hidden", "md:overflow-y-visible")
+		: document
+				.querySelector("body")
+				?.classList.remove("overflow-y-hidden", "md:overflow-y-visible");
+
 	return (
 		<div className={`${isOpen ? "md:w-64" : "md:w-16"} md:transition-[width] md:duration-1000`}>
 			<MenuIcon />
