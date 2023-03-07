@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${font.variable}`}>
-      <body>{children}</body>
+      <body className="overflow-x-hidden bg-dark">{children}</body>
     </html>
   )
 }
