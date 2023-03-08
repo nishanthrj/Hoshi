@@ -4,6 +4,6 @@
 
 @layer components {
 	.nav-link {
-		@apply inline-flex gap-5 pl-2 mb-5 text-base cursor-pointer font-medium leading-9 transition-colors duration-300 hover:text-gray-50;
+		@apply inline-flex gap-5 pl-2 mb-5 text-base cursor-pointer font-medium leading-9 transition-colors duration-300 hover:text-gray-100;
 	}
 }
