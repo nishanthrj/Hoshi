@@ -3,7 +3,7 @@ import { useNavbarStore } from "@/app/store";
 import { Spiral as Hamburger } from "hamburger-react";
 
 
-export default function MenuIcon(): JSX.Element {
+export default function NavIcon(): JSX.Element {
 	const isOpen = useNavbarStore((state) => state.isOpen)
 	const toggleNavbar = useNavbarStore((state) => state.toggleNavbar)
 
