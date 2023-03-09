@@ -56,21 +56,21 @@ export default function Navbar() {
 						className="w-[5.5rem] h-[3.5rem]"
 					/>
 				</Link>
-				<nav className="z-10 flex flex-col h-screen mt-8 ml-2 text-gray-400 transition-colors duration-300 whitespace-nowrap">
+				<nav className="z-10 flex flex-col h-screen mt-8 ml-2 transition-colors duration-300 text-dark-200 whitespace-nowrap">
 					<Link href="/">
-						<span className={`nav-link ${pathname === '/' ? 'text-gray-50': ''}`}>
+						<span className={`nav-link ${pathname === '/' ? 'text-dark-50': ''}`}>
 							<MdHome className="p-px text-3xl" />
 							Home
 						</span>
 					</Link>
 					<Link href="/search">
-						<span className={`nav-link ${pathname === '/search' ? 'text-gray-50': ''}`}>
+						<span className={`nav-link ${pathname === '/search' ? 'text-dark-50': ''}`}>
 							<MdSearch className="p-px text-3xl" />
 							Search
 						</span>
 					</Link>
 					<Link href="/explore">
-						<span className={`nav-link ${pathname === '/explore' ? 'text-gray-50': ''}`}>
+						<span className={`nav-link ${pathname === '/explore' ? 'text-dark-50': ''}`}>
 							<MdExplore className="p-px text-3xl" />
 							Explore
 						</span>
@@ -79,32 +79,32 @@ export default function Navbar() {
 					{loggedIn ? (
 						<>
 							<Link href="/user/animelist">
-								<span className={`nav-link ${pathname === '/user/animelist' ? 'text-gray-50': ''}`}>
+								<span className={`nav-link ${pathname === '/user/animelist' ? 'text-dark-50': ''}`}>
 									<MdPlayArrow className="p-px text-3xl" />
 									AnimeList
 								</span>
 							</Link>
 							<Link href="/user/mangalist">
-								<span className={`nav-link ${pathname === '/user/mangalist' ? 'text-gray-50': ''}`}>
+								<span className={`nav-link ${pathname === '/user/mangalist' ? 'text-dark-50': ''}`}>
 									<MdMenuBook className="p-px text-3xl" />
 									MangaList
 								</span>
 							</Link>
 							<Link href="/user/stats">
-								<span className={`nav-link ${pathname === '/user/stats' ? 'text-gray-50': ''}`}>
+								<span className={`nav-link ${pathname === '/user/stats' ? 'text-dark-50': ''}`}>
 									<MdAutoGraph className="p-px text-3xl" />
 									Stats
 								</span>
 							</Link>
 							<Link href="/user/settings">
-								<span className={`nav-link ${pathname === '/user/settings' ? 'text-gray-50': ''}`}>
+								<span className={`nav-link ${pathname === '/user/settings' ? 'text-dark-50': ''}`}>
 									<MdSettings className="p-px text-3xl" />
 									Settings
 								</span>
 							</Link>
 
 							<div className="flex pt-6 mt-auto mb-20 border-t justify-self-end border-dark-100/25">
-								<div className="gap-3 font-semibold leading-[3rem] nav-link text-gray-300 hover:text-gray-300">
+								<div className="gap-3 font-semibold leading-[3rem] nav-link text-dark-100 hover:text-dark-100">
 									<div className="relative w-10 h-10">
 										<Image
 											src="/profile.png"
@@ -118,7 +118,7 @@ export default function Navbar() {
 								</div>
 								<Link
 									href="/logout"
-									className="pt-[.85rem] ml-20 transition-colors duration-300 hover:text-gray-100"
+									className="pt-[.85rem] ml-20 transition-colors duration-300 hover:text-dark-100"
 								>
 									<MdLogout className="text-xl" />
 								</Link>
