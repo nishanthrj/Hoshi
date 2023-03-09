@@ -18,19 +18,26 @@ import {
 import MenuIcon from "./MenuIcon";
 import { useNavbarStore } from "@/app/store";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Navbar() {
-	const pathname = usePathname()
+	const pathname = usePathname();
 	const isOpen = useNavbarStore((state) => state.isOpen);
+	const closeNavbar = useNavbarStore((state) => state.closeNavbar);
 	const loggedIn = true;
 
-	isOpen
-		? document
-				.querySelector("body")
-				?.classList.add("overflow-y-hidden", "md:overflow-y-visible")
-		: document
-				.querySelector("body")
-				?.classList.remove("overflow-y-hidden", "md:overflow-y-visible");
+	useEffect(() => closeNavbar(), [pathname]);
+
+	if (typeof window !== "undefined") {
+		console.log(isOpen);
+		isOpen
+			? document
+					.querySelector("body")
+					?.classList.add("overflow-y-hidden", "md:overflow-y-visible")
+			: document
+					.querySelector("body")
+					?.classList.remove("overflow-y-hidden", "md:overflow-y-visible");
+	}
 
 	return (
 		<div className={`${isOpen ? "md:w-64" : "md:w-16"} md:transition-[width] md:duration-1000`}>
@@ -58,19 +65,23 @@ export default function Navbar() {
 				</Link>
 				<nav className="z-10 flex flex-col h-screen mt-8 ml-2 transition-colors duration-300 text-dark-200 whitespace-nowrap">
 					<Link href="/">
-						<span className={`nav-link ${pathname === '/' ? 'text-dark-50': ''}`}>
+						<span className={`nav-link ${pathname === "/" ? "text-dark-50" : ""}`}>
 							<MdHome className="p-px text-3xl" />
 							Home
 						</span>
 					</Link>
 					<Link href="/search">
-						<span className={`nav-link ${pathname === '/search' ? 'text-dark-50': ''}`}>
+						<span
+							className={`nav-link ${pathname === "/search" ? "text-dark-50" : ""}`}
+						>
 							<MdSearch className="p-px text-3xl" />
 							Search
 						</span>
 					</Link>
 					<Link href="/explore">
-						<span className={`nav-link ${pathname === '/explore' ? 'text-dark-50': ''}`}>
+						<span
+							className={`nav-link ${pathname === "/explore" ? "text-dark-50" : ""}`}
+						>
 							<MdExplore className="p-px text-3xl" />
 							Explore
 						</span>
@@ -79,25 +90,41 @@ export default function Navbar() {
 					{loggedIn ? (
 						<>
 							<Link href="/user/animelist">
-								<span className={`nav-link ${pathname === '/user/animelist' ? 'text-dark-50': ''}`}>
+								<span
+									className={`nav-link ${
+										pathname === "/user/animelist" ? "text-dark-50" : ""
+									}`}
+								>
 									<MdPlayArrow className="p-px text-3xl" />
 									AnimeList
 								</span>
 							</Link>
 							<Link href="/user/mangalist">
-								<span className={`nav-link ${pathname === '/user/mangalist' ? 'text-dark-50': ''}`}>
+								<span
+									className={`nav-link ${
+										pathname === "/user/mangalist" ? "text-dark-50" : ""
+									}`}
+								>
 									<MdMenuBook className="p-px text-3xl" />
 									MangaList
 								</span>
 							</Link>
 							<Link href="/user/stats">
-								<span className={`nav-link ${pathname === '/user/stats' ? 'text-dark-50': ''}`}>
+								<span
+									className={`nav-link ${
+										pathname === "/user/stats" ? "text-dark-50" : ""
+									}`}
+								>
 									<MdAutoGraph className="p-px text-3xl" />
 									Stats
 								</span>
 							</Link>
 							<Link href="/user/settings">
-								<span className={`nav-link ${pathname === '/user/settings' ? 'text-dark-50': ''}`}>
+								<span
+									className={`nav-link ${
+										pathname === "/user/settings" ? "text-dark-50" : ""
+									}`}
+								>
 									<MdSettings className="p-px text-3xl" />
 									Settings
 								</span>
@@ -120,7 +147,13 @@ export default function Navbar() {
 									href="/logout"
 									className="pt-[.85rem] max-xs:mr-5 ml-20 transition-colors duration-300 hover:text-dark-100"
 								>
-									<MdLogout className={`text-xl transition-opacity duration-300 ${isOpen ? "max-xs:opacity-100 delay-[700ms]" : "max-xs:opacity-0"}`} />
+									<MdLogout
+										className={`text-xl transition-opacity duration-300 ${
+											isOpen
+												? "max-xs:opacity-100 delay-[700ms]"
+												: "max-xs:opacity-0"
+										}`}
+									/>
 								</Link>
 							</div>
 						</>
