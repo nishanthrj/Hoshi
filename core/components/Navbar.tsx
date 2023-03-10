@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 import {
@@ -19,6 +17,8 @@ import {
 import MenuIcon from "./NavIcon";
 import NavLink from "./NavLink";
 import NavProfile from "./NavProfile";
+import Logo from "./Logo";
+
 import { useNavbarStore } from "@/app/store";
 
 export default function Navbar() {
@@ -47,22 +47,7 @@ export default function Navbar() {
 					isOpen ? "max-xs:w-full w-64" : "w-0 md:w-16"
 				}`}
 			>
-				<Link
-					href="/"
-					className={`flex justify-center transition-opacity duration-500 pt-2 ${
-						isOpen ? "opacity-100" : "opacity-0"
-					}`}
-				>
-					<Image
-						src="/logo.svg"
-						width={120}
-						height={72}
-						quality={100}
-						priority={true}
-						alt="Hoshi Logo"
-						className="w-[5.5rem] h-[3.5rem]"
-					/>
-				</Link>
+				<Logo />
 
 				<nav className="text-dark-200 whitespace-nowrap z-10 flex flex-col h-screen mt-8 ml-2 transition-colors duration-300">
 					<NavLink name="Home" path="/" Icon={MdHome} />
