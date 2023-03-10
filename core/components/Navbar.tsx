@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 import {
 	MdHome,
@@ -11,14 +13,13 @@ import {
 	MdPlayArrow,
 	MdMenuBook,
 	MdLogin,
-	MdLogout,
 	MdAutoGraph,
 } from "react-icons/md";
 
-import MenuIcon from "./MenuIcon";
+import MenuIcon from "./NavIcon";
+import NavLink from "./NavLink";
+import NavProfile from "./NavProfile";
 import { useNavbarStore } from "@/app/store";
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 
 export default function Navbar() {
 	const pathname = usePathname();
@@ -28,8 +29,7 @@ export default function Navbar() {
 
 	useEffect(() => closeNavbar(), [pathname]);
 
-	if (typeof window !== "undefined") {
-		console.log(isOpen);
+	useEffect(() => {
 		isOpen
 			? document
 					.querySelector("body")
@@ -37,15 +37,15 @@ export default function Navbar() {
 			: document
 					.querySelector("body")
 					?.classList.remove("overflow-y-hidden", "md:overflow-y-visible");
-	}
+	}, [isOpen]);
 
 	return (
-		<div className={`${isOpen ? "md:w-64" : "md:w-16"} md:transition-[width] md:duration-1000`}>
+		<div className={`md:transition-[width] md:duration-1000 ${isOpen ? "md:w-64" : "md:w-16"}`}>
 			<MenuIcon />
 			<div
-				className={`fixed top-0 left-0 font-sans ${
+				className={`fixed top-0 left-0 font-sans min-h-screen overflow-hidden transition-[width] duration-1000 backdrop-blur border-r border-dark-100/25 bg-dark/75 ${
 					isOpen ? "max-xs:w-full w-64" : "w-0 md:w-16"
-				} min-h-screen overflow-hidden transition-[width] duration-1000 backdrop-blur border-r border-dark-100/25 bg-dark/75`}
+				}`}
 			>
 				<Link
 					href="/"
@@ -63,110 +63,23 @@ export default function Navbar() {
 						className="w-[5.5rem] h-[3.5rem]"
 					/>
 				</Link>
-				<nav className="z-10 flex flex-col h-screen mt-8 ml-2 transition-colors duration-300 text-dark-200 whitespace-nowrap">
-					<Link href="/">
-						<span className={`nav-link ${pathname === "/" ? "text-dark-50" : ""}`}>
-							<MdHome className="p-px text-3xl" />
-							Home
-						</span>
-					</Link>
-					<Link href="/search">
-						<span
-							className={`nav-link ${pathname === "/search" ? "text-dark-50" : ""}`}
-						>
-							<MdSearch className="p-px text-3xl" />
-							Search
-						</span>
-					</Link>
-					<Link href="/explore">
-						<span
-							className={`nav-link ${pathname === "/explore" ? "text-dark-50" : ""}`}
-						>
-							<MdExplore className="p-px text-3xl" />
-							Explore
-						</span>
-					</Link>
+
+				<nav className="text-dark-200 whitespace-nowrap z-10 flex flex-col h-screen mt-8 ml-2 transition-colors duration-300">
+					<NavLink name="Home" path="/" Icon={MdHome} />
+					<NavLink name="Search" path="/search" Icon={MdSearch} />
+					<NavLink name="Explore" path="/explore" Icon={MdExplore} />
 
 					{loggedIn ? (
 						<>
-							<Link href="/user/animelist">
-								<span
-									className={`nav-link ${
-										pathname === "/user/animelist" ? "text-dark-50" : ""
-									}`}
-								>
-									<MdPlayArrow className="p-px text-3xl" />
-									AnimeList
-								</span>
-							</Link>
-							<Link href="/user/mangalist">
-								<span
-									className={`nav-link ${
-										pathname === "/user/mangalist" ? "text-dark-50" : ""
-									}`}
-								>
-									<MdMenuBook className="p-px text-3xl" />
-									MangaList
-								</span>
-							</Link>
-							<Link href="/user/stats">
-								<span
-									className={`nav-link ${
-										pathname === "/user/stats" ? "text-dark-50" : ""
-									}`}
-								>
-									<MdAutoGraph className="p-px text-3xl" />
-									Stats
-								</span>
-							</Link>
-							<Link href="/user/settings">
-								<span
-									className={`nav-link ${
-										pathname === "/user/settings" ? "text-dark-50" : ""
-									}`}
-								>
-									<MdSettings className="p-px text-3xl" />
-									Settings
-								</span>
-							</Link>
+							<NavLink name="AnimeList" path="/user/animelist" Icon={MdPlayArrow} />
+							<NavLink name="MangaList" path="/user/mangalist" Icon={MdMenuBook} />
+							<NavLink name="Stats" path="/user/stats" Icon={MdAutoGraph} />
+							<NavLink name="Settings" path="/user/settings" Icon={MdSettings} />
 
-							<div className="flex pt-6 mt-auto mb-20 border-t max-xs:justify-between justify-self-end border-dark-100/25">
-								<div className="gap-3 font-semibold leading-[3rem] nav-link text-dark-100 hover:text-dark-100">
-									<div className="relative w-10 h-10">
-										<Image
-											src="/profile.png"
-											fill={true}
-											loading={"eager"}
-											alt="profile"
-											className="object-contain"
-										/>
-									</div>
-									Carbine
-								</div>
-								<Link
-									href="/logout"
-									className="pt-[.85rem] max-xs:mr-5 ml-20 transition-colors duration-300 hover:text-dark-100"
-								>
-									<MdLogout
-										className={`text-xl transition-opacity duration-300 ${
-											isOpen
-												? "max-xs:opacity-100 delay-[700ms]"
-												: "max-xs:opacity-0"
-										}`}
-									/>
-								</Link>
-							</div>
+							<NavProfile />
 						</>
 					) : (
-						<Link
-							href="/login"
-							className="pt-8 mt-auto mb-24 border-t justify-self-end border-dark-100/25"
-						>
-							<span className="nav-link">
-								<MdLogin className="p-px text-3xl" />
-								Login
-							</span>
-						</Link>
+						<NavLink name="Login" path="/login" Icon={MdLogin} />
 					)}
 				</nav>
 			</div>
