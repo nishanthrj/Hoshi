@@ -9,15 +9,17 @@ interface NavbarState {
 
 interface SearchStore {
 	mediaType: string;
+	switchMediaType: () => void;
 }
 
 
 export const useNavbarStore = create<NavbarState>()((set) => ({
 	isOpen: false,
 	toggleNavbar: () => set((state) => ({ isOpen: !state.isOpen })),
-	closeNavbar: () => set((state) => ({ isOpen: false })),
+	closeNavbar: () => set(() => ({ isOpen: false })),
 }));
 
 export const useSearchStore = create<SearchStore>()((set) => ({
-	mediaType: "Anime",
+	mediaType: "anime",
+	switchMediaType: () => set((state) => ({mediaType: (state.mediaType === 'anime' ? 'manga' : 'anime')}))
 }));
