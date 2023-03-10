@@ -43,13 +43,12 @@ export default function Navbar() {
 		<div className={`md:transition-[width] md:duration-1000 ${isOpen ? "md:w-64" : "md:w-16"}`}>
 			<MenuIcon />
 			<div
-				className={`fixed top-0 left-0 font-sans min-h-screen overflow-hidden transition-[width] duration-1000 backdrop-blur border-r border-dark-100/25 bg-dark/75 ${
-					isOpen ? "max-xs:w-full w-64" : "w-0 md:w-16"
-				}`}
-			>
+				className={`fixed top-0 left-0 min-h-screen overflow-hidden border-r border-dark-100/25 bg-dark/75 font-sans backdrop-blur transition-[width] duration-1000 ${
+					isOpen ? "w-64 max-xs:w-full" : "w-0 md:w-16"
+				}`}>
 				<Logo />
 
-				<nav className="text-dark-200 whitespace-nowrap z-10 flex flex-col h-screen mt-8 ml-2 transition-colors duration-300">
+				<nav className="z-10 mt-8 ml-2 flex h-screen flex-col whitespace-nowrap text-dark-200 transition-colors duration-300">
 					<NavLink name="Home" path="/" Icon={MdHome} />
 					<NavLink name="Search" path="/search" Icon={MdSearch} />
 					<NavLink name="Explore" path="/explore" Icon={MdExplore} />

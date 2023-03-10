@@ -1,6 +1,5 @@
 import { create } from "zustand";
 
-
 interface NavbarState {
 	isOpen: boolean;
 	toggleNavbar: () => void;
@@ -12,7 +11,6 @@ interface SearchStore {
 	switchMediaType: () => void;
 }
 
-
 export const useNavbarStore = create<NavbarState>()((set) => ({
 	isOpen: false,
 	toggleNavbar: () => set((state) => ({ isOpen: !state.isOpen })),
@@ -21,5 +19,6 @@ export const useNavbarStore = create<NavbarState>()((set) => ({
 
 export const useSearchStore = create<SearchStore>()((set) => ({
 	mediaType: "anime",
-	switchMediaType: () => set((state) => ({mediaType: (state.mediaType === 'anime' ? 'manga' : 'anime')}))
+	switchMediaType: () =>
+		set((state) => ({ mediaType: state.mediaType === "anime" ? "manga" : "anime" })),
 }));

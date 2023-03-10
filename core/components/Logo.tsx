@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -10,10 +10,9 @@ export default function Logo() {
 	return (
 		<Link
 			href="/"
-			className={`flex justify-center transition-opacity duration-500 pt-2 ${
+			className={`flex justify-center pt-2 transition-opacity duration-500 ${
 				isOpen ? "opacity-100" : "opacity-0"
-			}`}
-		>
+			}`}>
 			<Image
 				src="/logo.svg"
 				width={120}
@@ -21,7 +20,7 @@ export default function Logo() {
 				quality={100}
 				priority={true}
 				alt="Hoshi Logo"
-				className="w-[5.5rem] h-[3.5rem]"
+				className="h-[3.5rem] w-[5.5rem]"
 			/>
 		</Link>
 	);

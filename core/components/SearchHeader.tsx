@@ -1,4 +1,4 @@
-import {AiOutlineSwap} from "react-icons/ai";
+import { AiOutlineSwap } from "react-icons/ai";
 import { useSearchStore } from "@/app/store";
 
 export default function SearchHeader() {
@@ -6,11 +6,11 @@ export default function SearchHeader() {
 	const switchMediaType = useSearchStore((state) => state.switchMediaType);
 
 	return (
-		<header className="text-dark-50 inline-flex items-center gap-2 text-2xl font-bold select-none">
+		<header className="inline-flex select-none items-center gap-2 text-2xl font-bold text-dark-50">
 			Search
-			<span className="bg-dark-600 px-4 py-2 capitalize rounded-md">{mediaType}</span>
+			<span className="rounded-md bg-dark-600 px-4 py-2 capitalize">{mediaType}</span>
 			<AiOutlineSwap
-				className="text-dark-100 px-0 py-1 text-4xl cursor-pointer"
+				className="cursor-pointer px-0 py-1 text-4xl text-dark-100"
 				onClick={() => switchMediaType()}
 			/>
 		</header>

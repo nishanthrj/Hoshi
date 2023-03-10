@@ -8,9 +8,9 @@ export default function Search() {
 	return (
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
-			<section className="w-full p-4 mt-20">
+			<section className="mt-20 w-full p-4">
 				<SearchHeader />
-				<div className="grid grid-cols-[repeat(auto-fit, 11rem)] gap-x-4 gap-y-8 w-full overflow-hidden">
+				<div className="grid-cols-[repeat(auto-fit, 11rem)] grid w-full gap-x-4 gap-y-8 overflow-hidden">
 					<SearchBar />
 				</div>
 			</section>
