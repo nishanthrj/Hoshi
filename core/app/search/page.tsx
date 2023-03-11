@@ -13,7 +13,7 @@ export default function Search() {
 				<SearchHeader />
 				<div className="mt-14 grid w-full grid-cols-[repeat(auto-fit,100%)] gap-x-4 gap-y-8 overflow-hidden xl:grid-cols-[auto_min-content] xl:pr-4">
 					<SearchBar />
-					<div className="grid w-full grid-cols-[repeat(4,11rem)] gap-4">
+					<div className="filters grid w-full grid-cols-[repeat(4,11rem)] gap-4 overflow-x-scroll ">
 						<FilterField title="genres" />
 						<FilterField title="subtype" />
 						<FilterField title="status" />
