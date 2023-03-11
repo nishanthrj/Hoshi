@@ -1,4 +1,5 @@
 import { MdExpandMore } from "react-icons/md";
+import Dropdown from "./Dropdown";
 
 interface FilterFieldProps {
 	title: string;
@@ -18,6 +19,7 @@ export default function FilterField({ title }: FilterFieldProps) {
 				</div>
 				<MdExpandMore className="h-5 w-5" />
 			</div>
+			<Dropdown title={title} />
 		</div>
 	);
 }
