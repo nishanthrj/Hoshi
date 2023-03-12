@@ -1,9 +1,7 @@
-"use client";
-
-import FilterField from "@/components/FilterField";
 import Navbar from "@/components/Navbar";
 import SearchBar from "@/components/SearchBar";
 import SearchHeader from "@/components/SearchHeader";
+import FilterField from "@/components/FilterField";
 
 export default function Search() {
 	return (
@@ -15,9 +13,9 @@ export default function Search() {
 					<SearchBar />
 					<div className="filters grid w-full grid-cols-[repeat(4,11rem)] gap-4 overflow-x-scroll ">
 						<FilterField title="genres" />
-						<FilterField title="subtype" />
+						<FilterField title="format" />
 						<FilterField title="status" />
-						<FilterField title="season" />
+						<FilterField title="release" />
 					</div>
 				</div>
 			</section>
