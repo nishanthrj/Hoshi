@@ -4,6 +4,18 @@
 
 @layer utilities {
 	.filters::-webkit-scrollbar {
-		display: none;
+		@apply hidden;
+	}
+
+	.dropdown::-webkit-scrollbar {
+		@apply w-[.4rem];
+	}
+
+	*::-webkit-scrollbar-track {
+		@apply hidden;
+	}
+
+	*::-webkit-scrollbar-thumb {
+		@apply rounded-lg bg-dark-300;
 	}
 }
