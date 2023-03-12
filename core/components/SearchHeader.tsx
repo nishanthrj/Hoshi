@@ -1,3 +1,5 @@
+"use client";
+
 import { AiOutlineSwap } from "react-icons/ai";
 import { useSearchStore } from "@/app/store";
 
