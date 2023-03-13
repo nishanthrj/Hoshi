@@ -1,4 +1,5 @@
-import { uuid } from "uuidv4";
+"use client";
+import { v4 as uuid } from "uuid";
 import {
 	genres,
 	tags,
@@ -9,9 +10,9 @@ import {
 	sortOptions,
 	generateSeason,
 } from "@/app/utils";
+import { useSearchStore } from "@/app/store";
 
 interface DropdownProps {
-	mediaType: string;
 	title: string;
 }
 const getOptions = function (mediaType: string, title: string): string[] {
@@ -24,7 +25,8 @@ const getOptions = function (mediaType: string, title: string): string[] {
 	else return generateSeason(mediaType);
 };
 
-export default function DropdownOptions({ mediaType, title }: DropdownProps) {
+export default function DropdownOptions({ title }: DropdownProps) {
+	const mediaType = useSearchStore((state) => state.mediaType);
 	const options = getOptions(mediaType, title);
 
 	return (
