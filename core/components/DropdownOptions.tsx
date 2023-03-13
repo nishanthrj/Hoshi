@@ -13,25 +13,25 @@ import {
 import { useSearchStore } from "@/app/store";
 
 interface DropdownProps {
-	title: string;
+	name: string;
 }
-const getOptions = function (mediaType: string, title: string): string[] {
-	if (title === "genres") return genres;
-	else if (title === "format" && mediaType === "anime") return animeFormat;
-	else if (title === "format" && mediaType === "manga") return mangaFormat;
-	else if (title === "status" && mediaType === "anime") return animeStatus;
-	else if (title === "status" && mediaType === "manga") return mangaStatus;
-	else if (title === "sort") return sortOptions;
+const getOptions = function (mediaType: string, name: string): string[] {
+	if (name === "genres") return genres;
+	else if (name === "format" && mediaType === "anime") return animeFormat;
+	else if (name === "format" && mediaType === "manga") return mangaFormat;
+	else if (name === "status" && mediaType === "anime") return animeStatus;
+	else if (name === "status" && mediaType === "manga") return mangaStatus;
+	else if (name === "sort") return sortOptions;
 	else return generateSeason(mediaType);
 };
 
-export default function DropdownOptions({ title }: DropdownProps) {
+export default function DropdownOptions({ name }: DropdownProps) {
 	const mediaType = useSearchStore((state) => state.mediaType);
-	const options = getOptions(mediaType, title);
+	const options = getOptions(mediaType, name);
 
 	return (
 		<>
-			<li className="mb-1 text-xs uppercase text-dark-300">{title}</li>
+			<li className="mb-1 text-xs uppercase text-dark-300">{name}</li>
 			{options.map((option: string) => (
 				<li
 					key={uuid()}
@@ -40,7 +40,7 @@ export default function DropdownOptions({ title }: DropdownProps) {
 				</li>
 			))}
 
-			{title === "genres" && (
+			{name === "genres" && (
 				<>
 					<li>&nbsp;</li>
 					<li className="mb-1 text-xs uppercase text-dark-300">tags</li>

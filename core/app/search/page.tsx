@@ -12,10 +12,10 @@ export default function Search() {
 				<div className="mt-14 grid w-full grid-cols-[repeat(auto-fit,100%)] gap-x-4 gap-y-8 overflow-hidden xl:grid-cols-[auto_min-content] xl:pr-4">
 					<SearchBar />
 					<div className="filters grid w-full grid-cols-[repeat(4,11rem)] gap-4 overflow-x-scroll ">
-						<FilterField title="genres" />
-						<FilterField title="format" />
-						<FilterField title="status" />
-						<FilterField title="release" />
+						<FilterField name="genres" />
+						<FilterField name="format" />
+						<FilterField name="status" />
+						<FilterField name="release" />
 					</div>
 				</div>
 			</section>
