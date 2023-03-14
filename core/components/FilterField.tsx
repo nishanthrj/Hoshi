@@ -12,7 +12,7 @@ export default function FilterField({ name }: FilterFieldProps) {
 	const setOpenDropdown = useSearchStore((state) => state.setOpenDropdown);
 
 	return (
-		<div>
+		<div className="relative snap-center">
 			<span className="mb-1 ml-2 text-sm font-medium capitalize text-dark-100">{name}</span>
 			<div
 				onClick={() => setOpenDropdown(name)}
