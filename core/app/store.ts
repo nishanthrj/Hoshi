@@ -8,7 +8,9 @@ interface NavbarState {
 
 interface SearchStore {
 	mediaType: string;
+	openDropdown: string | null;
 	switchMediaType: () => void;
+	setOpenDropdown: (name: string | null) => void;
 }
 
 export const useNavbarStore = create<NavbarState>()((set) => ({
@@ -19,6 +21,9 @@ export const useNavbarStore = create<NavbarState>()((set) => ({
 
 export const useSearchStore = create<SearchStore>()((set) => ({
 	mediaType: "anime",
+	openDropdown: null,
 	switchMediaType: () =>
 		set((state) => ({ mediaType: state.mediaType === "anime" ? "manga" : "anime" })),
+	setOpenDropdown: (name) =>
+		set((state) => ({ openDropdown: state.openDropdown !== name ? name : null })),
 }));

@@ -2,10 +2,16 @@
 
 import { AiOutlineSwap } from "react-icons/ai";
 import { useSearchStore } from "@/app/store";
+import { useEffect } from "react";
 
 export default function SearchHeader() {
 	const mediaType = useSearchStore((state) => state.mediaType);
 	const switchMediaType = useSearchStore((state) => state.switchMediaType);
+	const setOpenDropdown = useSearchStore((state) => state.setOpenDropdown);
+
+	useEffect(() => {
+		setOpenDropdown(null);
+	}, [mediaType]);
 
 	return (
 		<header className="inline-flex select-none items-center gap-2 text-2xl font-bold text-dark-50">
