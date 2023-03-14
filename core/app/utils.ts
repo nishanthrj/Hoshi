@@ -180,4 +180,4 @@ export const generateSeason = function (mediaType: string) {
 	}
 };
 
-export const sortOptions: string[] = ["title", "score", "popularity", "startDate"];
+export const sortOptions: string[] = ["Title", "Score", "Popularity", "Release Date"];
