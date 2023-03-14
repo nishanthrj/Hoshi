@@ -12,7 +12,7 @@ export default function Dropdown({ name }: DropdownProps) {
 		<div
 			className={`dropdown absolute z-40 mt-4 w-44 select-none overflow-y-hidden rounded-md bg-dark-600 text-sm font-semibold transition-[height] duration-300 hover:overflow-y-scroll ${
 				openDropdown === name ? "h-80" : "h-0"
-			}`}>
+			} ${name === "sort" && "xl:-left-5 xl:w-36"}`}>
 			<ul className="p-4">
 				<DropdownOptions name={name} />
 			</ul>
