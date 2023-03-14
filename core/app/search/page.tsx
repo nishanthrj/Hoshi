@@ -9,9 +9,9 @@ export default function Search() {
 			<Navbar />
 			<section className="mt-12 w-full pl-4">
 				<SearchHeader />
-				<div className="mt-14 grid w-full grid-cols-[repeat(auto-fit,100%)] gap-x-4 gap-y-8 overflow-hidden xl:grid-cols-[auto_min-content] xl:pr-4">
+				<div className="mt-14 grid w-full grid-cols-1 gap-x-4 gap-y-8 overflow-hidden xl:grid-cols-[auto_min-content]">
 					<SearchBar />
-					<div className="filters grid w-full grid-cols-[repeat(4,11rem)] gap-4 overflow-x-scroll ">
+					<div className="filters grid w-full grid-cols-[repeat(4,11rem)] gap-4 overflow-x-scroll pr-4">
 						<FilterField name="genres" />
 						<FilterField name="format" />
 						<FilterField name="status" />
