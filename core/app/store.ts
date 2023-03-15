@@ -29,9 +29,7 @@ interface SearchStoreAction {
 	switchMediaType: () => void;
 	setQuery: (q: string) => void;
 	setGenre: (genre: string) => void;
-	setExcludedGenre: (genre: string) => void;
 	setTag: (tag: string) => void;
-	setExcludedTag: (genre: string) => void;
 	setFormat: (format: string) => void;
 	setStatus: (status: string) => void;
 	setRelease: (year: string) => void;
@@ -73,30 +71,20 @@ export const useSearchStore = create<SearchStoreState & SearchStoreAction>()((se
 	setQuery: (q) => set(() => ({ q: q })),
 
 	setGenre: (genre) =>
-		set((state) => ({
-			genres: !state.genres.has(genre)
-				? state.genres.add(genre)
-				: deleteFromSet(state.genres, genre),
-		})),
-
-	setExcludedGenre: (genre) =>
-		set((state) => ({
-			excludedGenres: !state.excludedGenres.has(genre)
-				? state.excludedGenres.add(genre)
-				: deleteFromSet(state.excludedGenres, genre),
-		})),
+		set((state) => {
+			if (!state.genres.has(genre)) return { genres: state.genres.add(genre) };
+			else if (!state.excludedGenres.has(genre))
+				return { excludedGenres: state.excludedGenres.add(genre) };
+			else return { excludedGenres: deleteFromSet(state.excludedGenres, genre) };
+		}),
 
 	setTag: (tag) =>
-		set((state) => ({
-			tags: !state.tags.has(tag) ? state.tags.add(tag) : deleteFromSet(state.tags, tag),
-		})),
-
-	setExcludedTag: (tag) =>
-		set((state) => ({
-			excludedTags: !state.excludedTags.has(tag)
-				? state.excludedTags.add(tag)
-				: deleteFromSet(state.excludedTags, tag),
-		})),
+		set((state) => {
+			if (!state.tags.has(tag)) return { tags: state.tags.add(tag) };
+			else if (!state.excludedTags.has(tag))
+				return { excludedTags: state.excludedTags.add(tag) };
+			else return { excludedTags: deleteFromSet(state.excludedTags, tag) };
+		}),
 
 	setFormat: (format) =>
 		set((state) => ({
