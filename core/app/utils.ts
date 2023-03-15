@@ -181,3 +181,8 @@ export const generateSeason = function (mediaType: string) {
 };
 
 export const sortOptions: string[] = ["Title", "Score", "Popularity", "Release Date"];
+
+export const deleteFromSet = function (set: Set<string>, item: string) {
+	set.delete(item);
+	return set;
+};
