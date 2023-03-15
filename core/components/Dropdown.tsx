@@ -1,5 +1,5 @@
 "use client";
-import { useSearchStore } from "@/app/store";
+import { useDropdownStore } from "@/app/store";
 import DropdownOptions from "./DropdownOptions";
 
 interface DropdownProps {
@@ -7,7 +7,7 @@ interface DropdownProps {
 }
 
 export default function Dropdown({ name }: DropdownProps) {
-	const openDropdown = useSearchStore((state) => state.openDropdown);
+	const openDropdown = useDropdownStore((state) => state.openDropdown);
 	return (
 		<div
 			className={`dropdown absolute z-40 mt-4 w-44 select-none overflow-y-hidden rounded-md bg-dark-600 text-sm font-semibold transition-[height] duration-300 hover:overflow-y-scroll ${

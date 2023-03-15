@@ -1,10 +1,10 @@
 "use client";
 import { MdUnfoldMore } from "react-icons/md";
 import Dropdown from "./Dropdown";
-import { useSearchStore } from "@/app/store";
+import { useDropdownStore } from "@/app/store";
 
 export default function SortField() {
-	const setOpenDropdown = useSearchStore((state) => state.setOpenDropdown);
+	const setOpenDropdown = useDropdownStore((state) => state.setOpenDropdown);
 
 	return (
 		<div className="relative hidden w-28 justify-self-end xl:block">

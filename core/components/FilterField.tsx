@@ -1,15 +1,15 @@
 "use client";
 import { MdExpandMore, MdExpandLess } from "react-icons/md";
 import Dropdown from "./Dropdown";
-import { useSearchStore } from "@/app/store";
+import { useDropdownStore } from "@/app/store";
 
 interface FilterFieldProps {
 	name: string;
 }
 
 export default function FilterField({ name }: FilterFieldProps) {
-	const openDropdown = useSearchStore((state) => state.openDropdown);
-	const setOpenDropdown = useSearchStore((state) => state.setOpenDropdown);
+	const openDropdown = useDropdownStore((state) => state.openDropdown);
+	const setOpenDropdown = useDropdownStore((state) => state.setOpenDropdown);
 
 	return (
 		<div className="relative snap-center">
