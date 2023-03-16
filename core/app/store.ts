@@ -63,7 +63,16 @@ export const useDropdownStore = create<DropdownStore>()((set) => ({
 }));
 
 export const useSearchStore = create<SearchStoreState & SearchStoreAction>()((set) => ({
-	...initialSearchState,
+	mediaType: "anime",
+	q: "",
+	genres: new Set(),
+	excludedGenres: new Set(),
+	tags: new Set(),
+	excludedTags: new Set(),
+	format: new Set(),
+	status: new Set(),
+	release: "",
+	sort: "popularity",
 
 	switchMediaType: () =>
 		set((state) => ({ mediaType: state.mediaType === "anime" ? "manga" : "anime" })),
@@ -112,5 +121,17 @@ export const useSearchStore = create<SearchStoreState & SearchStoreAction>()((se
 
 	setSort: (method) => set(() => ({ sort: method })),
 
-	reset: () => set(initialSearchState),
+	reset: () =>
+		set(() => ({
+			mediaType: "anime",
+			q: "",
+			genres: new Set(),
+			excludedGenres: new Set(),
+			tags: new Set(),
+			excludedTags: new Set(),
+			format: new Set(),
+			status: new Set(),
+			release: "",
+			sort: "popularity",
+		})),
 }));
