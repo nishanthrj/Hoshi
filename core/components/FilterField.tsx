@@ -2,6 +2,7 @@
 import { MdExpandMore, MdExpandLess } from "react-icons/md";
 import Dropdown from "./Dropdown";
 import { useDropdownStore } from "@/app/store";
+import ActiveFilterMini from "./ActiveFilterMini";
 
 interface FilterFieldProps {
 	name: string;
@@ -17,13 +18,7 @@ export default function FilterField({ name }: FilterFieldProps) {
 			<div
 				onClick={() => setOpenDropdown(name)}
 				className="flex items-center justify-between rounded-md bg-dark-600 py-[.45rem] px-3 text-dark-200 shadow">
-				<span className="select-none p-1 text-sm font-medium tracking-wide text-dark-200">
-					Any
-				</span>
-				<div className="hidden gap-1 font-medium">
-					<span className="rounded bg-dark-400 p-2 text-xs leading-none text-dark-100"></span>
-					<span className="rounded bg-dark-400 p-2 text-xs leading-none text-dark-100"></span>
-				</div>
+				<ActiveFilterMini name={name} />
 				{openDropdown === name ? (
 					<MdExpandMore className="h-5 w-5" />
 				) : (
