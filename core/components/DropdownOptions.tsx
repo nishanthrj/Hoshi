@@ -31,6 +31,50 @@ export default function DropdownOptions({ name }: DropdownProps) {
 	const mediaType = useSearchStore((state) => state.mediaType);
 	const options = getOptions(mediaType, name);
 
+	const [
+		selectedGenres,
+		excludedGenres,
+		selectedTags,
+		excludedTags,
+		selectedFormat,
+		selectedStatus,
+		selectedRelease,
+		selectedSort,
+	] = useSearchStore((state) => [
+		state.genres,
+		state.excludedGenres,
+		state.tags,
+		state.excludedTags,
+		state.format,
+		state.status,
+		state.release,
+		state.sort,
+	]);
+
+	const setActiveOption = function (option: string) {
+		if (selectedRelease === option || selectedSort === option) {
+			return <span className="text-dark-100">{option}</span>;
+		} else if (excludedGenres.has(option) || excludedTags.has(option)) {
+			return (
+				<>
+					<span className="text-dark-100">{option}</span>
+					<MdClose className="h-4 w-4 text-dark-100" />
+				</>
+			);
+		} else if (
+			selectedGenres.has(option) ||
+			selectedFormat.has(option) ||
+			selectedStatus.has(option)
+		) {
+			return (
+				<>
+					<span className="text-dark-100">{option}</span>
+					<MdCheck className="h-4 w-4 text-dark-100" />
+				</>
+			);
+		} else return <span>{option}</span>;
+	};
+
 	return (
 		<>
 			<span className="mb-1 text-xs uppercase text-dark-300">{name}</span>
@@ -40,18 +84,7 @@ export default function DropdownOptions({ name }: DropdownProps) {
 					data-option={option}
 					data-type={name}
 					className="inline-flex w-full cursor-pointer justify-between rounded p-2 text-dark-200 transition-all duration-150 hover:bg-dark-400 hover:text-dark-100">
-					{option}
-					{((name === "genres" && useSearchStore((state) => state.genres.has(option))) ||
-						(name === "format" &&
-							useSearchStore((state) => state.format.has(option))) ||
-						(name === "status" &&
-							useSearchStore((state) => state.status.has(option)))) && (
-						<MdCheck className="h-4 w-4" />
-					)}
-					{name === "genres" &&
-						useSearchStore((state) => state.excludedGenres.has(option)) && (
-							<MdClose className="h-4 w-4" />
-						)}
+					{setActiveOption(option)}
 				</li>
 			))}
 
@@ -65,13 +98,7 @@ export default function DropdownOptions({ name }: DropdownProps) {
 							data-option={option}
 							data-type="tags"
 							className="inline-flex w-full cursor-pointer justify-between rounded p-2 text-dark-200 transition-all duration-150 hover:bg-dark-400 hover:text-dark-100">
-							{option}
-							{useSearchStore((state) => state.tags.has(option)) && (
-								<MdCheck className="h-4 w-4" />
-							)}
-							{useSearchStore((state) => state.excludedTags.has(option)) && (
-								<MdClose className="h-4 w-4" />
-							)}
+							{setActiveOption(option)}
 						</li>
 					))}
 				</>
