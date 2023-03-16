@@ -117,7 +117,7 @@ export const useSearchStore = create<SearchStoreState & SearchStoreAction>()((se
 				: deleteFromSet(state.status, status),
 		})),
 
-	setRelease: (year) => set(() => ({ release: year })),
+	setRelease: (year) => set((state) => ({ release: !state.release ? year : "" })),
 
 	setSort: (method) => set(() => ({ sort: method })),
 
