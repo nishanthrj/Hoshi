@@ -72,17 +72,25 @@ export const useSearchStore = create<SearchStoreState & SearchStoreAction>()((se
 
 	setGenre: (genre) =>
 		set((state) => {
-			if (!state.genres.has(genre)) return { genres: state.genres.add(genre) };
-			else if (!state.excludedGenres.has(genre))
-				return { excludedGenres: state.excludedGenres.add(genre) };
+			if (!state.genres.has(genre) && !state.excludedGenres.has(genre))
+				return { genres: state.genres.add(genre) };
+			else if (state.genres.has(genre) && !state.excludedGenres.has(genre))
+				return {
+					excludedGenres: state.excludedGenres.add(genre),
+					genres: deleteFromSet(state.genres, genre),
+				};
 			else return { excludedGenres: deleteFromSet(state.excludedGenres, genre) };
 		}),
 
 	setTag: (tag) =>
 		set((state) => {
-			if (!state.tags.has(tag)) return { tags: state.tags.add(tag) };
-			else if (!state.excludedTags.has(tag))
-				return { excludedTags: state.excludedTags.add(tag) };
+			if (!state.tags.has(tag) && !state.excludedTags.has(tag))
+				return { tags: state.tags.add(tag) };
+			else if (state.tags.has(tag) && !state.excludedTags.has(tag))
+				return {
+					excludedTags: state.excludedTags.add(tag),
+					tags: deleteFromSet(state.tags, tag),
+				};
 			else return { excludedTags: deleteFromSet(state.excludedTags, tag) };
 		}),
 
