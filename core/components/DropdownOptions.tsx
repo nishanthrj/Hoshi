@@ -11,10 +11,12 @@ import {
 	generateSeason,
 } from "@/app/utils";
 import { useSearchStore } from "@/app/store";
+import { MdCheck, MdClose } from "react-icons/md";
 
 interface DropdownProps {
 	name: string;
 }
+
 const getOptions = function (mediaType: string, name: string): string[] {
 	if (name === "genres") return genres;
 	else if (name === "format" && mediaType === "anime") return animeFormat;
@@ -31,11 +33,13 @@ export default function DropdownOptions({ name }: DropdownProps) {
 
 	return (
 		<>
-			<li className="mb-1 text-xs uppercase text-dark-300">{name}</li>
+			<span className="mb-1 text-xs uppercase text-dark-300">{name}</span>
 			{options.map((option: string) => (
 				<li
 					key={uuid()}
-					className="inline-flex w-full cursor-pointer items-center justify-between rounded p-2 text-dark-200 transition-all duration-150 hover:bg-dark-400 hover:text-dark-100">
+					data-option={option}
+					data-type={name}
+					className="inline-flex w-full cursor-pointer justify-between rounded p-2 text-dark-200 transition-all duration-150 hover:bg-dark-400 hover:text-dark-100">
 					{option}
 				</li>
 			))}
@@ -43,11 +47,13 @@ export default function DropdownOptions({ name }: DropdownProps) {
 			{name === "genres" && (
 				<>
 					<li>&nbsp;</li>
-					<li className="mb-1 text-xs uppercase text-dark-300">tags</li>
+					<span className="mb-1 text-xs uppercase text-dark-300">tags</span>
 					{tags.map((option: string) => (
 						<li
 							key={uuid()}
-							className="inline-flex w-full cursor-pointer items-center justify-between rounded p-2 text-dark-200 transition-all duration-150 hover:bg-dark-400 hover:text-dark-100">
+							data-option={option}
+							data-type="tags"
+							className="inline-flex w-full cursor-pointer justify-between rounded p-2 text-dark-200 transition-all duration-150 hover:bg-dark-400 hover:text-dark-100">
 							{option}
 						</li>
 					))}
