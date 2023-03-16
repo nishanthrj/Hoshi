@@ -7,6 +7,7 @@ interface DropdownProps {
 }
 
 export default function Dropdown({ name }: DropdownProps) {
+	const mediaType = useSearchStore((state) => state.mediaType);
 	const [openDropdown, setOpenDropdown] = useDropdownStore((state) => [
 		state.openDropdown,
 		state.setOpenDropdown,
@@ -42,12 +43,25 @@ export default function Dropdown({ name }: DropdownProps) {
 		}
 	};
 
+	let height;
+	if (mediaType === "anime" && name === "format") height = "14.5rem";
+	else if (mediaType === "anime" && name === "status") height = "10rem";
+	else if (mediaType === "manga" && name === "format") height = "19rem";
+	else if (mediaType === "manga" && name === "status") height = "14.5rem";
+	else if (name === "sort") height = "12rem";
+	else height = "20rem";
+
+	const style: React.CSSProperties = {
+		height: openDropdown === name ? height : "0rem",
+	};
+
 	return (
 		<div
-			className={`dropdown absolute z-40 mt-4 w-44 select-none overflow-y-scroll rounded-md bg-dark-600 text-sm font-semibold transition-[height] duration-300 ${
-				openDropdown === name ? "h-80" : "h-0"
-			} ${name === "sort" && "xl:-left-5 xl:w-36"}`}
-			onClick={selectFilter}>
+			className={`dropdown absolute z-40 mt-4 w-44 select-none overflow-y-scroll rounded-md bg-dark-600 text-sm font-semibold transition-[height] duration-300  ${
+				name === "sort" && "xl:-left-5 xl:w-36"
+			}`}
+			onClick={selectFilter}
+			style={style}>
 			<ul className="p-4 pr-2">
 				<DropdownOptions name={name} />
 			</ul>
