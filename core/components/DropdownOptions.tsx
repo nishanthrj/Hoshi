@@ -41,6 +41,17 @@ export default function DropdownOptions({ name }: DropdownProps) {
 					data-type={name}
 					className="inline-flex w-full cursor-pointer justify-between rounded p-2 text-dark-200 transition-all duration-150 hover:bg-dark-400 hover:text-dark-100">
 					{option}
+					{((name === "genres" && useSearchStore((state) => state.genres.has(option))) ||
+						(name === "format" &&
+							useSearchStore((state) => state.format.has(option))) ||
+						(name === "status" &&
+							useSearchStore((state) => state.status.has(option)))) && (
+						<MdCheck className="h-4 w-4" />
+					)}
+					{name === "genres" &&
+						useSearchStore((state) => state.excludedGenres.has(option)) && (
+							<MdClose className="h-4 w-4" />
+						)}
 				</li>
 			))}
 
@@ -55,6 +66,12 @@ export default function DropdownOptions({ name }: DropdownProps) {
 							data-type="tags"
 							className="inline-flex w-full cursor-pointer justify-between rounded p-2 text-dark-200 transition-all duration-150 hover:bg-dark-400 hover:text-dark-100">
 							{option}
+							{useSearchStore((state) => state.tags.has(option)) && (
+								<MdCheck className="h-4 w-4" />
+							)}
+							{useSearchStore((state) => state.excludedTags.has(option)) && (
+								<MdClose className="h-4 w-4" />
+							)}
 						</li>
 					))}
 				</>
