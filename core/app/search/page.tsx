@@ -5,6 +5,7 @@ import FilterField from "@/components/FilterField";
 import ActiveFilters from "@/components/ActiveFilters";
 import SortField from "@/components/SortField";
 import ResetSearchPage from "@/components/ResetSearchPage";
+import SearchResults from "@/components/SearchResults";
 
 export default function Search() {
 	return (
@@ -28,6 +29,7 @@ export default function Search() {
 					<ActiveFilters />
 					<SortField />
 				</div>
+				<SearchResults />
 			</section>
 			<ResetSearchPage />
 		</main>
