@@ -48,7 +48,7 @@ export default function Dropdown({ name }: DropdownProps) {
 	else if (mediaType === "anime" && name === "status") height = "10rem";
 	else if (mediaType === "manga" && name === "format") height = "19rem";
 	else if (mediaType === "manga" && name === "status") height = "14.5rem";
-	else if (name === "sort") height = "12rem";
+	else if (name === "sort") height = "12.5rem";
 	else height = "20rem";
 
 	const style: React.CSSProperties = {
