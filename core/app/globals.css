@@ -7,7 +7,8 @@
 		@apply hidden;
 	}
 
-	.dropdown::-webkit-scrollbar {
+	.dropdown::-webkit-scrollbar,
+	.synopsis::-webkit-scrollbar {
 		@apply w-[.4rem];
 	}
 
@@ -16,6 +17,6 @@
 	}
 
 	*::-webkit-scrollbar-thumb {
-		@apply rounded-lg bg-dark-300;
+		@apply rounded-sm bg-dark-300;
 	}
 }
