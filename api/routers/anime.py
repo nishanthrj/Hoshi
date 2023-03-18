@@ -20,7 +20,7 @@ async def search_anime(q: str | None = None, subtype: str | None = None, status:
 
     result = await collection.aggregate(build_pipeline(**params)).to_list(None)
     
-    return JSONResponse(content=result)
+    return JSONResponse(content=result[0])
 
 
 @anime.get('/anime/{id}', response_model=Anime, response_model_by_alias=False, tags=['Anime'])

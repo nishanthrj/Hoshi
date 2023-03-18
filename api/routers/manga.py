@@ -21,7 +21,7 @@ async def search_manga(q: str | None = None, subtype: str | None = None, status:
     print(build_pipeline(**params))
     result = await collection.aggregate(build_pipeline(**params)).to_list(None)
     
-    return JSONResponse(content=result)
+    return JSONResponse(content=result[0])
 
 
 @manga.get('/manga/{id}', response_model=Manga, response_model_by_alias=False, tags=["Manga"])
