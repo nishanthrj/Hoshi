@@ -8,8 +8,12 @@
 	}
 
 	.dropdown::-webkit-scrollbar,
-	.synopsis::-webkit-scrollbar {
+	.card-info::-webkit-scrollbar {
 		@apply w-[.4rem];
+	}
+
+	.card-info:hover .synopsis {
+		@apply line-clamp-none;
 	}
 
 	*::-webkit-scrollbar-track {
