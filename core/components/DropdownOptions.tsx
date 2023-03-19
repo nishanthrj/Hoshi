@@ -11,7 +11,7 @@ import {
 	mangaStatus,
 	sortOptions,
 	generateSeason,
-} from "@/app/utils";
+} from "@/app/filters";
 import DropdownOptionItem from "./DropdownOptionItem";
 
 interface DropdownProps {
