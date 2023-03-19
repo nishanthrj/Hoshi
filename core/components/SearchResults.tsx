@@ -2,15 +2,9 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import axios from "axios";
 import MediaCard from "./MediaCard";
 import { useSearchStore } from "@/app/store";
-import { v4 as uuid } from "uuid";
-
-const getData = (page: number, filters: any) =>
-	axios
-		.get("http://127.0.0.1:8000/anime", { params: { page: page, ...filters } })
-		.then((res) => res.data);
+import { getData } from "@/app/utils";
 
 export default function SearchResults() {
 	const [query, genres, excludedGenres, tags, excludedTags, format, status, release, sort] =

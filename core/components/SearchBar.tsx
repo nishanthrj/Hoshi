@@ -1,14 +1,18 @@
 "use client";
 import { useSearchStore } from "@/app/store";
 import { CgSearch } from "react-icons/cg";
+import { debounce } from "@/app/utils";
+import { useCallback } from "react";
 
 export default function SearchBar() {
 	const setQuery = useSearchStore((state) => state.setQuery);
-	const setSearchQuery = function (e: React.FormEvent) {
-		const searchField = e.currentTarget as HTMLInputElement;
+	const handleSearch = function (e: React.FormEvent) {
+		const searchField = e.target as HTMLInputElement;
 		const value: string = searchField.value;
 		if (value.length >= 3) setQuery(value);
 	};
+
+	const setSearchQuery = useCallback(debounce(handleSearch), []);
 
 	return (
 		<div className="pr-4 xl:pr-0">
