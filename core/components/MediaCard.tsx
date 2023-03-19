@@ -55,7 +55,7 @@ export default function MediaCard({
 					</span>
 				</div>
 				<div className="mt-3 flex w-full gap-2 text-dark-100">
-					{genres.map((genre) => (
+					{genres.slice(0, 4).map((genre) => (
 						<span
 							key={uuid()}
 							className="self-start whitespace-nowrap rounded-md bg-dark-400 px-[.6rem] py-[.35rem] text-xs">
