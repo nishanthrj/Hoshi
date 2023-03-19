@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MediaCard from "./MediaCard";
+import { v4 as uuid } from "uuid";
 
 const getData = (page: number) =>
 	axios.get("http://127.0.0.1:8000/anime", { params: { page: page } }).then((res) => res.data);
@@ -36,7 +37,7 @@ export default function SearchResults() {
 						return (
 							<MediaCard
 								ref={ref}
-								key={media._id}
+								key={uuid()}
 								id={media._id}
 								title={media.title}
 								slug={media.slug}
@@ -52,7 +53,7 @@ export default function SearchResults() {
 					else
 						return (
 							<MediaCard
-								key={media._id}
+								key={uuid()}
 								id={media._id}
 								title={media.title}
 								slug={media.slug}
