@@ -13,7 +13,7 @@ collection = database.get_collection('manga')
 async def search_manga(q: str | None = None, subtype: str | None = None, status: str | None = None,
                  year: str | None = None, tags: str | None = None, 
                  exclude_genres: str | None = None, exclude_tags: str | None = None, 
-                 sort_by: str = 'score', sort_order: str = 'desc', page: int = 1):
+                 sort_by: str = 'score', page: int = 1):
     
     params = locals()
     params['media_type'] = 'manga'

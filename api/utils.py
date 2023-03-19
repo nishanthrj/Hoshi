@@ -23,7 +23,7 @@ def title_clause(qtype, query, boost, extra=None):
 
 def build_pipeline(media_type, q=None, subtype=None, status=None,
                    season=None, year=None, genres=None, tags=None, exclude_genres=None,
-                   exclude_tags=None, sort_by='score', sort_order='desc', page=1):
+                   exclude_tags=None, sort_by='score', page=1):
 
     pipeline = [
         {
@@ -47,7 +47,7 @@ def build_pipeline(media_type, q=None, subtype=None, status=None,
                     }
                 ],
                 'data': [
-                    {'$sort': {f'{sort_by}': 1 if sort_order == 'asc' else -1}},
+                    {'$sort': {f'{sort_by}': 1 if sort_by == 'title' else -1}},
                     {'$skip': 20 * page-1 if page > 1 else 0},
                     {'$limit': 20},
                 ]
