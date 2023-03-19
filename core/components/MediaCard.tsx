@@ -71,7 +71,7 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 							</span>
 						))}
 					</div>
-					<p className="synopsis mt-4 text-[.7rem] font-normal leading-[1.6] line-clamp-6">
+					<p className="synopsis mt-4 text-[.7rem] font-normal leading-[1.6] line-clamp-5">
 						{synopsis}
 					</p>
 				</div>
