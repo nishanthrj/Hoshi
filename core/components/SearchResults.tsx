@@ -4,17 +4,45 @@ import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MediaCard from "./MediaCard";
+import { useSearchStore } from "@/app/store";
 import { v4 as uuid } from "uuid";
 
-const getData = (page: number) =>
-	axios.get("http://127.0.0.1:8000/anime", { params: { page: page } }).then((res) => res.data);
+const getData = (page: number, filters: any) =>
+	axios
+		.get("http://127.0.0.1:8000/anime", { params: { page: page, ...filters } })
+		.then((res) => res.data);
 
 export default function SearchResults() {
+	const [query, genres, excludedGenres, tags, excludedTags, format, status, release, sort] =
+		useSearchStore((state) => [
+			state.q,
+			state.genres,
+			state.excludedGenres,
+			state.tags,
+			state.excludedTags,
+			state.format,
+			state.status,
+			state.release,
+			state.sort,
+		]);
+
+	const filters = {
+		...(query ? { q: query } : {}),
+		...(format.size ? { subtype: [...format].join(",") } : {}),
+		...(status.size ? { status: [...status].join(",") } : {}),
+		...(release ? { season: release } : {}),
+		...(genres.size ? { genres: [...genres].join(",") } : {}),
+		...(tags.size ? { tags: [...tags].join(",") } : {}),
+		...(excludedGenres.size ? { exclude_genres: [...excludedGenres].join(",") } : {}),
+		...(excludedTags.size ? { exclude_tags: [...excludedTags].join(",") } : {}),
+		...(sort ? { sort_by: sort } : {}),
+	};
+
 	const { ref, inView } = useInView({ triggerOnce: true });
 
 	const { fetchNextPage, hasNextPage, data } = useInfiniteQuery({
-		queryKey: ["anime"],
-		queryFn: ({ pageParam = 1 }) => getData(pageParam),
+		queryKey: ["anime", filters],
+		queryFn: ({ pageParam = 1 }) => getData(pageParam, filters),
 		getNextPageParam: (lastPage) => {
 			return lastPage.pagination.currentPage !== lastPage.pagination.lastPage
 				? lastPage.pagination.currentPage + 1
@@ -37,7 +65,7 @@ export default function SearchResults() {
 						return (
 							<MediaCard
 								ref={ref}
-								key={uuid()}
+								key={media._id}
 								id={media._id}
 								title={media.title}
 								slug={media.slug}
@@ -53,7 +81,7 @@ export default function SearchResults() {
 					else
 						return (
 							<MediaCard
-								key={uuid()}
+								key={media._id}
 								id={media._id}
 								title={media.title}
 								slug={media.slug}
