@@ -28,8 +28,8 @@ export default function SearchResults() {
 
 	const filters = {
 		...(query ? { q: query } : {}),
-		...(format.size ? { subtype: [...format].join(",") } : {}),
-		...(status.size ? { status: [...status].join(",") } : {}),
+		...(format ? { subtype: format } : {}),
+		...(status ? { status: status } : {}),
 		...(release ? { season: release } : {}),
 		...(genres.size ? { genres: [...genres].join(",") } : {}),
 		...(tags.size ? { tags: [...tags].join(",") } : {}),

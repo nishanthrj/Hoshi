@@ -24,22 +24,20 @@ export default function ActiveFilterMini({ name }: ActiveFilterMiniProps) {
 		size = genres.size + excludedGenres.size + tags.size + excludedTags.size;
 		value = [...genres, ...excludedGenres, ...tags, ...excludedTags][0];
 	} else if (name === "format") {
-		size = format.size;
-		value = [...format][0];
+		value = format;
 	} else if (name === "status") {
-		size = status.size;
-		value = [...status][0];
+		value = status;
+	} else if (name === "release") {
+		value = release;
 	}
 
-	if (name === "release" && release) {
+	if ((name === "format" || name === "status" || name === "release") && value) {
 		return (
 			<span className="select-none p-1 text-sm font-medium tracking-wide text-dark-100">
-				{release}
+				{value}
 			</span>
 		);
-	}
-
-	if (size) {
+	} else if (size) {
 		return (
 			<div className="inline-flex gap-1 p-[.15rem] font-medium">
 				<span className="rounded bg-dark-400 p-[.35rem] text-xs leading-none text-dark-100">

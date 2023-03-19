@@ -53,20 +53,16 @@ export default function ActiveFilters() {
 						~{extag}
 					</span>
 				))}
-				{[...format].map((format) => (
-					<span
-						key={uuid()}
-						className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
+				{format && (
+					<span className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
 						{format}
 					</span>
-				))}
-				{[...status].map((status) => (
-					<span
-						key={uuid()}
-						className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
+				)}
+				{status && (
+					<span className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
 						{status}
 					</span>
-				))}
+				)}
 				{release && (
 					<span className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
 						{release}

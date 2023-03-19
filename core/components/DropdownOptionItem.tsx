@@ -28,7 +28,12 @@ export default function DropdownOptionItem({ name, option }: DropdownOptionItemP
 		state.sort,
 	]);
 
-	if (selectedRelease === option || selectedSort === option) {
+	if (
+		selectedFormat === option ||
+		selectedStatus === option ||
+		selectedRelease === option ||
+		selectedSort === option
+	) {
 		return (
 			<li
 				data-option={option}
@@ -49,12 +54,7 @@ export default function DropdownOptionItem({ name, option }: DropdownOptionItemP
 				</li>
 			</>
 		);
-	} else if (
-		selectedGenres.has(option) ||
-		selectedFormat.has(option) ||
-		selectedStatus.has(option) ||
-		selectedTags.has(option)
-	) {
+	} else if (selectedGenres.has(option) || selectedTags.has(option)) {
 		return (
 			<>
 				<li

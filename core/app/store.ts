@@ -19,8 +19,8 @@ interface SearchStoreState {
 	excludedGenres: Set<string>;
 	tags: Set<string>;
 	excludedTags: Set<string>;
-	format: Set<string>;
-	status: Set<string>;
+	format: string;
+	status: string;
 	release: string;
 	sort: string;
 }
@@ -36,19 +36,6 @@ interface SearchStoreAction {
 	setSort: (method: string) => void;
 	reset: () => void;
 }
-
-const initialSearchState: SearchStoreState = {
-	mediaType: "anime",
-	q: "",
-	genres: new Set(),
-	excludedGenres: new Set(),
-	tags: new Set(),
-	excludedTags: new Set(),
-	format: new Set(),
-	status: new Set(),
-	release: "",
-	sort: "popularity",
-};
 
 export const useNavbarStore = create<NavbarState>()((set) => ({
 	isOpen: false,
@@ -69,8 +56,8 @@ export const useSearchStore = create<SearchStoreState & SearchStoreAction>()((se
 	excludedGenres: new Set(),
 	tags: new Set(),
 	excludedTags: new Set(),
-	format: new Set(),
-	status: new Set(),
+	format: "",
+	status: "",
 	release: "",
 	sort: "popularity",
 
@@ -103,21 +90,11 @@ export const useSearchStore = create<SearchStoreState & SearchStoreAction>()((se
 			else return { excludedTags: deleteFromSet(state.excludedTags, tag) };
 		}),
 
-	setFormat: (format) =>
-		set((state) => ({
-			format: !state.format.has(format)
-				? state.format.add(format)
-				: deleteFromSet(state.format, format),
-		})),
+	setFormat: (format) => set((state) => ({ format: state.format !== format ? format : "" })),
 
-	setStatus: (status) =>
-		set((state) => ({
-			status: !state.status.has(status)
-				? state.status.add(status)
-				: deleteFromSet(state.status, status),
-		})),
+	setStatus: (status) => set((state) => ({ status: state.status !== status ? status : "" })),
 
-	setRelease: (year) => set((state) => ({ release: !state.release ? year : "" })),
+	setRelease: (year) => set((state) => ({ release: state.release !== year ? year : "" })),
 
 	setSort: (method) => set(() => ({ sort: method })),
 
@@ -129,8 +106,8 @@ export const useSearchStore = create<SearchStoreState & SearchStoreAction>()((se
 			excludedGenres: new Set(),
 			tags: new Set(),
 			excludedTags: new Set(),
-			format: new Set(),
-			status: new Set(),
+			format: "",
+			status: "",
 			release: "",
 			sort: "popularity",
 		})),
