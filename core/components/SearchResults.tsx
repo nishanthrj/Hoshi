@@ -35,7 +35,7 @@ export default function SearchResults() {
 		...(tags.size ? { tags: [...tags].join(",") } : {}),
 		...(excludedGenres.size ? { exclude_genres: [...excludedGenres].join(",") } : {}),
 		...(excludedTags.size ? { exclude_tags: [...excludedTags].join(",") } : {}),
-		...(sort ? { sort_by: sort } : {}),
+		...(sort ? { sort_by: sort !== "Release Date" ? sort.toLowerCase() : "startDate" } : {}),
 	};
 
 	const { ref, inView } = useInView({ triggerOnce: true });
