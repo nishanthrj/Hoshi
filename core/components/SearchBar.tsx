@@ -10,6 +10,7 @@ export default function SearchBar() {
 		const searchField = e.target as HTMLInputElement;
 		const value: string = searchField.value;
 		if (value.length >= 3) setQuery(value);
+		else setQuery("");
 	};
 
 	const setSearchQuery = useCallback(debounce(handleSearch), []);
@@ -23,7 +24,7 @@ export default function SearchBar() {
 					type="text"
 					autoComplete="off"
 					placeholder="Search"
-					onInput={setSearchQuery}
+					onChange={setSearchQuery}
 					className="w-full border-none bg-transparent py-[.35rem] text-sm font-medium tracking-wide text-dark-100 outline-none placeholder:text-dark-300"
 				/>
 			</div>
