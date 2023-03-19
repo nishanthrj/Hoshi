@@ -14,6 +14,8 @@ app = FastAPI(title='Hoshi API', version='1.0.0', description=description, redoc
 origins = [
     "http://localhost",
     "http://localhost:3000",
+    "http://localhost:8000",
+    
 ]
 
 app.add_middleware(
