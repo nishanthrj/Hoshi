@@ -83,7 +83,7 @@ def build_pipeline(media_type, q=None, subtype=None, status=None,
                 filter_clause['compound']['filter'].append(regular_clause(year, 'startDate'))
 
             if season:
-                filter_clause['compound']['filter'].append(regular_clause(season, 'season'))
+                filter_clause['compound']['filter'].append({'phrase': {'path': 'season', 'query': season}})
 
             if genres:
                 for g in genres.split(','):
