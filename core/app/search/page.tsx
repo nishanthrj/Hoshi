@@ -1,3 +1,7 @@
+"use client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import Navbar from "@/components/Navbar";
 import SearchBar from "@/components/SearchBar";
 import SearchHeader from "@/components/SearchHeader";
@@ -6,6 +10,8 @@ import ActiveFilters from "@/components/ActiveFilters";
 import SortField from "@/components/SortField";
 import ResetSearchPage from "@/components/ResetSearchPage";
 import SearchResults from "@/components/SearchResults";
+
+const queryClient = new QueryClient();
 
 export default function Search() {
 	return (
@@ -29,7 +35,10 @@ export default function Search() {
 					<ActiveFilters />
 					<SortField />
 				</div>
-				<SearchResults />
+				<QueryClientProvider client={queryClient}>
+					<SearchResults />
+					<ReactQueryDevtools />
+				</QueryClientProvider>
 			</section>
 			<ResetSearchPage />
 		</main>
