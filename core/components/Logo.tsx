@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { useNavbarStore } from "@/stores/navbar";
@@ -11,7 +10,7 @@ export default function Logo() {
 		<Link
 			href="/"
 			className={`flex justify-center pt-2 transition-opacity duration-500 ${
-				isOpen ? "opacity-100" : "opacity-0"
+				isOpen ? "opacity-100 delay-[200ms]" : "opacity-0"
 			}`}>
 			<Image
 				src="/logo.svg"
