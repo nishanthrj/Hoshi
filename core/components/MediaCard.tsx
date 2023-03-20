@@ -27,6 +27,32 @@ const formatLength = (mediaType: string, length: string | number): string => {
 	}
 };
 
+const formatScore = (score: number) => {
+	if (score === 0) return;
+	if (score >= 70) {
+		return (
+			<>
+				<FaRegSmile className="mb-[.15rem] h-5 w-5 text-extras-green" />
+				<span>{score}%</span>
+			</>
+		);
+	} else if (score >= 50) {
+		return (
+			<>
+				<FaRegMeh className="mb-[.15rem] h-5 w-5 text-extras-orange" />
+				<span>{score}%</span>
+			</>
+		);
+	} else {
+		return (
+			<>
+				<FaRegFrown className="mb-[.15rem] h-5 w-5 text-extras-red" />
+				<span>{score}%</span>
+			</>
+		);
+	}
+};
+
 const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 	(
 		{
@@ -69,8 +95,7 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 							{title}
 						</Link>
 						<div className="absolute left-72 flex items-center gap-x-2 text-[.9rem] font-semibold">
-							<FaRegSmile className="mb-[.15rem] h-5 w-5 text-extras-green" />
-							<span>{score}%</span>
+							{formatScore(score)}
 						</div>
 					</div>
 					<div className="mt-1 text-xs font-semibold capitalize ">
