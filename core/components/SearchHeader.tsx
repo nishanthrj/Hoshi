@@ -7,10 +7,12 @@ import { useEffect } from "react";
 export default function SearchHeader() {
 	const mediaType = useSearchStore((state) => state.mediaType);
 	const switchMediaType = useSearchStore((state) => state.switchMediaType);
+	const reset = useSearchStore((state) => state.reset);
 	const setOpenDropdown = useDropdownStore((state) => state.setOpenDropdown);
 
 	useEffect(() => {
 		setOpenDropdown(null);
+		reset();
 	}, [mediaType]);
 
 	return (
