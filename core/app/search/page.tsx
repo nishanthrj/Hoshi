@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import SearchHeader from "@/components/SearchHeader";
 import ActiveFilters from "@/components/ActiveFilters";
@@ -6,6 +7,10 @@ import ResetSearchPage from "@/components/ResetSearchPage";
 import SearchResults from "@/components/SearchResults";
 import SearchPanel from "@/components/SearchPanel";
 import SearchResultsWrapper from "@/components/SearchResultsWrapper";
+
+export const metadata: Metadata = {
+	title: "Search",
+};
 
 export default function Search() {
 	return (

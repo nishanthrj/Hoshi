@@ -1,8 +1,12 @@
+import type { Metadata } from "next";
 import "./globals.css";
 import { Overpass } from "next/font/google";
 
-export const metadata = {
-	title: "Home",
+export const metadata: Metadata = {
+	title: {
+		default: "Hoshi",
+		template: "%s | Hoshi",
+	},
 };
 
 const font = Overpass({
