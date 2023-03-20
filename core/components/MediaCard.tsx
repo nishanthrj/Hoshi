@@ -50,7 +50,16 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 				ref={ref}
 				className="grid h-60 grid-cols-[10.75rem_auto] overflow-hidden rounded-md bg-dark-600 text-sm font-medium text-dark-200 shadow">
 				<div className="relative">
-					{poster && <MediaImage src={poster} fill={true} quality={100} alt="cover" />}
+					{poster && (
+						<MediaImage
+							src={poster}
+							fill={true}
+							style={{ objectFit: "cover" }}
+							quality={85}
+							sizes="172px"
+							alt="cover"
+						/>
+					)}
 				</div>
 				<div className="card-info h-56 w-full overflow-y-hidden p-4 pb-0 hover:overflow-y-auto">
 					<div className="relative flex w-full justify-between pr-2">
