@@ -13,12 +13,20 @@ interface MediaCardProps {
 	poster: string;
 	score: number;
 	format: string;
-	length: string;
+	length: string | number;
 	status: string;
 	genres: string[];
 	synopsis: string;
 	ref?: Ref<HTMLDivElement>;
 }
+
+const formatLength = (mediaType: string, length: string | number): string => {
+	if (typeof length === "number") {
+		return `${length} ${mediaType === "anime" ? "Episode" : "Chapter"}${length > 1 ? "s" : ""}`;
+	} else {
+		return length;
+	}
+};
 
 const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 	(
@@ -59,7 +67,9 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 					</div>
 					<div className="mt-1 text-xs font-semibold capitalize ">
 						<span>
-							{format} • {length} • {status}
+							{format} {format && (length || status) && " • "}
+							{length && formatLength(mediaType, length)} {length && status && " • "}
+							{status}
 						</span>
 					</div>
 					<div className="mt-3 flex w-full gap-2 text-dark-100">
