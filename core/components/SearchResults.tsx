@@ -7,6 +7,7 @@ import { useSearchStore } from "@/app/store";
 import { getData } from "@/app/utils";
 
 export default function SearchResults() {
+	const mediaType = useSearchStore((state) => state.mediaType);
 	const [query, genres, excludedGenres, tags, excludedTags, format, status, release, sort] =
 		useSearchStore((state) => [
 			state.q,
@@ -24,7 +25,7 @@ export default function SearchResults() {
 		...(query ? { q: query } : {}),
 		...(format ? { subtype: format } : {}),
 		...(status ? { status: status } : {}),
-		...(release ? { season: release } : {}),
+		...(release ? (mediaType === "anime" ? { season: release } : { year: release }) : {}),
 		...(genres.size ? { genres: [...genres].join(",") } : {}),
 		...(tags.size ? { tags: [...tags].join(",") } : {}),
 		...(excludedGenres.size ? { exclude_genres: [...excludedGenres].join(",") } : {}),
@@ -35,10 +36,10 @@ export default function SearchResults() {
 	const { ref, inView } = useInView({ triggerOnce: true });
 
 	const { fetchNextPage, hasNextPage, data } = useInfiniteQuery({
-		queryKey: ["anime", filters],
-		queryFn: ({ pageParam = 1 }) => getData(pageParam, filters),
+		queryKey: [mediaType, filters],
+		queryFn: ({ pageParam = 1 }) => getData(pageParam, mediaType, filters),
 		getNextPageParam: (lastPage) => {
-			return lastPage.pagination.currentPage !== lastPage.pagination.lastPage
+			return lastPage.pagination?.currentPage !== lastPage.pagination.lastPage
 				? lastPage.pagination.currentPage + 1
 				: undefined;
 		},

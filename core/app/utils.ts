@@ -15,7 +15,7 @@ export const deleteFromSet = function (set: Set<string>, item: string) {
 	return set;
 };
 
-export const getData = (page: number, filters: any) =>
+export const getData = (page: number, mediaType: string, filters: any) =>
 	axios
-		.get("http://127.0.0.1:8000/anime", { params: { page: page, ...filters } })
+		.get(`http://127.0.0.1:8000/${mediaType}`, { params: { page: page, ...filters } })
 		.then((res) => res.data);
