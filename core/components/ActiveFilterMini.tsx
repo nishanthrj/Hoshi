@@ -46,7 +46,7 @@ export default function ActiveFilterMini({ name }: ActiveFilterMiniProps) {
 				{size > 1 && (
 					<span
 						className={`rounded bg-dark-400 p-[.35rem] text-xs leading-none text-dark-100`}>
-						+{size}
+						+{size - 1}
 					</span>
 				)}
 			</div>
