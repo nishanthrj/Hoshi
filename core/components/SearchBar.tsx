@@ -1,7 +1,7 @@
 "use client";
-import { useSearchStore } from "@/app/store";
+import { useSearchStore } from "@/stores/search";
 import { CgSearch } from "react-icons/cg";
-import { debounce } from "@/app/utils";
+import { debounce } from "@/utils/common";
 import { useCallback } from "react";
 
 export default function SearchBar() {

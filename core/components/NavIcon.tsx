@@ -1,5 +1,5 @@
 "use client";
-import { useNavbarStore } from "@/app/store";
+import { useNavbarStore } from "@/stores/navbar";
 import { Spiral as Hamburger } from "hamburger-react";
 
 export default function NavIcon(): JSX.Element {

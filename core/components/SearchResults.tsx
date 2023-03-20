@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import MediaCard from "./MediaCard";
-import { useSearchStore } from "@/app/store";
-import { getData } from "@/app/utils";
+import { useSearchStore } from "@/stores/search";
+import { getSearchResults } from "@/utils/fetch";
 
 export default function SearchResults() {
 	const mediaType = useSearchStore((state) => state.mediaType);
@@ -37,7 +37,7 @@ export default function SearchResults() {
 
 	const { fetchNextPage, hasNextPage, data } = useInfiniteQuery({
 		queryKey: [mediaType, filters],
-		queryFn: ({ pageParam = 1 }) => getData(pageParam, mediaType, filters),
+		queryFn: ({ pageParam = 1 }) => getSearchResults(pageParam, mediaType, filters),
 		getNextPageParam: (lastPage) => {
 			return lastPage.pagination?.currentPage !== lastPage.pagination.lastPage
 				? lastPage.pagination.currentPage + 1

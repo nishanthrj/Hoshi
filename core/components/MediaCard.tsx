@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { v4 as uuid } from "uuid";
-import { useSearchStore } from "@/app/store";
+import { useSearchStore } from "@/stores/search";
 import { forwardRef, Ref } from "react";
 import { FaRegSmile, FaRegMeh, FaRegFrown } from "react-icons/fa";
 import MediaImage from "./MediaImage";

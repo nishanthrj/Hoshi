@@ -1,5 +1,6 @@
 "use client";
-import { useDropdownStore, useSearchStore } from "@/app/store";
+import { useDropdownStore } from "@/stores/common";
+import { useSearchStore } from "@/stores/search";
 import DropdownOptions from "./DropdownOptions";
 
 interface DropdownProps {

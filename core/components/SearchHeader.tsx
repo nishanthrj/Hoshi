@@ -1,7 +1,8 @@
 "use client";
 
 import { AiOutlineSwap } from "react-icons/ai";
-import { useSearchStore, useDropdownStore } from "@/app/store";
+import { useDropdownStore } from "@/stores/common";
+import { useSearchStore } from "@/stores/search";
 import { useEffect } from "react";
 
 export default function SearchHeader() {

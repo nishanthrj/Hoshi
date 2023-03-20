@@ -1,5 +1,5 @@
 "use client";
-import { useSearchStore } from "@/app/store";
+import { useSearchStore } from "@/stores/search";
 import { v4 as uuid } from "uuid";
 
 import {
@@ -11,7 +11,7 @@ import {
 	mangaStatus,
 	sortOptions,
 	generateSeason,
-} from "@/app/filters";
+} from "@/utils/filters";
 import DropdownOptionItem from "./DropdownOptionItem";
 
 interface DropdownProps {

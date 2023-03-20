@@ -18,8 +18,7 @@ import MenuIcon from "./NavIcon";
 import NavLink from "./NavLink";
 import NavProfile from "./NavProfile";
 import Logo from "./Logo";
-
-import { useNavbarStore } from "@/app/store";
+import { useNavbarStore } from "@/stores/navbar";
 
 export default function Navbar() {
 	const pathname = usePathname();

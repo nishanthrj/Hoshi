@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useSearchStore } from "@/app/store";
+import { useSearchStore } from "@/stores/search";
 
 interface ActiveFilterMiniProps {
 	name: string;

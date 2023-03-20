@@ -1,6 +1,6 @@
 "use client";
 import { AiFillTags } from "react-icons/ai";
-import { useSearchStore } from "@/app/store";
+import { useSearchStore } from "@/stores/search";
 import { v4 as uuid } from "uuid";
 
 export default function ActiveFilters() {

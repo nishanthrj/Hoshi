@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MdLogout } from "react-icons/md";
-import { useNavbarStore } from "@/app/store";
+import { useNavbarStore } from "@/stores/navbar";
 
 export default function NavProfile() {
 	const isOpen = useNavbarStore((state) => state.isOpen);

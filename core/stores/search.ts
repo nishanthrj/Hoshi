@@ -1,16 +1,5 @@
 import { create } from "zustand";
-import { deleteFromSet } from "./utils";
-
-interface NavbarState {
-	isOpen: boolean;
-	toggleNavbar: () => void;
-	closeNavbar: () => void;
-}
-
-interface DropdownStore {
-	openDropdown: string | null;
-	setOpenDropdown: (name: string | null) => void;
-}
+import { deleteFromSet } from "../utils/store";
 
 interface SearchStoreState {
 	mediaType: string;
@@ -36,18 +25,6 @@ interface SearchStoreAction {
 	setSort: (method: string) => void;
 	reset: () => void;
 }
-
-export const useNavbarStore = create<NavbarState>()((set) => ({
-	isOpen: false,
-	toggleNavbar: () => set((state) => ({ isOpen: !state.isOpen })),
-	closeNavbar: () => set(() => ({ isOpen: false })),
-}));
-
-export const useDropdownStore = create<DropdownStore>()((set) => ({
-	openDropdown: null,
-	setOpenDropdown: (name) =>
-		set((state) => ({ openDropdown: state.openDropdown !== name ? name : null })),
-}));
 
 export const useSearchStore = create<SearchStoreState & SearchStoreAction>()((set) => ({
 	mediaType: "anime",

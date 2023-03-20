@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useDropdownStore, useSearchStore } from "@/app/store";
+import { useDropdownStore } from "@/stores/common";
+import { useSearchStore } from "@/stores/search";
 
 export default function ResetSearchPage() {
 	const pathname = usePathname();
