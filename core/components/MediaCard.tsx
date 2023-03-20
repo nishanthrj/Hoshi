@@ -1,11 +1,10 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { v4 as uuid } from "uuid";
 import { useSearchStore } from "@/app/store";
 import { forwardRef, Ref } from "react";
 import { FaRegSmile, FaRegMeh, FaRegFrown } from "react-icons/fa";
-
+import MediaImage from "./MediaImage";
 interface MediaCardProps {
 	id: number;
 	title: string;
@@ -51,7 +50,7 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 				ref={ref}
 				className="grid h-60 grid-cols-[10.75rem_auto] overflow-hidden rounded-md bg-dark-600 text-sm font-medium text-dark-200 shadow">
 				<div className="relative">
-					{poster && <Image src={poster} fill={true} quality={100} alt="cover" />}
+					{poster && <MediaImage src={poster} fill={true} quality={100} alt="cover" />}
 				</div>
 				<div className="card-info h-56 w-full overflow-y-hidden p-4 pb-0 hover:overflow-y-auto">
 					<div className="relative flex w-full justify-between pr-2">
