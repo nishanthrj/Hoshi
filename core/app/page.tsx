@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Home",
+	title: "Home | Hoshi",
 };
 
 export default function Home() {
