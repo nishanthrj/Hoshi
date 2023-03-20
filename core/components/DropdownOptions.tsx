@@ -44,7 +44,7 @@ export default function DropdownOptions({ name }: DropdownProps) {
 					<li>&nbsp;</li>
 					<span className="mb-1 text-xs uppercase text-dark-300">tags</span>
 					{tags.map((option: string) => (
-						<DropdownOptionItem key={uuid()} name={name} option={option} />
+						<DropdownOptionItem key={uuid()} name={"tags"} option={option} />
 					))}
 				</>
 			)}
