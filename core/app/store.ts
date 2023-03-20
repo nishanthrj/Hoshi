@@ -100,7 +100,6 @@ export const useSearchStore = create<SearchStoreState & SearchStoreAction>()((se
 
 	reset: () =>
 		set(() => ({
-			mediaType: "anime",
 			q: "",
 			genres: new Set(),
 			excludedGenres: new Set(),
