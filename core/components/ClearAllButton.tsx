@@ -1,0 +1,17 @@
+"use client";
+
+import Tag from "./Tag";
+import { MdClose } from "react-icons/md";
+import { useSearchStore } from "@/stores/search";
+
+export default function ClearAllButton() {
+	const reset = useSearchStore((state) => state.reset);
+
+	return (
+		<Tag onClick={reset} className="transition-colors duration-200 hover:text-extras-red">
+			<span className="relative inline-flex max-h-2 w-16 gap-2">
+				Clear All <MdClose className="absolute right-0 -bottom-[.2rem]" />
+			</span>
+		</Tag>
+	);
+}

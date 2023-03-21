@@ -1,8 +1,9 @@
 "use client";
+import { v4 as uuid } from "uuid";
 import { AiFillTags } from "react-icons/ai";
 import { useSearchStore } from "@/stores/search";
-import { v4 as uuid } from "uuid";
 import Tag from "./Tag";
+import ClearAllButton from "./ClearAllButton";
 
 export default function ActiveFilters() {
 	const [query, genres, excludedGenres, tags, excludedTags, format, status, release] =
@@ -44,6 +45,15 @@ export default function ActiveFilters() {
 				{status && <Tag>{status}</Tag>}
 
 				{release && <Tag>{release}</Tag>}
+
+				{(query ||
+					genres.size ||
+					tags.size ||
+					excludedGenres.size ||
+					excludedTags.size ||
+					format ||
+					status ||
+					release) && <ClearAllButton />}
 			</div>
 		</div>
 	);
