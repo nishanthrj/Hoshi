@@ -11,7 +11,7 @@ collection = database.get_collection('manga')
 
 @manga.get('/manga', response_model=SearchResults, response_model_by_alias=False, tags=["Manga"])
 async def search_manga(q: str | None = None, subtype: str | None = None, status: str | None = None,
-                 year: str | None = None, tags: str | None = None, 
+                 year: str | None = None, genres: str | None = None, tags: str | None = None, 
                  exclude_genres: str | None = None, exclude_tags: str | None = None, 
                  sort_by: str = 'score', page: int = 1):
     
