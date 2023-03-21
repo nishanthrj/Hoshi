@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar/Navbar";
 import SearchHeader from "@/components/SearchHeader";
 import ActiveFilters from "@/components/ActiveFilters";
 import SortField from "@/components/SortField";
