@@ -18,7 +18,7 @@ interface MediaCardProps {
 	status: string;
 	genres: string[];
 	synopsis: string;
-	ref?: Ref<HTMLDivElement>;
+	ref: Ref<HTMLDivElement> | null;
 }
 
 const formatLength = (mediaType: string, length: string | number): string => {

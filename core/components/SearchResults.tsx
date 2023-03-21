@@ -56,39 +56,22 @@ export default function SearchResults() {
 			{data?.pages
 				.flatMap((page) => page.data)
 				.map((media: any, i: number) => {
-					if (i % 15 === 0)
-						return (
-							<MediaCard
-								ref={ref}
-								key={media._id}
-								id={media._id}
-								title={media.title}
-								slug={media.slug}
-								poster={media.poster}
-								score={Math.round(media.score)}
-								format={media.type}
-								length={media.episodeCount}
-								status={media.status}
-								genres={media.genres}
-								synopsis={media.synopsis}
-							/>
-						);
-					else
-						return (
-							<MediaCard
-								key={media._id}
-								id={media._id}
-								title={media.title}
-								slug={media.slug}
-								poster={media.poster}
-								score={Math.round(media.score)}
-								format={media.type}
-								length={media.episodeCount}
-								status={media.status}
-								genres={media.genres}
-								synopsis={media.synopsis}
-							/>
-						);
+					return (
+						<MediaCard
+							ref={i % 15 === 0 ? ref : null}
+							key={media._id}
+							id={media._id}
+							title={media.title}
+							slug={media.slug}
+							poster={media.poster}
+							score={Math.round(media.score)}
+							format={media.type}
+							length={media.episodeCount}
+							status={media.status}
+							genres={media.genres}
+							synopsis={media.synopsis}
+						/>
+					);
 				})}
 		</div>
 	);
