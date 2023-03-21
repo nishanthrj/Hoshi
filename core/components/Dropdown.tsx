@@ -1,7 +1,9 @@
 "use client";
+import { v4 as uuid } from "uuid";
 import { useDropdownStore } from "@/stores/common";
 import { useSearchStore } from "@/stores/search";
-import DropdownOptions from "./DropdownOptions";
+import DropdownOption from "./DropdownOption";
+import { getOptions } from "../utils/filters";
 
 interface DropdownProps {
 	name: string;
@@ -23,6 +25,7 @@ export default function Dropdown({ name }: DropdownProps) {
 			state.setSort,
 		],
 	);
+	const options = getOptions(mediaType, name);
 
 	const selectFilter = function (e: React.MouseEvent) {
 		if (!(e.target instanceof HTMLLIElement)) return;
@@ -44,16 +47,17 @@ export default function Dropdown({ name }: DropdownProps) {
 		}
 	};
 
-	let height;
-	if (mediaType === "anime" && name === "format") height = "14.5rem";
-	else if (mediaType === "anime" && name === "status") height = "10rem";
-	else if (mediaType === "manga" && name === "format") height = "19rem";
-	else if (mediaType === "manga" && name === "status") height = "14.5rem";
-	else if (name === "sort") height = "12.5rem";
-	else height = "20rem";
+	const getDropdownHeight = () => {
+		if (mediaType === "anime" && name === "format") return "14.5rem";
+		else if (mediaType === "anime" && name === "status") return "10rem";
+		else if (mediaType === "manga" && name === "format") return "19rem";
+		else if (mediaType === "manga" && name === "status") return "14.5rem";
+		else if (name === "sort") return "12.5rem";
+		else return "20rem";
+	};
 
 	const style: React.CSSProperties = {
-		height: openDropdown === name ? height : "0rem",
+		height: openDropdown === name ? getDropdownHeight() : "0rem",
 	};
 
 	return (
@@ -64,7 +68,14 @@ export default function Dropdown({ name }: DropdownProps) {
 			onClick={selectFilter}
 			style={style}>
 			<ul className="p-4 pr-2">
-				<DropdownOptions name={name} />
+				<span className="mb-1 text-xs uppercase text-dark-300">{name}</span>
+				{options[0].map((option: string) => (
+					<DropdownOption key={uuid()} name={name} option={option} />
+				))}
+				{name === "genres" &&
+					options[1].map((option: string) => (
+						<DropdownOption key={uuid()} name={"tags"} option={option} />
+					))}
 			</ul>
 		</div>
 	);

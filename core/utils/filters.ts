@@ -181,3 +181,13 @@ export const generateSeason = function (mediaType: string) {
 };
 
 export const sortOptions: string[] = ["Title", "Score", "Popularity", "Release Date"];
+
+export const getOptions = function (mediaType: string, type: string) {
+	if (type === "genres") return [genres, tags];
+	else if (type === "format" && mediaType === "anime") return [animeFormat];
+	else if (type === "format" && mediaType === "manga") return [mangaFormat];
+	else if (type === "status" && mediaType === "anime") return [animeStatus];
+	else if (type === "status" && mediaType === "manga") return [mangaStatus];
+	else if (type === "sort") return [sortOptions];
+	else return [generateSeason(mediaType)];
+};
