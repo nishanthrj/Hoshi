@@ -1,8 +1,9 @@
 "use client";
-import ActiveFilterMini from "./ActiveFilterMini";
-import Dropdown from "./Dropdown";
+
 import { MdExpandMore, MdExpandLess } from "react-icons/md";
 import { useDropdownStore } from "@/stores/common";
+import ActiveFilterMini from "@/components/search/ActiveFilterMini";
+import Dropdown from "@/components/search/Dropdown";
 
 interface FilterFieldProps {
 	name: string;

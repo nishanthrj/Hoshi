@@ -1,9 +1,10 @@
 "use client";
+
 import { v4 as uuid } from "uuid";
 import { useDropdownStore } from "@/stores/common";
 import { useSearchStore } from "@/stores/search";
-import DropdownOption from "./DropdownOption";
-import { getOptions } from "../utils/filters";
+import { getOptions } from "@/utils/filters";
+import DropdownOption from "@/components/search/DropdownOption";
 
 interface DropdownProps {
 	name: string;

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { ImageProps } from "next/image";
+import { useState } from "react";
 
 export default function MediaImage({ src, ...props }: ImageProps) {
 	const [error, setError] = useState(false);

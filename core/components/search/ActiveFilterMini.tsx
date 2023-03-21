@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
 import { useSearchStore } from "@/stores/search";
-import Tag from "./Tag";
+import Tag from "@/components/common/Tag";
 
 interface ActiveFilterMiniProps {
 	name: string;
 }
+
 export default function ActiveFilterMini({ name }: ActiveFilterMiniProps) {
 	const [genres, excludedGenres, tags, excludedTags, format, status, release] = useSearchStore(
 		(state) => [
@@ -20,7 +21,6 @@ export default function ActiveFilterMini({ name }: ActiveFilterMiniProps) {
 	);
 
 	let size, value;
-
 	if (name === "genres") {
 		size = genres.size + excludedGenres.size + tags.size + excludedTags.size;
 		value = [...genres, ...excludedGenres, ...tags, ...excludedTags][0];

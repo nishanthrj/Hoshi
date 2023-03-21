@@ -1,6 +1,7 @@
 "use client";
-import { useNavbarStore } from "@/stores/navbar";
+
 import { Spiral as Hamburger } from "hamburger-react";
+import { useNavbarStore } from "@/stores/navbar";
 
 export default function NavIcon(): JSX.Element {
 	const isOpen = useNavbarStore((state) => state.isOpen);

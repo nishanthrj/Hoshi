@@ -1,5 +1,5 @@
-import SearchBar from "@/components/SearchBar";
-import FilterField from "@/components/FilterField";
+import SearchBar from "@/components/search/SearchBar";
+import FilterField from "@/components/search/FilterField";
 
 export default function SearchPanel() {
 	return (

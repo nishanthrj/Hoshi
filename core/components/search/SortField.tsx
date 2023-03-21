@@ -1,8 +1,9 @@
 "use client";
+
 import { MdUnfoldMore } from "react-icons/md";
-import Dropdown from "./Dropdown";
 import { useDropdownStore } from "@/stores/common";
 import { useSearchStore } from "@/stores/search";
+import Dropdown from "@/components/search/Dropdown";
 
 export default function SortField() {
 	const setOpenDropdown = useDropdownStore((state) => state.setOpenDropdown);

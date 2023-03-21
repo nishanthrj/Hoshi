@@ -1,8 +1,9 @@
 "use client";
-import { useSearchStore } from "@/stores/search";
-import { CgSearch } from "react-icons/cg";
-import { debounce } from "@/utils/common";
+
 import { useCallback } from "react";
+import { CgSearch } from "react-icons/cg";
+import { useSearchStore } from "@/stores/search";
+import { debounce } from "@/utils/common";
 
 export default function SearchBar() {
 	const setQuery = useSearchStore((state) => state.setQuery);

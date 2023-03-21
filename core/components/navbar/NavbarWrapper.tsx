@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import { useNavbarStore } from "@/stores/navbar";
-import Logo from "./Logo";
-import MenuIcon from "./NavIcon";
+import Logo from "@/components/navbar/Logo";
+import MenuIcon from "@/components/navbar/NavIcon";
 
 interface NavbarWrapperProps {
 	children: React.ReactNode;

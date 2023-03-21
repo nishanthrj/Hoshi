@@ -1,5 +1,5 @@
 import Image from "next/image";
-import LogoutButton from "./LogoutButton";
+import LogoutButton from "@/components/navbar/LogoutButton";
 
 export default function NavProfile() {
 	return (

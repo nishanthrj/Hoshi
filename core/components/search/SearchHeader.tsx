@@ -1,9 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import { AiOutlineSwap } from "react-icons/ai";
 import { useDropdownStore } from "@/stores/common";
 import { useSearchStore } from "@/stores/search";
-import { useEffect } from "react";
 
 export default function SearchHeader() {
 	const mediaType = useSearchStore((state) => state.mediaType);

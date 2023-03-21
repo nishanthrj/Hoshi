@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
-import { v4 as uuid } from "uuid";
-import { useSearchStore } from "@/stores/search";
 import { forwardRef, Ref } from "react";
+import { v4 as uuid } from "uuid";
 import { FaRegSmile, FaRegMeh, FaRegFrown } from "react-icons/fa";
-import MediaImage from "./MediaImage";
-import Tag from "./Tag";
+import { useSearchStore } from "@/stores/search";
+import MediaImage from "@/components/common/MediaImage";
+import Tag from "@/components/common/Tag";
 
 interface MediaCardProps {
 	id: number;

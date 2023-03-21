@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { useNavbarStore } from "@/stores/navbar";
 import Navbar from "@/components/navbar/Navbar";
-import SearchHeader from "@/components/SearchHeader";
-import ActiveFilters from "@/components/ActiveFilters";
-import SortField from "@/components/SortField";
-import ResetSearchPage from "@/components/ResetSearchPage";
-import SearchResults from "@/components/SearchResults";
-import SearchPanel from "@/components/SearchPanel";
-import SearchResultsWrapper from "@/components/SearchResultsWrapper";
+import SearchHeader from "@/components/search/SearchHeader";
+import ActiveFilters from "@/components/search/ActiveFilters";
+import SortField from "@/components/search/SortField";
+import ResetSearchPage from "@/components/search/ResetSearchPage";
+import SearchResults from "@/components/search/SearchResults";
+import SearchPanel from "@/components/search/SearchPanel";
+import SearchResultsWrapper from "@/components/search/SearchResultsWrapper";
 
 export const metadata: Metadata = {
 	title: "Search",

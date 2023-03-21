@@ -1,10 +1,11 @@
 "use client";
+
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import MediaCard from "./MediaCard";
 import { useSearchStore } from "@/stores/search";
 import { getSearchResults } from "@/utils/fetch";
+import MediaCard from "@/components/search/MediaCard";
 
 export default function SearchResults() {
 	const mediaType = useSearchStore((state) => state.mediaType);

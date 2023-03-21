@@ -1,8 +1,8 @@
 "use client";
 
-import Tag from "./Tag";
 import { MdClose } from "react-icons/md";
 import { useSearchStore } from "@/stores/search";
+import Tag from "@/components/common/Tag";
 
 export default function ClearAllButton() {
 	const reset = useSearchStore((state) => state.reset);

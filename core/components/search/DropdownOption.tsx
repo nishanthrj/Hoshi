@@ -1,6 +1,7 @@
 "use client";
-import { useSearchStore } from "@/stores/search";
+
 import { MdCheck, MdClose } from "react-icons/md";
+import { useSearchStore } from "@/stores/search";
 
 interface DropdownOptionItemProps {
 	name: string;
