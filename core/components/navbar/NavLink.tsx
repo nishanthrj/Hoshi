@@ -1,7 +1,6 @@
-"use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { IconType } from "react-icons/lib";
+import { useNavbarStore } from "@/stores/navbar";
 
 interface NavLinkProp {
 	name: string;
@@ -10,7 +9,7 @@ interface NavLinkProp {
 }
 
 export default function NavLink({ name, path, Icon }: NavLinkProp) {
-	const pathname = usePathname();
+	const pathname = useNavbarStore.getState().currentPath;
 
 	return (
 		<Link href={path}>
