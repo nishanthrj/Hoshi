@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useSearchStore } from "@/stores/search";
+import Tag from "./Tag";
 
 interface ActiveFilterMiniProps {
 	name: string;
@@ -40,15 +41,8 @@ export default function ActiveFilterMini({ name }: ActiveFilterMiniProps) {
 	} else if (size) {
 		return (
 			<div className="inline-flex gap-1 p-[.15rem] font-medium">
-				<span className="rounded bg-dark-400 p-[.35rem] text-xs leading-none text-dark-100">
-					{value}
-				</span>
-				{size > 1 && (
-					<span
-						className={`rounded bg-dark-400 p-[.35rem] text-xs leading-none text-dark-100`}>
-						+{size - 1}
-					</span>
-				)}
+				<Tag padding=".35rem">{value}</Tag>
+				{size > 1 && <Tag padding=".35rem">+{size - 1}</Tag>}
 			</div>
 		);
 	} else {

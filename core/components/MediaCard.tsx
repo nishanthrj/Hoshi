@@ -5,6 +5,8 @@ import { useSearchStore } from "@/stores/search";
 import { forwardRef, Ref } from "react";
 import { FaRegSmile, FaRegMeh, FaRegFrown } from "react-icons/fa";
 import MediaImage from "./MediaImage";
+import Tag from "./Tag";
+
 interface MediaCardProps {
 	id: number;
 	title: string;
@@ -107,11 +109,7 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 					</div>
 					<div className="mt-3 flex w-full gap-2 text-dark-100">
 						{genres?.slice(0, 4).map((genre) => (
-							<span
-								key={uuid()}
-								className="self-start whitespace-nowrap rounded-md bg-dark-400 px-[.6rem] py-[.35rem] text-xs">
-								{genre}
-							</span>
+							<Tag key={uuid()}>{genre}</Tag>
 						))}
 					</div>
 					<p className="synopsis mt-4 text-[.7rem] font-normal leading-[1.6] line-clamp-5">

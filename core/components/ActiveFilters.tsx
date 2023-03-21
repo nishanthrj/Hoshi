@@ -2,6 +2,7 @@
 import { AiFillTags } from "react-icons/ai";
 import { useSearchStore } from "@/stores/search";
 import { v4 as uuid } from "uuid";
+import Tag from "./Tag";
 
 export default function ActiveFilters() {
 	const [query, genres, excludedGenres, tags, excludedTags, format, status, release] =
@@ -20,54 +21,29 @@ export default function ActiveFilters() {
 		<div className="flex gap-4 text-sm font-semibold text-dark-200">
 			<AiFillTags className="h-6 w-6" />
 			<div className="flex w-full flex-wrap gap-2 overflow-hidden">
-				{query && (
-					<span className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
-						Search: {query}
-					</span>
-				)}
+				{query && <Tag>Search: {query}</Tag>}
+
 				{[...genres].map((genre) => (
-					<span
-						key={uuid()}
-						className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
-						{genre}
-					</span>
+					<Tag key={uuid()}>{genre}</Tag>
 				))}
+
 				{[...excludedGenres].map((exgenre) => (
-					<span
-						key={uuid()}
-						className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
-						~{exgenre}
-					</span>
+					<Tag key={uuid()}>~{exgenre}</Tag>
 				))}
+
 				{[...tags].map((tag) => (
-					<span
-						key={uuid()}
-						className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
-						{tag}
-					</span>
+					<Tag key={uuid()}>{tag}</Tag>
 				))}
+
 				{[...excludedTags].map((extag) => (
-					<span
-						key={uuid()}
-						className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
-						~{extag}
-					</span>
+					<Tag key={uuid()}>~{extag}</Tag>
 				))}
-				{format && (
-					<span className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
-						{format}
-					</span>
-				)}
-				{status && (
-					<span className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
-						{status}
-					</span>
-				)}
-				{release && (
-					<span className="select-none rounded bg-dark-400 p-2 text-xs leading-none text-dark-100">
-						{release}
-					</span>
-				)}
+
+				{format && <Tag>{format}</Tag>}
+
+				{status && <Tag>{status}</Tag>}
+
+				{release && <Tag>{release}</Tag>}
 			</div>
 		</div>
 	);
