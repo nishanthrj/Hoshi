@@ -1,10 +1,19 @@
+import MediaHeader from "@/components/media/MediaHeader";
 import Navbar from "@/components/navbar/Navbar";
 
-export default function Anime() {
+interface AnimePageParams {
+	params: {
+		id: number;
+		slug?: string;
+	};
+}
+export default function Anime({ params }: AnimePageParams) {
 	return (
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
-			<section className="mt-12 w-full pl-4"></section>
+			<section className="mt-12 w-full pl-4">
+				<MediaHeader />
+			</section>
 		</main>
 	);
 }
