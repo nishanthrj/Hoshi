@@ -2,13 +2,11 @@ interface TagProps {
 	children: React.ReactNode;
 	padding?: string;
 	className?: string;
-	onClick?: Function;
 }
 
-export default function Tag({ children, padding, className, onClick }: TagProps) {
+export default function Tag({ children, padding, className }: TagProps) {
 	return (
 		<span
-			onClick={() => onClick && onClick()}
 			style={{
 				padding: padding ? padding : "0.5rem",
 			}}
