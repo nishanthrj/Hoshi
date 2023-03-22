@@ -15,7 +15,7 @@ export default function HeaderInfo() {
 				<Tag>Slice of Life</Tag>
 				<Tag>Comedy</Tag>
 			</div>
-			<p className="mt-4 text-justify text-sm font-normal leading-6 text-dark-100">
+			<p className="mt-4 text-justify text-sm font-normal leading-6 text-dark-100 max-xs:mt-6 max-xs:text-xs ">
 				Hitori Gotoh, “Bocchi-chan,” is a girl who's so introverted and shy around people
 				that she'd always start her conversations with “Ah...” During her middle school
 				years, she started playing the guitar, wanting to join a band because she thought it
