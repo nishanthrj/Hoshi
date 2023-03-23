@@ -1,6 +1,7 @@
 import RelationCard from "@/components/media/RelationCard";
 import CharacterCardMini from "@/components/media/CharacterCardMini";
 import DetailsCard from "@/components/media/DetailsCard";
+import Trailer from "@/components/media/Trailer";
 
 export default function OverviewTab() {
 	return (
@@ -35,6 +36,16 @@ export default function OverviewTab() {
 					<div className="w-[30rem] rounded-lg bg-dark-600 p-8 font-medium capitalize leading-9 text-dark-200">
 						<DetailsCard />
 					</div>
+				</div>
+
+				<div>
+					<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
+						Trailer
+					</h1>
+					<Trailer
+						video="https://www.youtube.com/embed/1-o7fmQqSNg"
+						thumbnail="https://img.youtube.com/vi/1-o7fmQqSNg/maxresdefault.jpg"
+					/>
 				</div>
 			</div>
 		</>
