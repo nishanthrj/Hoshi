@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MediaImage from "@/components/common/MediaImage";
+import FancyBox from "@/components/common/FancyBox";
 
 interface Trailer {
 	video: string;
@@ -9,6 +10,8 @@ interface Trailer {
 export default function Trailer({ video, thumbnail }: Trailer) {
 	return (
 		<>
+			<FancyBox />
+
 			<Link
 				className="relative inline-block h-72 w-[30rem] overflow-hidden rounded bg-dark-600"
 				data-fancybox
