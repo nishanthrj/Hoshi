@@ -26,6 +26,17 @@ export default function OverviewTab() {
 					<CharacterCardMini />
 				</div>
 			</div>
+
+			<div className="mt-20 grid w-full grid-cols-[repeat(auto-fill,30rem)] gap-20 pr-4 md:ml-5">
+				<div className="col-span-2">
+					<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
+						Details
+					</h1>
+					<div className="w-[30rem] rounded-lg bg-dark-600 p-8 font-medium capitalize leading-9 text-dark-200">
+						<DetailsCard />
+					</div>
+				</div>
+			</div>
 		</>
 	);
 }
