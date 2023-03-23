@@ -17,6 +17,10 @@ module.exports = {
 				protocol: "https",
 				hostname: "cdn.myanimelist.net",
 			},
+			{
+				protocol: "https",
+				hostname: "img.youtube.com",
+			},
 		],
 	},
 };
