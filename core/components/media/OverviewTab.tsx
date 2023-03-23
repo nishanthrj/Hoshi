@@ -29,7 +29,7 @@ export default function OverviewTab() {
 			</div>
 
 			<div className="mt-20 grid w-full grid-cols-[repeat(auto-fill,30rem)] gap-20 pr-4 md:ml-5">
-				<div className="col-span-2">
+				<div className="row-span-2">
 					<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
 						Details
 					</h1>
