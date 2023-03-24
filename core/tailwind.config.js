@@ -22,6 +22,13 @@ module.exports = {
 					orange: "#f79a63",
 					red: "#e85d75",
 				},
+				stats: {
+					green: "#68d639",
+					blue: "#02a9ff",
+					violet: "#9256f3",
+					yellow: "#e6e63e",
+					red: "#e74c66",
+				},
 			},
 			fontFamily: {
 				sans: ["var(--font-overpass)"],
