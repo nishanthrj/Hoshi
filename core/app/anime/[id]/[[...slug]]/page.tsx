@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { useMediaStore } from "@/stores/media";
 import { getAnime } from "@/utils/fetch";
 import MediaHeader from "@/components/media/MediaHeader";
 import TabNavbar from "@/components/media/TabNavbar";
@@ -21,6 +23,13 @@ export async function generateMetadata({ params }: AnimePageParams): Promise<Met
 }
 
 export default async function Anime({ params }: AnimePageParams) {
+	useMediaStore.setState({ mediaId: params.id });
+	const media = await getAnime(params.id);
+
+	if (!params.slug) {
+		redirect(`/anime/${media._id}/${media.slug}`);
+	}
+
 	return (
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
