@@ -2,7 +2,8 @@ import RelationCard from "@/components/media/RelationCard";
 import CharacterCardMini from "@/components/media/CharacterCardMini";
 import DetailsCard from "@/components/media/DetailsCard";
 import Trailer from "@/components/media/Trailer";
-import StatsCard from "./StatsCard";
+import StatsCard from "@/components/media/StatsCard";
+import RecommendedCard from "@/components/media/RecommendedCard";
 
 export default function OverviewTab() {
 	return (
@@ -38,7 +39,6 @@ export default function OverviewTab() {
 						<DetailsCard />
 					</div>
 				</div>
-
 				<div>
 					<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
 						Trailer
@@ -54,6 +54,26 @@ export default function OverviewTab() {
 						Stats
 					</h1>
 					<StatsCard />
+				</div>
+			</div>
+
+			<div className="mt-20 w-[min(65rem,100%)] pr-4 md:ml-5">
+				<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
+					Recommended
+				</h1>
+				<div className="flex flex-wrap gap-8">
+					<RecommendedCard />
+					<RecommendedCard />
+					<RecommendedCard />
+					<RecommendedCard />
+					<RecommendedCard />
+					<RecommendedCard />
+					<RecommendedCard />
+					<RecommendedCard />
+					<RecommendedCard />
+					<RecommendedCard />
+					<RecommendedCard />
+					<RecommendedCard />
 				</div>
 			</div>
 		</>
