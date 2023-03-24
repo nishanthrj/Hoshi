@@ -20,7 +20,7 @@ export default function TabNavbar() {
 	return (
 		<nav
 			onClick={setTab}
-			className="my-4 mx-auto flex w-[min(50rem,100%)] items-center justify-between pr-4 pl-2 max-xs:text-sm">
+			className="my-4 mx-auto flex w-[min(50rem,100%)] items-center justify-around pr-4 pl-2 max-xs:text-sm">
 			<span
 				data-tab="overview"
 				className={`cursor-pointer font-semibold text-dark-200 transition-colors duration-300 hover:text-dark-50 ${
