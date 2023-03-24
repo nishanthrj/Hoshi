@@ -2,6 +2,7 @@ import RelationCard from "@/components/media/RelationCard";
 import CharacterCardMini from "@/components/media/CharacterCardMini";
 import DetailsCard from "@/components/media/DetailsCard";
 import Trailer from "@/components/media/Trailer";
+import StatsCard from "./StatsCard";
 
 export default function OverviewTab() {
 	return (
@@ -28,7 +29,7 @@ export default function OverviewTab() {
 				</div>
 			</div>
 
-			<div className="mt-20 grid w-full grid-cols-[repeat(auto-fill,30rem)] gap-20 pr-4 md:ml-5">
+			<div className="mt-20 grid w-full grid-cols-[repeat(auto-fill,30rem)] gap-x-20 gap-y-10 pr-4 md:ml-5">
 				<div className="row-span-2">
 					<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
 						Details
@@ -46,6 +47,13 @@ export default function OverviewTab() {
 						video="https://www.youtube.com/embed/1-o7fmQqSNg"
 						thumbnail="https://img.youtube.com/vi/1-o7fmQqSNg/maxresdefault.jpg"
 					/>
+				</div>
+
+				<div>
+					<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
+						Stats
+					</h1>
+					<StatsCard />
 				</div>
 			</div>
 		</>
