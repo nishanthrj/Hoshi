@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { getAnime } from "@/utils/fetch";
 import MediaHeader from "@/components/media/MediaHeader";
 import TabNavbar from "@/components/media/TabNavbar";
 import Navbar from "@/components/navbar/Navbar";
@@ -13,7 +15,12 @@ interface AnimePageParams {
 	};
 }
 
-export default function Anime({ params }: AnimePageParams) {
+export async function generateMetadata({ params }: AnimePageParams): Promise<Metadata> {
+	const media = await getAnime(params.id);
+	return { title: media.title };
+}
+
+export default async function Anime({ params }: AnimePageParams) {
 	return (
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
