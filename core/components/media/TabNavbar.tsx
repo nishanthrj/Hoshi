@@ -36,11 +36,11 @@ export default function TabNavbar() {
 				Episodes
 			</span>
 			<span
-				data-tab="characters"
+				data-tab="staff"
 				className={`cursor-pointer font-semibold text-dark-200 transition-colors duration-300 hover:text-dark-50 ${
-					activeTab === "characters" ? "text-dark-50" : ""
+					activeTab === "staff" ? "text-dark-50" : ""
 				}`}>
-				Characters
+				Staff
 			</span>
 		</nav>
 	);
