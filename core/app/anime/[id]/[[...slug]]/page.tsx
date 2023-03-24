@@ -14,7 +14,7 @@ import StaffTab from "@/components/media/StaffTab";
 interface AnimePageParams {
 	params: {
 		id: number;
-		slug?: string;
+		slug?: string[];
 	};
 }
 
