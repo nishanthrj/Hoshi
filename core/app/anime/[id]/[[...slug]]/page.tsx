@@ -17,7 +17,7 @@ export default function Anime({ params }: AnimePageParams) {
 	return (
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
-			<section className="mt-12 w-full pl-4">
+			<section className="my-12 w-full pl-4">
 				<MediaHeader />
 				<TabNavbar />
 				<TabWrapper name="overview">
