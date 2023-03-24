@@ -37,6 +37,10 @@ export default async function Anime({ params }: AnimePageParams) {
 		notFound();
 	}
 
+	if (!media) {
+		notFound();
+	}
+
 	return (
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
