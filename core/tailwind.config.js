@@ -17,7 +17,7 @@ module.exports = {
 					800: "#0e0c14",
 					900: "#0b090f",
 				},
-				extras: {
+				score: {
 					green: "#7bd555",
 					orange: "#f79a63",
 					red: "#e85d75",

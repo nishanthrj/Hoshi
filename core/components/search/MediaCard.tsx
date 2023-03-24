@@ -34,21 +34,21 @@ const formatScore = (score: number) => {
 	if (score >= 70) {
 		return (
 			<>
-				<FaRegSmile className="mb-[.15rem] h-5 w-5 text-extras-green" />
+				<FaRegSmile className="mb-[.15rem] h-5 w-5 text-score-green" />
 				<span>{score}%</span>
 			</>
 		);
 	} else if (score >= 50) {
 		return (
 			<>
-				<FaRegMeh className="mb-[.15rem] h-5 w-5 text-extras-orange" />
+				<FaRegMeh className="mb-[.15rem] h-5 w-5 text-score-orange" />
 				<span>{score}%</span>
 			</>
 		);
 	} else {
 		return (
 			<>
-				<FaRegFrown className="mb-[.15rem] h-5 w-5 text-extras-red" />
+				<FaRegFrown className="mb-[.15rem] h-5 w-5 text-score-red" />
 				<span>{score}%</span>
 			</>
 		);
