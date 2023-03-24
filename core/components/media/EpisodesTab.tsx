@@ -1,6 +1,6 @@
 import EpisodeCard from "@/components/media/EpisodeCard";
 
-export default function OverviewTab() {
+export default function EpisodesTab() {
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] pr-4 md:ml-5">
 			<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
