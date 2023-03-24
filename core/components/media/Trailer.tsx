@@ -13,7 +13,7 @@ export default function Trailer({ video, thumbnail }: Trailer) {
 			<FancyBox />
 
 			<Link
-				className="relative inline-block h-72 w-[30rem] overflow-hidden rounded bg-dark-600"
+				className="relative inline-block h-72 w-[min(30rem,100%)] overflow-hidden rounded bg-dark-600"
 				data-fancybox
 				href={video}>
 				<MediaImage

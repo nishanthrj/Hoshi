@@ -1,6 +1,6 @@
 export default function StatsCard() {
 	return (
-		<div className="w-[30rem]">
+		<div className="w-[min(30rem,100%)]">
 			<div className="flex h-28 justify-between gap-4 rounded-t bg-dark-600 p-6">
 				<div className="flex flex-col items-center text-sm font-medium text-dark-200">
 					<h6 className="mb-2 w-full rounded bg-stats-green p-2 text-center text-sm font-medium text-dark-50">
