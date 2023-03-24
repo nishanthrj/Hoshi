@@ -22,7 +22,9 @@ export default function OverviewTab() {
 				<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
 					Characters
 				</h1>
-				<div className="flex flex-wrap gap-8">
+				<div className="flex flex-wrap gap-12">
+					<CharacterCardMini />
+					<CharacterCardMini />
 					<CharacterCardMini />
 					<CharacterCardMini />
 					<CharacterCardMini />
