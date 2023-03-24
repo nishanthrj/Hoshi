@@ -2,12 +2,12 @@ import Link from "next/link";
 import MediaImage from "@/components/common/MediaImage";
 import FancyBox from "@/components/common/FancyBox";
 
-interface Trailer {
+interface TrailerProps {
 	video: string;
 	thumbnail: string;
 }
 
-export default function Trailer({ video, thumbnail }: Trailer) {
+export default function Trailer({ video, thumbnail }: TrailerProps) {
 	return (
 		<>
 			<FancyBox />
