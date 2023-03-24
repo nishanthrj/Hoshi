@@ -2,12 +2,12 @@
 
 import { useMediaStore } from "@/stores/media";
 
-interface TabWrapper {
+interface TabWrapperProps {
 	children: React.ReactNode;
 	name: string;
 }
 
-export default function TabWrapper({ children, name }: TabWrapper) {
+export default function TabWrapper({ children, name }: TabWrapperProps) {
 	const activeTab = useMediaStore((state) => state.activeTab);
 
 	return (
