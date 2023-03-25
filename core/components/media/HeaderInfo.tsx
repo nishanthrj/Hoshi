@@ -3,9 +3,22 @@ import { getAnime } from "@/utils/fetch";
 import { useMediaStore } from "@/stores/media";
 import { v4 as uuid } from "uuid";
 
+export const formatLength = (mediaType: string, media: any): string | null => {
+	if (mediaType === "movie") {
+		return media.runtime;
+	} else {
+		if (media.episodeCount)
+			return `${media.episodeCount} Episode${
+				media.episodeCount > 1 || media.chapterCount > 1 ? "s" : ""
+			}`;
+		else return null;
+	}
+};
+
 export default async function HeaderInfo() {
 	const id = useMediaStore.getState().mediaId;
 	const media = await getAnime(id);
+	const length = formatLength(media.type, media);
 
 	return (
 		<div className="relative mt-2 w-[min(95%,60rem)] font-medium">
@@ -16,7 +29,9 @@ export default async function HeaderInfo() {
 				{media.title}
 			</h1>
 			<span className="absolute w-full text-xs text-dark-100 max-xs:text-center ">
-				{media.type} • {media.episodeCount} Episodes • {media.status}
+				{media.type} {media.type && (length || media.status) && " • "}
+				{length ? length : ""} {length && media.status && " • "}
+				{media.status}
 			</span>
 			<div className="mt-8 flex w-full gap-2 text-dark-100 max-xs:justify-center">
 				{media.genres.sort().map((genre: string) => (
