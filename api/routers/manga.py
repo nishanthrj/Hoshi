@@ -26,4 +26,9 @@ async def search_manga(q: str | None = None, subtype: str | None = None, status:
 @manga.get('/manga/{id}', response_model=Manga, response_model_by_alias=False, tags=["Manga"])
 async def get_manga(id: int):
     return await collection.find_one({"_id":id})
+
+@manga.get('/manga/relation/{kitsuId}', response_model=Manga, response_model_by_alias=False, tags=['Manga'])
+async def get_manga_by_relation(id: int):
+    result = await collection.find_one({"kitsuId": id})
+    return JSONResponse(content=result)
     

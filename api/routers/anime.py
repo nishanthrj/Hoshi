@@ -27,3 +27,8 @@ async def search_anime(q: str | None = None, subtype: str | None = None, status:
 async def get_anime(id: int):
     result = await collection.find_one({"_id": id})
     return JSONResponse(content=result)
+
+@anime.get('/anime/relation/{kitsuId}', response_model=Anime, response_model_by_alias=False, tags=['Anime'])
+async def get_anime_by_relation(kitsuId: int):
+    result = await collection.find_one({"kitsuId": kitsuId})
+    return JSONResponse(content=result)
