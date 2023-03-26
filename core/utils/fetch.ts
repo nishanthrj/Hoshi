@@ -65,3 +65,18 @@ export const getAnimeFromRelation = async (kitsuId: number) => {
 	}
 	return res.json();
 };
+
+export const getCharacters = async (malId: number) => {
+	const res = await fetch(`https://api.jikan.moe/v4/anime/${malId}/characters`, {
+		next: { revalidate: 2 * 60 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const json = await res.json();
+	const data = json.data.sort((a: any, b: any) => b.favorites - a.favorites);
+
+	return data;
+};
