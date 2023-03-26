@@ -23,7 +23,7 @@ export default function RecommendedCard({ id, slug, title, poster }: Recommended
 				/>
 			</div>
 			<Link
-				href={`/${id}/${slug}`}
+				href={`/anime/${id}/${slug}`}
 				prefetch={false}
 				className="mt-2 text-sm font-semibold text-dark-100 line-clamp-2 max-xs:text-xs">
 				{title}

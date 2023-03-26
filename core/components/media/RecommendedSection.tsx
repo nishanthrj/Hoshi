@@ -14,8 +14,8 @@ export default async function RecommendedSection() {
 			<div className="flex flex-wrap gap-8">
 				{media.recommended.map((rec: any) => (
 					<RecommendedCard
-						key={rec.id}
-						id={rec.id}
+						key={rec._id}
+						id={rec._id}
 						title={rec.title}
 						slug={rec.slug}
 						poster={rec.poster}
