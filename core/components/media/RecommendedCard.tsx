@@ -17,6 +17,7 @@ export default function RecommendedCard() {
 			</div>
 			<Link
 				href=""
+				prefetch={false}
 				className="mt-2 text-sm font-semibold text-dark-100 line-clamp-2 max-xs:text-xs">
 				Bocchi the Rock!
 			</Link>

@@ -93,6 +93,7 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 					<div className="relative flex w-full justify-between pr-2">
 						<Link
 							href={`/${mediaType}/${id}/${slug}`}
+							prefetch={false}
 							className="w-4/5 break-words text-base text-dark-50 line-clamp-2">
 							{title}
 						</Link>
