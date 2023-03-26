@@ -80,3 +80,22 @@ export const getCharacters = async (malId: number) => {
 
 	return data;
 };
+
+export const getTrailer = async (malId: number) => {
+	const res = await fetch(`https://api.jikan.moe/v4/anime/${malId}/videos`, {
+		next: { revalidate: 2 * 60 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const json = await res.json();
+	const data = json.data.promo;
+
+	for (const promo of data) {
+		if (promo.title.includes("PV") && !promo.title.includes("Character")) return promo;
+	}
+
+	return data?.[0];
+};
