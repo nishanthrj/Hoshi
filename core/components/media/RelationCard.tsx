@@ -3,6 +3,7 @@ import MediaImage from "../common/MediaImage";
 
 interface RelationCardProps {
 	id: number;
+	type: string;
 	title: string;
 	poster: string;
 	relation: string;
@@ -12,6 +13,7 @@ interface RelationCardProps {
 
 export default function RelationCard({
 	id,
+	type,
 	title,
 	poster,
 	relation,
@@ -33,7 +35,10 @@ export default function RelationCard({
 			</div>
 			<div className="flex flex-col pt-3 pb-2 capitalize">
 				<span className="text-xs font-medium">{relation}</span>
-				<Link href="" className="mt-1 text-dark-50 line-clamp-2 max-xs:text-sm">
+				<Link
+					href={`/${type}/relation/${id}`}
+					prefetch={false}
+					className="mt-1 text-dark-50 line-clamp-2 max-xs:text-sm">
 					{title}
 				</Link>
 				<span className="mt-auto text-xs font-medium">

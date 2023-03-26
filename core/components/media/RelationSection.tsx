@@ -18,6 +18,7 @@ export default async function RelationSection() {
 					<RelationCard
 						key={uuid()}
 						id={media.id}
+						type={media.type}
 						title={media.title}
 						poster={media.poster}
 						relation={media.relation}

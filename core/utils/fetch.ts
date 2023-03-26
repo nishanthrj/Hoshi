@@ -32,6 +32,7 @@ export const getRelatedAnime = async (kitsuId: number) => {
 		if (entry.type === "anime" || entry.type === "manga") {
 			results.push({
 				id: entry.id,
+				type: entry.type,
 				poster: entry.attributes.posterImage.original,
 				title: entry.attributes.canonicalTitle,
 				format: entry.attributes.subtype,
@@ -53,4 +54,14 @@ export const getRelatedAnime = async (kitsuId: number) => {
 	});
 
 	return results.reverse();
+};
+
+export const getAnimeFromRelation = async (kitsuId: number) => {
+	const res = await fetch(`http://127.0.0.1:8000/anime/relation/${kitsuId}`, {
+		next: { revalidate: 2 * 60 * 60 },
+	});
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+	return res.json();
 };
