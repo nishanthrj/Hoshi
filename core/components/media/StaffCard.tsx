@@ -9,7 +9,7 @@ export default function StaffCard() {
 					fill={true}
 					style={{ objectFit: "cover" }}
 					quality={100}
-					sizes="96px"
+					sizes="150px"
 					alt="cover"
 					className="rounded-sm"
 				/>

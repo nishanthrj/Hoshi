@@ -15,7 +15,7 @@ export default function CharacterCard({ image, character, voice }: CharacterCard
 					fill={true}
 					style={{ objectFit: "cover" }}
 					quality={100}
-					sizes="128px"
+					sizes="200px"
 					alt="cover"
 					className="rounded-sm"
 				/>
