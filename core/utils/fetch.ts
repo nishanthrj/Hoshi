@@ -99,3 +99,17 @@ export const getTrailer = async (malId: number) => {
 
 	return data?.[0];
 };
+
+export const getStats = async (malId: number) => {
+	const res = await fetch(`https://api.jikan.moe/v4/anime/${malId}/statistics`, {
+		next: { revalidate: 20 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const json = await res.json();
+
+	return json.data;
+};

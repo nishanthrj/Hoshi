@@ -1,4 +1,28 @@
-export default function StatsCard() {
+interface StatsCardProps {
+	completed: number;
+	planning: number;
+	watching: number;
+	paused: number;
+	dropped: number;
+	total: number;
+}
+
+export default function StatsCard({
+	completed,
+	planning,
+	watching,
+	paused,
+	dropped,
+	total,
+}: StatsCardProps) {
+	const StatsBarWidth = {
+		completed: `${Math.round((completed / total) * 100)}%`,
+		planning: `${Math.round((planning / total) * 100)}%`,
+		watching: `${Math.round((watching / total) * 100)}%`,
+		paused: `${Math.round((paused / total) * 100)}%`,
+		dropped: `${Math.round((dropped / total) * 100)}%`,
+	};
+
 	return (
 		<div className="w-[min(30rem,100%)]">
 			<div className="flex h-28 justify-between gap-4 rounded-t bg-dark-600 p-6">
@@ -7,7 +31,7 @@ export default function StatsCard() {
 						Completed
 					</h6>
 					<p>
-						<span className="text-stats-green">217,640</span> Users
+						<span className="text-stats-green">{completed}</span> Users
 					</p>
 				</div>
 				<div className="flex flex-col items-center text-sm font-medium text-dark-200">
@@ -15,7 +39,7 @@ export default function StatsCard() {
 						Planning
 					</h6>
 					<p>
-						<span className="text-stats-blue">80,426</span> Users
+						<span className="text-stats-blue">{planning}</span> Users
 					</p>
 				</div>
 				<div className="flex flex-col items-center text-sm font-medium text-dark-200">
@@ -23,7 +47,7 @@ export default function StatsCard() {
 						Watching
 					</h6>
 					<p>
-						<span className="text-stats-violet">55,340</span> Users
+						<span className="text-stats-violet">{watching}</span> Users
 					</p>
 				</div>
 				<div className="flex flex-col items-center text-sm font-medium text-dark-200">
@@ -31,17 +55,27 @@ export default function StatsCard() {
 						Dropped
 					</h6>
 					<p>
-						<span className="text-stats-red">3,162</span> Users
+						<span className="text-stats-red">{dropped}</span> Users
 					</p>
 				</div>
 			</div>
 
 			<div className="flex h-full rounded-b">
-				<div className="h-2 w-1/5 bg-stats-green"></div>
-				<div className="h-2 w-1/5 bg-stats-blue"></div>
-				<div className="h-2 w-1/5 bg-stats-violet"></div>
-				<div className="h-2 w-1/5 bg-stats-yellow"></div>
-				<div className="h-2 w-1/5 bg-stats-red"></div>
+				<div
+					style={{ width: StatsBarWidth.completed }}
+					className="h-2 w-1/5 bg-stats-green"></div>
+				<div
+					style={{ width: StatsBarWidth.planning }}
+					className="h-2 w-1/5 bg-stats-blue"></div>
+				<div
+					style={{ width: StatsBarWidth.watching }}
+					className="h-2 w-1/5 bg-stats-violet"></div>
+				<div
+					style={{ width: StatsBarWidth.paused }}
+					className="h-2 w-1/5 bg-stats-yellow"></div>
+				<div
+					style={{ width: StatsBarWidth.dropped }}
+					className="h-2 w-1/5 bg-stats-red"></div>
 			</div>
 		</div>
 	);
