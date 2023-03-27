@@ -7,6 +7,7 @@ export default function DetailsSection() {
 				Details
 			</h1>
 			<div className="w-[min(30rem,100%)] rounded-lg bg-dark-600 p-8 font-medium capitalize leading-9 text-dark-200">
+				{/* @ts-expect-error Async Server Component */}
 				<DetailsCard />
 			</div>
 		</div>

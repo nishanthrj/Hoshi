@@ -25,6 +25,7 @@ export default async function MediaHeader() {
 					</div>
 					<ActionButton />
 				</div>
+				{/* @ts-expect-error Async Server Component */}
 				<HeaderInfo />
 			</div>
 		</header>
