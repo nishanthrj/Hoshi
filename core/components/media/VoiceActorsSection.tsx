@@ -18,11 +18,11 @@ export default async function VoiceActorsSection() {
 					<VoiceActorCard
 						key={uuid()}
 						charaName={chara.character.name.replace(",", "")}
-						voiceName={chara.voice_actors[0].person.name.replace(",", "")}
+						voiceName={chara.voice_actors[0]?.person.name.replace(",", "")}
 						charaImage={chara.character.images.jpg.image_url}
-						voiceImage={chara.voice_actors[0].person.images.jpg.image_url}
+						voiceImage={chara.voice_actors[0]?.person.images.jpg.image_url}
 						charaRole={chara.role}
-						voiceRole={chara.voice_actors[0].language}
+						voiceRole={chara.voice_actors[0]?.language}
 					/>
 				))}
 			</div>
