@@ -113,3 +113,17 @@ export const getStats = async (malId: number) => {
 
 	return json.data;
 };
+
+export const getStaff = async (malId: number) => {
+	const res = await fetch(`https://api.jikan.moe/v4/anime/${malId}/staff`, {
+		next: { revalidate: 2 * 60 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const json = await res.json();
+
+	return json.data;
+};
