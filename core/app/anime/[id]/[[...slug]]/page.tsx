@@ -45,6 +45,7 @@ export default async function Anime({ params }: AnimePageParams) {
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
 			<section className="my-12 w-full pl-4">
+				{/* @ts-expect-error Async Server Component */}
 				<MediaHeader />
 				<TabNavbar />
 				<TabWrapper name="overview">
