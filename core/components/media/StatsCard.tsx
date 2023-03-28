@@ -16,11 +16,11 @@ export default function StatsCard({
 	total,
 }: StatsCardProps) {
 	const StatsBarWidth = {
-		completed: `${Math.round((completed / total) * 100)}%`,
-		planning: `${Math.round((planning / total) * 100)}%`,
-		watching: `${Math.round((watching / total) * 100)}%`,
-		paused: `${Math.round((paused / total) * 100)}%`,
-		dropped: `${Math.round((dropped / total) * 100)}%`,
+		completed: `${Math.ceil((completed / total) * 100)}%`,
+		planning: `${Math.ceil((planning / total) * 100)}%`,
+		watching: `${Math.ceil((watching / total) * 100)}%`,
+		paused: `${Math.ceil((paused / total) * 100)}%`,
+		dropped: `${Math.ceil((dropped / total) * 100)}%`,
 	};
 
 	return (
