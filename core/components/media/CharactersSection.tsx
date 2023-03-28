@@ -14,14 +14,25 @@ export default async function CharactersSection() {
 				Characters
 			</h1>
 			<div className="flex flex-wrap gap-12">
-				{data.slice(0, 6).map((chara: any) => (
-					<CharacterCard
-						key={uuid()}
-						image={chara.character.images.jpg.image_url}
-						character={chara.character.name.replace(",", "")}
-						voice={chara.voice_actors[0].person.name.replace(",", "")}
-					/>
-				))}
+				{data.slice(0, 6).map((chara: any) => {
+					let va = "";
+
+					for (const v of chara.voice_actors) {
+						if (v.language !== "Japanese") continue;
+						else {
+							va = v?.person.name.replace(",", "");
+						}
+					}
+
+					return (
+						<CharacterCard
+							key={uuid()}
+							image={chara.character.images.jpg.image_url}
+							character={chara.character.name.replace(",", "")}
+							voice={va}
+						/>
+					);
+				})}
 			</div>
 		</div>
 	);
