@@ -8,7 +8,7 @@ interface StaffCardProps {
 
 export default function StaffCard({ name, image, role }: StaffCardProps) {
 	return (
-		<div className="grid h-24 grid-cols-[4.25rem_auto] gap-4 overflow-hidden rounded bg-dark-600 leading-5 text-dark-200">
+		<div className="grid h-24 grid-cols-[4.25rem_auto] gap-4 overflow-hidden rounded bg-dark-600 pr-4 leading-5 text-dark-200">
 			<div className="relative">
 				<MediaImage
 					src={!image.includes("questionmark") ? image : ""}
