@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: AnimePageParams): Promise<Met
 export default async function Anime({ params }: AnimePageParams) {
 	useMediaStore.setState({ mediaId: params.id });
 	const media = await getAnime(params.id);
+	const type = media.type === "Movie" ? "movie" : "anime";
 
 	useMediaStore.setState({ malId: media.malId, kitsuId: media.kitsuId });
 
@@ -50,15 +51,17 @@ export default async function Anime({ params }: AnimePageParams) {
 			<section className="my-12 w-full pl-4">
 				{/* @ts-expect-error Async Server Component */}
 				<MediaHeader />
-				<TabNavbar />
+				<TabNavbar type={type} />
 				<TabWrapper name="overview">
 					<OverviewTab />
 				</TabWrapper>
-				<TabWrapper name="episodes">
-					<EpisodesTabWrapper>
-						<EpisodesTab id={media.kitsuId} />
-					</EpisodesTabWrapper>
-				</TabWrapper>
+				{type === "anime" && (
+					<TabWrapper name="episodes">
+						<EpisodesTabWrapper>
+							<EpisodesTab id={media.kitsuId} />
+						</EpisodesTabWrapper>
+					</TabWrapper>
+				)}
 				<TabWrapper name="staff">
 					<StaffTab />
 				</TabWrapper>

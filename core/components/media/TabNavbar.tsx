@@ -2,7 +2,11 @@
 
 import { useMediaStore } from "@/stores/media";
 
-export default function TabNavbar() {
+interface TabNavbarProps {
+	type: string;
+}
+
+export default function TabNavbar({ type }: TabNavbarProps) {
 	const [activeTab, setActiveTab] = useMediaStore((state) => [
 		state.activeTab,
 		state.setActiveTab,
@@ -28,13 +32,15 @@ export default function TabNavbar() {
 				}`}>
 				Overview
 			</span>
-			<span
-				data-tab="episodes"
-				className={`cursor-pointer font-semibold text-dark-200 transition-colors duration-300 hover:text-dark-50 ${
-					activeTab === "episodes" ? "text-dark-50" : ""
-				}`}>
-				Episodes
-			</span>
+			{type === "anime" && (
+				<span
+					data-tab="episodes"
+					className={`cursor-pointer font-semibold text-dark-200 transition-colors duration-300 hover:text-dark-50 ${
+						activeTab === "episodes" ? "text-dark-50" : ""
+					}`}>
+					Episodes
+				</span>
+			)}
 			<span
 				data-tab="staff"
 				className={`cursor-pointer font-semibold text-dark-200 transition-colors duration-300 hover:text-dark-50 ${
