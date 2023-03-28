@@ -23,7 +23,7 @@ export default async function HeaderInfo() {
 	return (
 		<div className="relative mt-2 w-[min(95%,60rem)] font-medium">
 			<span className="text-[.8rem] text-dark-200 max-xs:hidden ">
-				{media.studio.join(", ")}
+				{media.studio?.join(", ")}
 			</span>
 			<h1 className="text-xl font-semibold text-dark-50 line-clamp-2 max-xs:text-center">
 				{media.title}

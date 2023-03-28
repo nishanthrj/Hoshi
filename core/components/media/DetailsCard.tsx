@@ -15,15 +15,15 @@ export default async function DetailsCard() {
 			<DetailsItem title="Format">{media.type}</DetailsItem>
 			<DetailsItem title="Status">{media.status}</DetailsItem>
 			<DetailsItem title="Source">{media.source}</DetailsItem>
-			<DetailsItem title="Studio">{media.studio.join(", ")}</DetailsItem>
+			<DetailsItem title="Studio">{media.studio?.join(", ")}</DetailsItem>
 			<DetailsItem title="Episodes">{media.episodeCount}</DetailsItem>
 			<DetailsItem title="Start Date">{formatDate(media.startDate)}</DetailsItem>
 			<DetailsItem title="End Date">{formatDate(media.startDate)}</DetailsItem>
 			<DetailsItem title="Season">{media.season}</DetailsItem>
 			<DetailsItem title="Popularity">{media.popularity}</DetailsItem>
 			<DetailsItem title="Score">{media.score}</DetailsItem>
-			<DetailsItem title="Genres">{media.genres.sort().join(", ")}</DetailsItem>
-			<DetailsItem title="Tags">{media.tags.sort().join(", ")}</DetailsItem>
+			<DetailsItem title="Genres">{media.genres?.sort()?.join(", ")}</DetailsItem>
+			<DetailsItem title="Tags">{media.tags?.sort()?.join(", ")}</DetailsItem>
 		</>
 	);
 }
