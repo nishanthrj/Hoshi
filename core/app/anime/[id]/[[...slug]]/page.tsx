@@ -11,6 +11,7 @@ import OverviewTab from "@/components/media/OverviewTab";
 import EpisodesTab from "@/components/media/EpisodesTab";
 import StaffTab from "@/components/media/StaffTab";
 import EpisodesTabWrapper from "@/components/media/EpisodesTabWrapper";
+import ResetMediaPage from "@/components/media/ResetMediaPage";
 
 interface AnimePageParams {
 	params: {
@@ -45,6 +46,7 @@ export default async function Anime({ params }: AnimePageParams) {
 	return (
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
+			<ResetMediaPage />
 			<section className="my-12 w-full pl-4">
 				{/* @ts-expect-error Async Server Component */}
 				<MediaHeader />
