@@ -14,17 +14,33 @@ export default async function VoiceActorsSection() {
 				Voice Actors
 			</h1>
 			<div className="grid grid-cols-[repeat(auto-fill,min(32rem,100%))] gap-8 overflow-hidden">
-				{data.map((chara: any) => (
-					<VoiceActorCard
-						key={uuid()}
-						charaName={chara.character.name.replace(",", "")}
-						voiceName={chara.voice_actors[0]?.person.name.replace(",", "")}
-						charaImage={chara.character.images.jpg.image_url}
-						voiceImage={chara.voice_actors[0]?.person.images.jpg.image_url}
-						charaRole={chara.role}
-						voiceRole={chara.voice_actors[0]?.language}
-					/>
-				))}
+				{data.map((chara: any) => {
+					const va = {
+						name: "",
+						image: "",
+						role: "",
+					};
+					for (const v of chara.voice_actors) {
+						if (v.language !== "Japanese") continue;
+						else {
+							va.name = v?.person.name.replace(",", "");
+							va.image = v?.person.images.jpg.image_url;
+							va.role = v?.language;
+						}
+					}
+
+					return (
+						<VoiceActorCard
+							key={uuid()}
+							charaName={chara.character.name.replace(",", "")}
+							voiceName={va.name}
+							charaImage={chara.character.images.jpg.image_url}
+							voiceImage={va.image}
+							charaRole={chara.role}
+							voiceRole={va.role}
+						/>
+					);
+				})}
 			</div>
 		</div>
 	);
