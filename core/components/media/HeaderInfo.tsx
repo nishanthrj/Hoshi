@@ -4,7 +4,7 @@ import { useMediaStore } from "@/stores/media";
 import { v4 as uuid } from "uuid";
 
 export const formatLength = (mediaType: string, media: any): string | null => {
-	if (mediaType === "movie") {
+	if (mediaType === "Movie") {
 		return media.runtime;
 	} else {
 		if (media.episodeCount)
