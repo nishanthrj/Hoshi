@@ -16,7 +16,11 @@ export default async function DetailsCard() {
 			<DetailsItem title="Status">{media.status}</DetailsItem>
 			<DetailsItem title="Source">{media.source}</DetailsItem>
 			<DetailsItem title="Studio">{media.studio?.join(", ")}</DetailsItem>
-			<DetailsItem title="Episodes">{media.episodeCount}</DetailsItem>
+			{media.type === "Movie" ? (
+				<DetailsItem title="Runtime">{media.runtime}</DetailsItem>
+			) : (
+				<DetailsItem title="Episodes">{media.episodeCount}</DetailsItem>
+			)}
 			<DetailsItem title="Start Date">{formatDate(media.startDate)}</DetailsItem>
 			<DetailsItem title="End Date">{formatDate(media.startDate)}</DetailsItem>
 			<DetailsItem title="Season">{media.season}</DetailsItem>
