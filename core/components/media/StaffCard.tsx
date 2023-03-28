@@ -11,7 +11,7 @@ export default function StaffCard({ name, image, role }: StaffCardProps) {
 		<div className="grid h-24 grid-cols-[4.25rem_auto] gap-4 overflow-hidden rounded bg-dark-600 leading-5 text-dark-200">
 			<div className="relative">
 				<MediaImage
-					src={image}
+					src={!image.includes("questionmark") ? image : ""}
 					fill={true}
 					style={{ objectFit: "cover" }}
 					quality={100}
