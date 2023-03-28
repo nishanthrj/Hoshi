@@ -44,15 +44,17 @@ export default function VoiceActorCard({
 					<p className="text-right text-xs font-medium line-clamp-2">{voiceRole}</p>
 				</div>
 				<div className="relative">
-					<MediaImage
-						src={voiceImage}
-						fill={true}
-						style={{ objectFit: "cover" }}
-						quality={100}
-						sizes="150px"
-						alt="cover"
-						className="rounded-sm"
-					/>
+					{(voiceName || voiceImage) && (
+						<MediaImage
+							src={voiceImage}
+							fill={true}
+							style={{ objectFit: "cover" }}
+							quality={100}
+							sizes="150px"
+							alt="cover"
+							className="rounded-sm"
+						/>
+					)}
 				</div>
 			</div>
 		</div>
