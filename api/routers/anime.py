@@ -111,3 +111,9 @@ async def get_anime_staff(malId: int):
     res = await client.get(f"https://api.jikan.moe/v4/anime/{malId}/staff")
     data = await res.json()
     return JSONResponse(content=data)
+
+@anime.get('/anime/{kitsuId}/episodes')
+async def get_anime_episode(kitsuId: int, offset: int = 0):
+    res = await client.get(f"https://kitsu.io/api/edge/episodes?filter[mediaId]={kitsuId}&page[limit]=20&page[offset]={offset}&sort=number")
+    data = await res.json()
+    return JSONResponse(content=data)
