@@ -10,6 +10,7 @@ import TabWrapper from "@/components/media/TabWrapper";
 import OverviewTab from "@/components/media/OverviewTab";
 import EpisodesTab from "@/components/media/EpisodesTab";
 import StaffTab from "@/components/media/StaffTab";
+import EpisodesTabWrapper from "@/components/media/EpisodesTabWrapper";
 
 interface AnimePageParams {
 	params: {
@@ -52,7 +53,9 @@ export default async function Anime({ params }: AnimePageParams) {
 					<OverviewTab />
 				</TabWrapper>
 				<TabWrapper name="episodes">
-					<EpisodesTab />
+					<EpisodesTabWrapper>
+						<EpisodesTab id={media.kitsuId} />
+					</EpisodesTabWrapper>
 				</TabWrapper>
 				<TabWrapper name="staff">
 					<StaffTab />

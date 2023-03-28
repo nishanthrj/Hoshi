@@ -88,3 +88,8 @@ export const getStaff = async (malId: number) => {
 
 	return json.data;
 };
+
+export const getEpisodes = (offset: number, kitsuId: number) =>
+	axios
+		.get(`http://127.0.0.1:8000/anime/${kitsuId}/episodes`, { params: { offset: offset } })
+		.then((res) => res.data);
