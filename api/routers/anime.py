@@ -10,7 +10,7 @@ anime = APIRouter()
 
 collection = database.get_collection('anime')
 
-retry_options = ExponentialRetry(attempts=3, start_timeout=1, factor=2.0, statuses={429, 500})
+retry_options = ExponentialRetry(attempts=5, start_timeout=1, factor=2.0, statuses={429, 500})
 client = RetryClient(raise_for_status=False, retry_options=retry_options)
 
 
@@ -92,11 +92,13 @@ async def get_anime_characters(malId: int):
 async def get_anime_trailer(malId: int):
     res = await client.get(f"https://api.jikan.moe/v4/anime/{malId}/videos")
     data = await res.json()
-    for promo in data.get('data').get('promo'):
-        if "PV" in promo['title'] and "Character" not in promo['title']:
-            return JSONResponse(content=promo)
+    data = data.get('data', {}).get('promo')
+    if data:
+        for promo in data:
+            if "PV" in promo['title'] and "Character" not in promo['title']:
+                return JSONResponse(content=promo)
 
-    return JSONResponse(content=data.get('data').get('promo')[0] if data.get('data') else None)
+    return JSONResponse(content=data[0] if data else None)
 
 
 @anime.get('/anime/{malId}/stats')
