@@ -83,7 +83,8 @@ async def get_anime_characters(kitsuId: int):
 async def get_anime_characters(malId: int):
     res = await client.get(f"https://api.jikan.moe/v4/anime/{malId}/characters")
     data = await res.json()
-    data = sorted(data['data'], key=lambda x: x['favorites'], reverse=True);
+    if data.get('data'):
+        data = sorted(data['data'], key=lambda x: x['favorites'], reverse=True);
     return JSONResponse(content=data)
 
 
