@@ -13,12 +13,12 @@ export default async function StatsSection() {
 				Stats
 			</h1>
 			<StatsCard
-				completed={data.completed}
-				planning={data.plan_to_watch}
-				watching={data.watching}
-				paused={data.on_hold}
-				dropped={data.dropped}
-				total={data.total}
+				completed={data?.completed || 0}
+				planning={data?.plan_to_watch || 0}
+				watching={data?.watching || 0}
+				paused={data?.on_hold || 0}
+				dropped={data?.dropped || 0}
+				total={data?.total || 0}
 			/>
 		</div>
 	);
