@@ -5,11 +5,11 @@ import { Suspense } from "react";
 export default function StaffTab() {
 	return (
 		<>
-			<Suspense fallback={<p>Loading...</p>}>
+			<Suspense>
 				{/* @ts-expect-error Async Server Component */}
 				<VoiceActorsSection />
 			</Suspense>
-			<Suspense fallback={<p>Loading...</p>}>
+			<Suspense>
 				{/* @ts-expect-error Async Server Component */}
 				<StaffSection />
 			</Suspense>
