@@ -13,8 +13,8 @@ export default async function TrailerSection() {
 				Trailer
 			</h1>
 			<Trailer
-				video={`https://www.youtube.com/embed/${data.trailer.youtube_id}`}
-				thumbnail={`https://img.youtube.com/vi/${data.trailer.youtube_id}/maxresdefault.jpg`}
+				video={`https://www.youtube.com/embed/${data?.trailer?.youtube_id}`}
+				thumbnail={`https://img.youtube.com/vi/${data?.trailer?.youtube_id}/maxresdefault.jpg`}
 			/>
 		</div>
 	);
