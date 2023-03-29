@@ -18,7 +18,7 @@ export const getMedia = async (mediaType: string, id: number) => {
 
 export const getMediaFromRelation = async (mediaType: string, kitsuId: number) => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/relation/${kitsuId}`, {
+	const res = await fetch(`http://127.0.0.1:8000/${type}/external?kitsuId=${kitsuId}`, {
 		cache: "no-cache",
 	});
 	if (!res.ok) {
@@ -29,7 +29,7 @@ export const getMediaFromRelation = async (mediaType: string, kitsuId: number) =
 
 export const getRelatedMedia = async (mediaType: string, kitsuId: number) => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/${kitsuId}/relation`, {
+	const res = await fetch(`http://127.0.0.1:8000/${type}/relation?kitsuId=${kitsuId}`, {
 		cache: "no-cache",
 	});
 	if (!res.ok) {
@@ -40,7 +40,7 @@ export const getRelatedMedia = async (mediaType: string, kitsuId: number) => {
 
 export const getCharacters = async (mediaType: string, malId: number) => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/${malId}/characters`, {
+	const res = await fetch(`http://127.0.0.1:8000/${type}/characters?malId=${malId}`, {
 		cache: "no-cache",
 	});
 
@@ -55,7 +55,7 @@ export const getCharacters = async (mediaType: string, malId: number) => {
 
 export const getTrailer = async (mediaType: string, malId: number) => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/${malId}/trailer`, {
+	const res = await fetch(`http://127.0.0.1:8000/${type}/trailer?malId=${malId}`, {
 		cache: "no-cache",
 	});
 
@@ -70,7 +70,7 @@ export const getTrailer = async (mediaType: string, malId: number) => {
 
 export const getStats = async (mediaType: string, malId: number) => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/${malId}/stats`, {
+	const res = await fetch(`http://127.0.0.1:8000/${type}/stats?malId=${malId}`, {
 		cache: "no-cache",
 	});
 
@@ -84,7 +84,7 @@ export const getStats = async (mediaType: string, malId: number) => {
 };
 
 export const getStaff = async (malId: number) => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/${malId}/staff`, {
+	const res = await fetch(`http://127.0.0.1:8000/anime/staff?malId=${malId}`, {
 		cache: "no-cache",
 	});
 
@@ -99,5 +99,7 @@ export const getStaff = async (malId: number) => {
 
 export const getEpisodes = (offset: number, kitsuId: number) =>
 	axios
-		.get(`http://127.0.0.1:8000/anime/${kitsuId}/episodes`, { params: { offset: offset } })
+		.get(`http://127.0.0.1:8000/anime/episodes`, {
+			params: { kitsuId: kitsuId, offset: offset },
+		})
 		.then((res) => res.data);

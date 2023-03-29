@@ -28,20 +28,14 @@ async def search_anime(q: str | None = None, subtype: str | None = None, status:
     return JSONResponse(content=result[0])
 
 
-@anime.get('/anime/{id}', response_model=Anime, response_model_by_alias=False, tags=['Anime'])
-async def get_anime(id: int):
-    result = await collection.find_one({"_id": id})
-    return JSONResponse(content=result)
-
-
-@anime.get('/anime/relation/{kitsuId}', response_model=Anime, response_model_by_alias=False, tags=['Anime'])
-async def get_anime_by_relation(kitsuId: int):
+@anime.get('/anime/external', tags=['Anime'], include_in_schema=False)
+async def get_external_anime(kitsuId: int):
     result = await collection.find_one({"kitsuId": kitsuId})
     return JSONResponse(content=result)
 
 
-@anime.get('/anime/{kitsuId}/relation')
-async def get_anime_characters(kitsuId: int):
+@anime.get('/anime/relation', tags=['Anime'])
+async def get_anime_relation(kitsuId: int):        
     res = await client.get(f"https://kitsu.io/api/edge/anime/{kitsuId}?include=mediaRelationships.destination")
     data = await res.json()
     
@@ -81,8 +75,8 @@ async def get_anime_characters(kitsuId: int):
     return JSONResponse(content=results)
 
 
-@anime.get('/anime/{malId}/characters')
-async def get_anime_characters(malId: int):
+@anime.get('/anime/characters', tags=['Anime'])
+async def get_anime_characters(malId: str):
     res = await client.get(f"https://api.jikan.moe/v4/anime/{malId}/characters")
     data = await res.json()
     if data.get('data'):
@@ -90,7 +84,7 @@ async def get_anime_characters(malId: int):
     return JSONResponse(content=data)
 
 
-@anime.get('/anime/{malId}/trailer')
+@anime.get('/anime/trailer', tags=['Anime'])
 async def get_anime_trailer(malId: int):
     res = await client.get(f"https://api.jikan.moe/v4/anime/{malId}/videos")
     data = await res.json()
@@ -103,21 +97,28 @@ async def get_anime_trailer(malId: int):
     return JSONResponse(content=data[0] if data else None)
 
 
-@anime.get('/anime/{malId}/stats')
+@anime.get('/anime/stats', tags=['Anime'])
 async def get_anime_stats(malId: int):
     res = await client.get(f"https://api.jikan.moe/v4/anime/{malId}/statistics")
     data = await res.json()
     return JSONResponse(content=data)
 
 
-@anime.get('/anime/{malId}/staff')
+@anime.get('/anime/staff', tags=['Anime'])
 async def get_anime_staff(malId: int):
     res = await client.get(f"https://api.jikan.moe/v4/anime/{malId}/staff")
     data = await res.json()
     return JSONResponse(content=data)
 
-@anime.get('/anime/{kitsuId}/episodes')
-async def get_anime_episode(kitsuId: int, offset: int = 0):
+
+@anime.get('/anime/episodes', tags=['Anime'])
+async def get_anime_episode(kitsuId: int = 0, offset: int = 0):
     res = await client.get(f"https://kitsu.io/api/edge/episodes?filter[mediaId]={kitsuId}&page[limit]=20&page[offset]={offset}&sort=number")
     data = await res.json()
     return JSONResponse(content=data)
+
+
+@anime.get('/anime/{id}', response_model=Anime, response_model_by_alias=False, tags=['Anime'])
+async def get_anime(id: int):
+    result = await collection.find_one({"_id": id})
+    return JSONResponse(content=result)

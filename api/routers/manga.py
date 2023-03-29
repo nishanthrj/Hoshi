@@ -28,19 +28,14 @@ async def search_manga(q: str | None = None, subtype: str | None = None, status:
     return JSONResponse(content=result[0])
 
 
-@manga.get('/manga/{id}', response_model=Manga, response_model_by_alias=False, tags=["Manga"])
-async def get_manga(id: int):
-    result = await collection.find_one({"_id": id})
-    return JSONResponse(content=result)
-
-@manga.get('/manga/relation/{kitsuId}', response_model=Manga, response_model_by_alias=False, tags=['Manga'])
-async def get_manga_by_relation(kitsuId: int):
+@manga.get('/manga/external', include_in_schema=False)
+async def get_external_manga(kitsuId: int):
     result = await collection.find_one({"kitsuId": kitsuId})
     return JSONResponse(content=result)
 
 
-@manga.get('/manga/{kitsuId}/relation')
-async def get_manga_characters(kitsuId: int):
+@manga.get('/manga/relation', tags=['Manga'])
+async def get_manga_relation(kitsuId: int):
     res = await client.get(f"https://kitsu.io/api/edge/manga/{kitsuId}?include=mediaRelationships.destination")
     data = await res.json()
     
@@ -80,7 +75,7 @@ async def get_manga_characters(kitsuId: int):
     return JSONResponse(content=results)
 
 
-@manga.get('/manga/{malId}/characters')
+@manga.get('/manga/characters', tags=['Manga'])
 async def get_manga_characters(malId: int):
     res = await client.get(f"https://api.jikan.moe/v4/manga/{malId}/characters")
     data = await res.json()
@@ -88,7 +83,7 @@ async def get_manga_characters(malId: int):
     return JSONResponse(content=data)
 
 
-@manga.get('/manga/{malId}/trailer')
+@manga.get('/manga/trailer', tags=['Manga'])
 async def get_manga_trailer(malId: int):
     res = await client.get(f"https://api.jikan.moe/v4/manga/{malId}/videos")
     data = await res.json()
@@ -101,9 +96,14 @@ async def get_manga_trailer(malId: int):
     return JSONResponse(content=data[0] if data else None)
 
 
-@manga.get('/manga/{malId}/stats')
+@manga.get('/manga/stats', tags=['Manga'])
 async def get_manga_stats(malId: int):
     res = await client.get(f"https://api.jikan.moe/v4/manga/{malId}/statistics")
     data = await res.json()
     return JSONResponse(content=data)
-    
+
+
+@manga.get('/manga/{id}', response_model=Manga, response_model_by_alias=False, tags=["Manga"])
+async def get_manga(id: int):
+    result = await collection.find_one({"_id": id})
+    return JSONResponse(content=result)
