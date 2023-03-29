@@ -67,7 +67,13 @@ export default function SearchResults() {
 							poster={media.poster}
 							score={Math.round(media.score)}
 							format={media.type}
-							length={media.episodeCount}
+							length={
+								mediaType !== "manga"
+									? media.type === "Movie"
+										? media.runtime
+										: media.episodeCount
+									: media.chapterCount
+							}
 							status={media.status}
 							genres={media.genres}
 							synopsis={media.synopsis}
