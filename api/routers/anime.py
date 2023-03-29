@@ -75,6 +75,8 @@ async def get_anime_characters(kitsuId: int):
                 break
         else:
             results[i]["relation"] = None
+            
+    results = results[::-1]
        
     return JSONResponse(content=results)
 
