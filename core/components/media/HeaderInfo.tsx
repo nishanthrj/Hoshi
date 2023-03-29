@@ -4,11 +4,11 @@ import { getMedia } from "@/utils/fetch";
 import Tag from "@/components/common/Tag";
 
 export const formatLength = (mediaType: string, media: any): string | null => {
-	if (mediaType === "movie") {
+	if (mediaType === "movie" && media.runtime) {
 		return media.runtime;
-	} else if (mediaType === "anime") {
+	} else if (mediaType === "anime" && media.episodeCount) {
 		return `${media.episodeCount} Episode${media.episodeCount > 1 ? "s" : ""}`;
-	} else if (mediaType === "manga") {
+	} else if (mediaType === "manga" && media.chapterCount) {
 		return `${media.chapterCount} Chapter${media.chapterCount > 1 ? "s" : ""}`;
 	} else return null;
 };
