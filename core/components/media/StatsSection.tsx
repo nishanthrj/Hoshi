@@ -1,10 +1,11 @@
-import StatsCard from "@/components/media/StatsCard";
-import { getStats } from "@/utils/fetch";
 import { useMediaStore } from "@/stores/media";
+import { getStats } from "@/utils/fetch";
+import StatsCard from "@/components/media/StatsCard";
 
 export default async function StatsSection() {
 	const id = useMediaStore.getState().malId;
 	const mediaType = useMediaStore.getState().mediaType;
+
 	const data = id ? await getStats(mediaType, id) : null;
 
 	return (

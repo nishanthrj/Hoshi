@@ -1,6 +1,7 @@
 "use client";
-import MediaImage from "@/components/common/MediaImage";
+
 import { forwardRef, Ref } from "react";
+import MediaImage from "@/components/common/MediaImage";
 
 interface EpisodeCardProps {
 	title: string;

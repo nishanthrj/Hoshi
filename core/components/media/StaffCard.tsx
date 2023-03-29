@@ -1,4 +1,4 @@
-import MediaImage from "../common/MediaImage";
+import MediaImage from "@/components/common/MediaImage";
 
 interface StaffCardProps {
 	name: string;

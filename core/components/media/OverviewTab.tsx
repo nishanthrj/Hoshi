@@ -1,10 +1,10 @@
-import RelationSection from "./RelationSection";
-import CharactersSection from "./CharactersSection";
-import DetailsSection from "./DetailsSection";
-import TrailerSection from "./TrailerSection";
-import StatsSection from "./StatsSection";
-import RecommendedSection from "./RecommendedSection";
 import { Suspense } from "react";
+import RelationSection from "@/components/media/RelationSection";
+import CharactersSection from "@/components/media/CharactersSection";
+import DetailsSection from "@/components/media/DetailsSection";
+import TrailerSection from "@/components/media/TrailerSection";
+import StatsSection from "@/components/media/StatsSection";
+import RecommendedSection from "@/components/media/RecommendedSection";
 
 export default function OverviewTab() {
 	return (

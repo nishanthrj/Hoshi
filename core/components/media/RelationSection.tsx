@@ -1,7 +1,7 @@
-import RelationCard from "@/components/media/RelationCard";
-import { getRelatedMedia } from "@/utils/fetch";
-import { useMediaStore } from "@/stores/media";
 import { v4 as uuid } from "uuid";
+import { useMediaStore } from "@/stores/media";
+import { getRelatedMedia } from "@/utils/fetch";
+import RelationCard from "@/components/media/RelationCard";
 
 export default async function RelationSection() {
 	const id = useMediaStore.getState().kitsuId;

@@ -1,10 +1,11 @@
-import Trailer from "@/components/media/Trailer";
-import { getTrailer } from "@/utils/fetch";
 import { useMediaStore } from "@/stores/media";
+import { getTrailer } from "@/utils/fetch";
+import Trailer from "@/components/media/Trailer";
 
 export default async function TrailerSection() {
 	const id = useMediaStore.getState().malId;
 	const mediaType = useMediaStore.getState().mediaType;
+
 	const data = id ? await getTrailer(mediaType, id) : null;
 
 	return (

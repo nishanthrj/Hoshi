@@ -2,6 +2,7 @@ interface DetailsItemProps {
 	title: string;
 	children: React.ReactNode;
 }
+
 export default function DetailsItem({ title, children }: DetailsItemProps) {
 	return (
 		<div className="grid grid-cols-[40%_60%]">

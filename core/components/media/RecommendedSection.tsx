@@ -1,10 +1,11 @@
-import RecommendedCard from "@/components/media/RecommendedCard";
-import { getMedia } from "@/utils/fetch";
 import { useMediaStore } from "@/stores/media";
+import { getMedia } from "@/utils/fetch";
+import RecommendedCard from "@/components/media/RecommendedCard";
 
 export default async function RecommendedSection() {
 	const id = useMediaStore.getState().mediaId;
 	const mediaType = useMediaStore.getState().mediaType;
+
 	const data = id ? await getMedia(mediaType, id) : null;
 
 	return (

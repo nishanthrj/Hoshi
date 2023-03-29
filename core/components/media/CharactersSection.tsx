@@ -1,11 +1,12 @@
-import CharacterCard from "@/components/media/CharacterCard";
-import { getCharacters } from "@/utils/fetch";
-import { useMediaStore } from "@/stores/media";
 import { v4 as uuid } from "uuid";
+import { useMediaStore } from "@/stores/media";
+import { getCharacters } from "@/utils/fetch";
+import CharacterCard from "@/components/media/CharacterCard";
 
 export default async function CharactersSection() {
 	const id = useMediaStore.getState().malId;
 	const mediaType = useMediaStore.getState().mediaType;
+
 	const data = id ? await getCharacters(mediaType, id) : null;
 
 	return (

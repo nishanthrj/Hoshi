@@ -1,12 +1,13 @@
+import { useMediaStore } from "@/stores/media";
+import { getMedia } from "@/utils/fetch";
 import MediaImage from "@/components/common/MediaImage";
 import HeaderInfo from "@/components/media/HeaderInfo";
 import ActionButton from "@/components/media/ActionButton";
-import { getMedia } from "@/utils/fetch";
-import { useMediaStore } from "@/stores/media";
 
 export default async function MediaHeader() {
 	const id = useMediaStore.getState().mediaId;
 	const mediaType = useMediaStore.getState().mediaType;
+
 	const data = id ? await getMedia(mediaType, id) : null;
 
 	return (

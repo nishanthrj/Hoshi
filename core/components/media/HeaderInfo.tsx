@@ -1,7 +1,7 @@
-import Tag from "@/components/common/Tag";
-import { getMedia } from "@/utils/fetch";
-import { useMediaStore } from "@/stores/media";
 import { v4 as uuid } from "uuid";
+import { useMediaStore } from "@/stores/media";
+import { getMedia } from "@/utils/fetch";
+import Tag from "@/components/common/Tag";
 
 export const formatLength = (mediaType: string, media: any): string | null => {
 	if (mediaType === "movie") {
@@ -16,6 +16,7 @@ export const formatLength = (mediaType: string, media: any): string | null => {
 export default async function HeaderInfo() {
 	const id = useMediaStore.getState().mediaId;
 	const mediaType = useMediaStore.getState().mediaType;
+
 	const data = id ? await getMedia(mediaType, id) : null;
 
 	const length = formatLength(mediaType, data);

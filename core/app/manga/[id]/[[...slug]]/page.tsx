@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { useMediaStore } from "@/stores/media";
 import { getMedia } from "@/utils/fetch";
 import MediaHeader from "@/components/media/MediaHeader";
@@ -10,7 +11,6 @@ import TabWrapper from "@/components/media/TabWrapper";
 import OverviewTab from "@/components/media/OverviewTab";
 import CharactersTab from "@/components/media/CharactersTab";
 import ResetMediaPage from "@/components/media/ResetMediaPage";
-import { Suspense } from "react";
 
 interface MangaPageParams {
 	params: {

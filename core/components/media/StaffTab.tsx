@@ -1,6 +1,6 @@
-import StaffSection from "./StaffSection";
-import VoiceActorsSection from "./VoiceActorsSection";
 import { Suspense } from "react";
+import StaffSection from "@/components/media/StaffSection";
+import VoiceActorsSection from "@/components/media/VoiceActorsSection";
 
 export default function StaffTab() {
 	return (

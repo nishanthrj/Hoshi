@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MediaImage from "../common/MediaImage";
+import MediaImage from "@/components/common/MediaImage";
 
 interface RelationCardProps {
 	id: number;

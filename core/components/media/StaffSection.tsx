@@ -1,7 +1,7 @@
-import StaffCard from "./StaffCard";
-import { getStaff } from "@/utils/fetch";
-import { useMediaStore } from "@/stores/media";
 import { v4 as uuid } from "uuid";
+import { useMediaStore } from "@/stores/media";
+import { getStaff } from "@/utils/fetch";
+import StaffCard from "@/components/media/StaffCard";
 
 export default async function StaffSection() {
 	const id = useMediaStore.getState().malId;

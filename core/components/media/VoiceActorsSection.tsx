@@ -1,7 +1,7 @@
-import VoiceActorCard from "./VoiceActorCard";
-import { getCharacters } from "@/utils/fetch";
-import { useMediaStore } from "@/stores/media";
 import { v4 as uuid } from "uuid";
+import { useMediaStore } from "@/stores/media";
+import { getCharacters } from "@/utils/fetch";
+import VoiceActorCard from "@/components/media/VoiceActorCard";
 
 export default async function VoiceActorsSection() {
 	const id = useMediaStore.getState().malId;
