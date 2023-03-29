@@ -30,7 +30,7 @@ export default async function Anime({ params }: AnimePageParams) {
 	const media = await getAnime(params.id);
 	const type = media.type === "Movie" ? "movie" : "anime";
 
-	useMediaStore.setState({ malId: media.malId, kitsuId: media.kitsuId });
+	useMediaStore.setState({ malId: media.malId, kitsuId: media.kitsuId, mediaType: type });
 
 	if (!params.slug) {
 		redirect(`/anime/${media._id}/${media.slug}`);
