@@ -3,10 +3,15 @@ from fastapi.responses import JSONResponse
 from models.manga import Manga, SearchResults
 from db import database
 from utils import build_pipeline
+from aiohttp_retry import RetryClient, ExponentialRetry
+
 
 manga = APIRouter()
 
 collection = database.get_collection('manga')
+
+retry_options = ExponentialRetry(attempts=5, start_timeout=1, factor=2.0, statuses={429, 500})
+client = RetryClient(raise_for_status=False, retry_options=retry_options)
 
 
 @manga.get('/manga', response_model=SearchResults, response_model_by_alias=False, tags=["Manga"])
@@ -29,7 +34,76 @@ async def get_manga(id: int):
     return JSONResponse(content=result)
 
 @manga.get('/manga/relation/{kitsuId}', response_model=Manga, response_model_by_alias=False, tags=['Manga'])
-async def get_manga_by_relation(id: int):
-    result = await collection.find_one({"kitsuId": id})
+async def get_manga_by_relation(kitsuId: int):
+    result = await collection.find_one({"kitsuId": kitsuId})
     return JSONResponse(content=result)
+
+
+@manga.get('/manga/{kitsuId}/relation')
+async def get_manga_characters(kitsuId: int):
+    res = await client.get(f"https://kitsu.io/api/edge/manga/{kitsuId}?include=mediaRelationships.destination")
+    data = await res.json()
+    
+    results = []
+    relationship = []
+    
+    for entry in data["included"]:
+        if entry["type"] == "anime" or entry["type"] == "manga":
+            result = {
+                "id": entry["id"],
+                "type": entry["type"],
+                "poster": entry["attributes"].get("posterImage", {}).get("original"),
+                "title": entry["attributes"].get("canonicalTitle"),
+                "format": entry["attributes"].get("subtype"),
+                "status": entry["attributes"].get("status")
+            }
+            results.append(result)
+            continue
+
+        if entry["type"] == "mediaRelationships":
+            rel = {
+                "id": entry["relationships"]["destination"]["data"]["id"],
+                "role": entry["attributes"].get("role", "").replace("_", " ")
+            }
+            relationship.append(rel)
+
+    for i, x in enumerate(results):
+        for rel_dict in relationship:
+            if rel_dict["id"] == x["id"]:
+                results[i]["relation"] = rel_dict.get("role", None)
+                break
+        else:
+            results[i]["relation"] = None
+            
+    results = results[::-1]
+       
+    return JSONResponse(content=results)
+
+
+@manga.get('/manga/{malId}/characters')
+async def get_manga_characters(malId: int):
+    res = await client.get(f"https://api.jikan.moe/v4/manga/{malId}/characters")
+    data = await res.json()
+    data = data.get('data')
+    return JSONResponse(content=data)
+
+
+@manga.get('/manga/{malId}/trailer')
+async def get_manga_trailer(malId: int):
+    res = await client.get(f"https://api.jikan.moe/v4/manga/{malId}/videos")
+    data = await res.json()
+    data = data.get('data', {}).get('promo')
+    if data:
+        for promo in data:
+            if "PV" in promo['title'] and "Character" not in promo['title']:
+                return JSONResponse(content=promo)
+
+    return JSONResponse(content=data[0] if data else None)
+
+
+@manga.get('/manga/{malId}/stats')
+async def get_manga_stats(malId: int):
+    res = await client.get(f"https://api.jikan.moe/v4/manga/{malId}/statistics")
+    data = await res.json()
+    return JSONResponse(content=data)
     
