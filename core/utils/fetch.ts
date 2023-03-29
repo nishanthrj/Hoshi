@@ -5,16 +5,20 @@ export const getSearchResults = (page: number, mediaType: string, filters: any) 
 		.get(`http://127.0.0.1:8000/${mediaType}`, { params: { page: page, ...filters } })
 		.then((res) => res.data);
 
-export const getAnime = async (id: number) => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/${id}`, { next: { revalidate: 20 * 60 } });
+export const getMedia = async (mediaType: string, id: number) => {
+	const type = mediaType !== "movie" ? mediaType : "anime";
+	const res = await fetch(`http://127.0.0.1:8000/${type}/${id}`, {
+		next: { revalidate: 20 * 60 },
+	});
 	if (!res.ok) {
 		throw new Error("Failed to fetch data");
 	}
 	return res.json();
 };
 
-export const getAnimeFromRelation = async (kitsuId: number) => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/relation/${kitsuId}`, {
+export const getMediaFromRelation = async (mediaType: string, kitsuId: number) => {
+	const type = mediaType !== "movie" ? mediaType : "anime";
+	const res = await fetch(`http://127.0.0.1:8000/${type}/relation/${kitsuId}`, {
 		cache: "no-cache",
 	});
 	if (!res.ok) {
@@ -23,8 +27,9 @@ export const getAnimeFromRelation = async (kitsuId: number) => {
 	return res.json();
 };
 
-export const getRelatedAnime = async (kitsuId: number) => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/${kitsuId}/relation`, {
+export const getRelatedMedia = async (mediaType: string, kitsuId: number) => {
+	const type = mediaType !== "movie" ? mediaType : "anime";
+	const res = await fetch(`http://127.0.0.1:8000/${type}/${kitsuId}/relation`, {
 		cache: "no-cache",
 	});
 	if (!res.ok) {
@@ -33,8 +38,9 @@ export const getRelatedAnime = async (kitsuId: number) => {
 	return res.json();
 };
 
-export const getCharacters = async (malId: number) => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/${malId}/characters`, {
+export const getCharacters = async (mediaType: string, malId: number) => {
+	const type = mediaType !== "movie" ? mediaType : "anime";
+	const res = await fetch(`http://127.0.0.1:8000/${type}/${malId}/characters`, {
 		cache: "no-cache",
 	});
 
@@ -47,8 +53,9 @@ export const getCharacters = async (malId: number) => {
 	return data;
 };
 
-export const getTrailer = async (malId: number) => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/${malId}/trailer`, {
+export const getTrailer = async (mediaType: string, malId: number) => {
+	const type = mediaType !== "movie" ? mediaType : "anime";
+	const res = await fetch(`http://127.0.0.1:8000/${type}/${malId}/trailer`, {
 		cache: "no-cache",
 	});
 
@@ -61,8 +68,9 @@ export const getTrailer = async (malId: number) => {
 	return data;
 };
 
-export const getStats = async (malId: number) => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/${malId}/stats`, {
+export const getStats = async (mediaType: string, malId: number) => {
+	const type = mediaType !== "movie" ? mediaType : "anime";
+	const res = await fetch(`http://127.0.0.1:8000/${type}/${malId}/stats`, {
 		cache: "no-cache",
 	});
 
