@@ -1,18 +1,19 @@
 import VoiceActorCard from "./VoiceActorCard";
-import { getCharacters, getAnime } from "@/utils/fetch";
+import { getCharacters } from "@/utils/fetch";
 import { useMediaStore } from "@/stores/media";
 import { v4 as uuid } from "uuid";
 
 export default async function VoiceActorsSection() {
 	const id = useMediaStore.getState().malId;
-	const data = id ? await getCharacters(id) : null;
+	const mediaType = useMediaStore.getState().mediaType;
+	const data = id ? await getCharacters(mediaType, id) : null;
 
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] pr-4 md:ml-5">
 			<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
 				Voice Actors
 			</h1>
-			{data ? (
+			{data && mediaType !== "manga" ? (
 				<div className="grid grid-cols-[repeat(auto-fill,min(32rem,100%))] gap-8 overflow-hidden">
 					{data.map((chara: any) => {
 						const va = {

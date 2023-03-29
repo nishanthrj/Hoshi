@@ -1,11 +1,12 @@
 import RelationCard from "@/components/media/RelationCard";
-import { getRelatedAnime } from "@/utils/fetch";
+import { getRelatedMedia } from "@/utils/fetch";
 import { useMediaStore } from "@/stores/media";
 import { v4 as uuid } from "uuid";
 
 export default async function RelationSection() {
 	const id = useMediaStore.getState().kitsuId;
-	const data = id ? await getRelatedAnime(id) : null;
+	const mediaType = useMediaStore.getState().mediaType;
+	const data = id ? await getRelatedMedia(mediaType, id) : null;
 
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] md:ml-5">

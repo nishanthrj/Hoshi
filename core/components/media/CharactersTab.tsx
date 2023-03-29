@@ -5,7 +5,8 @@ import { v4 as uuid } from "uuid";
 
 export default async function CharactersTab() {
 	const id = useMediaStore.getState().malId;
-	const data = id ? await getCharacters(id) : null;
+	const mediaType = useMediaStore.getState().mediaType;
+	const data = id ? await getCharacters(mediaType, id) : null;
 
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] pr-4 md:ml-5">

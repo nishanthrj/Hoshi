@@ -5,7 +5,8 @@ import { v4 as uuid } from "uuid";
 
 export default async function CharactersSection() {
 	const id = useMediaStore.getState().malId;
-	const data = id ? await getCharacters(id) : null;
+	const mediaType = useMediaStore.getState().mediaType;
+	const data = id ? await getCharacters(mediaType, id) : null;
 
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] pr-4 md:ml-5">
@@ -17,10 +18,12 @@ export default async function CharactersSection() {
 					{data.slice(0, 6).map((chara: any) => {
 						let va = "";
 
-						for (const v of chara.voice_actors) {
-							if (v.language !== "Japanese") continue;
-							else {
-								va = v?.person.name.replace(",", "");
+						if (mediaType !== "manga") {
+							for (const v of chara.voice_actors) {
+								if (v.language !== "Japanese") continue;
+								else {
+									va = v?.person.name.replace(",", "");
+								}
 							}
 						}
 

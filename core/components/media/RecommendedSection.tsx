@@ -1,10 +1,11 @@
 import RecommendedCard from "@/components/media/RecommendedCard";
-import { getAnime } from "@/utils/fetch";
+import { getMedia } from "@/utils/fetch";
 import { useMediaStore } from "@/stores/media";
 
 export default async function RecommendedSection() {
 	const id = useMediaStore.getState().mediaId;
-	const media = await getAnime(id);
+	const mediaType = useMediaStore.getState().mediaType;
+	const data = id ? await getMedia(mediaType, id) : null;
 
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] pr-4 md:ml-5">
@@ -12,7 +13,7 @@ export default async function RecommendedSection() {
 				Recommended
 			</h1>
 			<div className="flex flex-wrap gap-8">
-				{media.recommended.map((rec: any) => (
+				{data.recommended.map((rec: any) => (
 					<RecommendedCard
 						key={rec._id}
 						id={rec._id}

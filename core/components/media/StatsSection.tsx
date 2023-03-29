@@ -4,7 +4,8 @@ import { useMediaStore } from "@/stores/media";
 
 export default async function StatsSection() {
 	const id = useMediaStore.getState().malId;
-	const data = id ? await getStats(id) : null;
+	const mediaType = useMediaStore.getState().mediaType;
+	const data = id ? await getStats(mediaType, id) : null;
 
 	return (
 		<div>
@@ -14,8 +15,11 @@ export default async function StatsSection() {
 			{data ? (
 				<StatsCard
 					completed={data?.completed || 0}
-					planning={data?.plan_to_watch || 0}
-					watching={data?.watching || 0}
+					planning={
+						mediaType !== "manga" ? data?.plan_to_watch || 0 : data?.plan_to_read || 0
+					}
+					watching={mediaType !== "manga" ? data?.watching || 0 : undefined}
+					reading={mediaType === "manga" ? data?.reading || 0 : undefined}
 					paused={data?.on_hold || 0}
 					dropped={data?.dropped || 0}
 					total={data?.total || 0}

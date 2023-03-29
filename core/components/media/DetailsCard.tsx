@@ -1,33 +1,45 @@
 import DetailsItem from "@/components/media/DetailsItem";
-import { getAnime } from "@/utils/fetch";
+import { getMedia } from "@/utils/fetch";
 import { useMediaStore } from "@/stores/media";
 import { formatDate } from "@/utils/common";
 
 export default async function DetailsCard() {
 	const id = useMediaStore.getState().mediaId;
-	const media = await getAnime(id);
+	const mediaType = useMediaStore.getState().mediaType;
+	const data = id ? await getMedia(mediaType, id) : null;
 
 	return (
 		<>
-			<DetailsItem title="English">{media.en}</DetailsItem>
-			<DetailsItem title="Romaji">{media.enjp}</DetailsItem>
-			<DetailsItem title="Native">{media.jp}</DetailsItem>
-			<DetailsItem title="Format">{media.type}</DetailsItem>
-			<DetailsItem title="Status">{media.status}</DetailsItem>
-			<DetailsItem title="Source">{media.source}</DetailsItem>
-			<DetailsItem title="Studio">{media.studio?.join(", ")}</DetailsItem>
-			{media.type === "Movie" ? (
-				<DetailsItem title="Runtime">{media.runtime}</DetailsItem>
+			<DetailsItem title="English">{data.en}</DetailsItem>
+			<DetailsItem title="Romaji">{data.enjp}</DetailsItem>
+			<DetailsItem title="Native">{data.jp}</DetailsItem>
+			<DetailsItem title="Format">{data.type}</DetailsItem>
+			<DetailsItem title="Status">{data.status}</DetailsItem>
+			<DetailsItem title="Source">{data.source}</DetailsItem>
+			{mediaType !== "manga" ? (
+				mediaType !== "movie" ? (
+					<DetailsItem title="Runtime">{data.runtime}</DetailsItem>
+				) : (
+					<DetailsItem title="Episodes">{data.episodeCount}</DetailsItem>
+				)
 			) : (
-				<DetailsItem title="Episodes">{media.episodeCount}</DetailsItem>
+				<>
+					<DetailsItem title="Chapters">{data.chapterCount}</DetailsItem>
+					<DetailsItem title="Volumes">{data.volumeCount}</DetailsItem>
+				</>
 			)}
-			<DetailsItem title="Start Date">{formatDate(media.startDate)}</DetailsItem>
-			<DetailsItem title="End Date">{formatDate(media.startDate)}</DetailsItem>
-			<DetailsItem title="Season">{media.season}</DetailsItem>
-			<DetailsItem title="Popularity">{media.popularity}</DetailsItem>
-			<DetailsItem title="Score">{media.score}</DetailsItem>
-			<DetailsItem title="Genres">{media.genres?.sort()?.join(", ")}</DetailsItem>
-			<DetailsItem title="Tags">{media.tags?.sort()?.join(", ")}</DetailsItem>
+			<DetailsItem title="Start Date">{formatDate(data.startDate)}</DetailsItem>
+			<DetailsItem title="End Date">{formatDate(data.startDate)}</DetailsItem>
+			{mediaType !== "manga" && <DetailsItem title="Season">{data.season}</DetailsItem>}
+			{mediaType !== "manga" ? (
+				<DetailsItem title="Studio">{data.studio?.join(", ")}</DetailsItem>
+			) : (
+				<DetailsItem title="Publisher">{data.publisher?.join(", ")}</DetailsItem>
+			)}
+			<DetailsItem title="Popularity">{data.popularity}</DetailsItem>
+			<DetailsItem title="Score">{data.score}</DetailsItem>
+			<DetailsItem title="Genres">{data.genres?.sort()?.join(", ")}</DetailsItem>
+			<DetailsItem title="Tags">{data.tags?.sort()?.join(", ")}</DetailsItem>
 		</>
 	);
 }
