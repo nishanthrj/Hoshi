@@ -41,13 +41,24 @@ export default function TabNavbar({ type }: TabNavbarProps) {
 					Episodes
 				</span>
 			)}
-			<span
-				data-tab="staff"
-				className={`cursor-pointer font-semibold text-dark-200 transition-colors duration-300 hover:text-dark-50 ${
-					activeTab === "staff" ? "text-dark-50" : ""
-				}`}>
-				Staff
-			</span>
+
+			{type !== "manga" ? (
+				<span
+					data-tab="staff"
+					className={`cursor-pointer font-semibold text-dark-200 transition-colors duration-300 hover:text-dark-50 ${
+						activeTab === "staff" ? "text-dark-50" : ""
+					}`}>
+					Staff
+				</span>
+			) : (
+				<span
+					data-tab="characters"
+					className={`cursor-pointer font-semibold text-dark-200 transition-colors duration-300 hover:text-dark-50 ${
+						activeTab === "characters" ? "text-dark-50" : ""
+					}`}>
+					Characters
+				</span>
+			)}
 		</nav>
 	);
 }

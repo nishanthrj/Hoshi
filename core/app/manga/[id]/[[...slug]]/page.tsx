@@ -8,7 +8,7 @@ import TabNavbar from "@/components/media/TabNavbar";
 import Navbar from "@/components/navbar/Navbar";
 import TabWrapper from "@/components/media/TabWrapper";
 import OverviewTab from "@/components/media/OverviewTab";
-import CharactersTab from "@/components/media/StaffTab";
+import CharactersTab from "@/components/media/CharactersTab";
 import ResetMediaPage from "@/components/media/ResetMediaPage";
 import { Suspense } from "react";
 
@@ -54,7 +54,10 @@ export default async function Manga({ params }: MangaPageParams) {
 					<OverviewTab />
 				</TabWrapper>
 				<TabWrapper name="characters">
-					<CharactersTab />
+					<Suspense>
+						{/* @ts-expect-error Async Server Component */}
+						<CharactersTab />
+					</Suspense>
 				</TabWrapper>
 			</section>
 		</main>
