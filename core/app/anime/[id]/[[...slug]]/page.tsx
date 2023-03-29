@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { useMediaStore } from "@/stores/media";
-import { getAnime } from "@/utils/fetch";
+import { getMedia } from "@/utils/fetch";
 import MediaHeader from "@/components/media/MediaHeader";
 import TabNavbar from "@/components/media/TabNavbar";
 import Navbar from "@/components/navbar/Navbar";
@@ -21,13 +21,13 @@ interface AnimePageParams {
 }
 
 export async function generateMetadata({ params }: AnimePageParams): Promise<Metadata> {
-	const media = await getAnime(params.id);
+	const media = await getMedia("anime", params.id);
 	return { title: media.title };
 }
 
 export default async function Anime({ params }: AnimePageParams) {
 	useMediaStore.setState({ mediaId: params.id });
-	const media = await getAnime(params.id);
+	const media = await getMedia("anime", params.id);
 	const type = media.type === "Movie" ? "movie" : "anime";
 
 	useMediaStore.setState({ malId: media.malId, kitsuId: media.kitsuId, mediaType: type });

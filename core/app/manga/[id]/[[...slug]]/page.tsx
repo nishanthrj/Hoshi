@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { useMediaStore } from "@/stores/media";
-import { getManga } from "@/utils/fetch";
+import { getMedia } from "@/utils/fetch";
 import MediaHeader from "@/components/media/MediaHeader";
 import TabNavbar from "@/components/media/TabNavbar";
 import Navbar from "@/components/navbar/Navbar";
@@ -10,6 +10,7 @@ import TabWrapper from "@/components/media/TabWrapper";
 import OverviewTab from "@/components/media/OverviewTab";
 import CharactersTab from "@/components/media/StaffTab";
 import ResetMediaPage from "@/components/media/ResetMediaPage";
+import { Suspense } from "react";
 
 interface MangaPageParams {
 	params: {
@@ -19,13 +20,13 @@ interface MangaPageParams {
 }
 
 export async function generateMetadata({ params }: MangaPageParams): Promise<Metadata> {
-	const media = await getManga(params.id);
+	const media = await getMedia("manga", params.id);
 	return { title: media.title };
 }
 
 export default async function Manga({ params }: MangaPageParams) {
 	useMediaStore.setState({ mediaId: params.id });
-	const media = await getManga(params.id);
+	const media = await getMedia("manga", params.id);
 
 	useMediaStore.setState({ malId: media.malId, kitsuId: media.kitsuId, mediaType: "manga" });
 
