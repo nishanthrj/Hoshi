@@ -4,9 +4,9 @@ import { forwardRef, Ref } from "react";
 import MediaImage from "@/components/common/MediaImage";
 
 interface EpisodeCardProps {
-	title: string;
-	number: number;
-	image: string;
+	title: string | null;
+	number: number | null;
+	image: string | null;
 	ref: Ref<HTMLDivElement> | null;
 }
 
@@ -16,7 +16,7 @@ const EpisodeCard = forwardRef<HTMLDivElement, EpisodeCardProps>(
 			<div ref={ref} className="capitalize leading-5">
 				<div className="relative h-[11.8rem] w-[21rem]">
 					<MediaImage
-						src={image}
+						src={image ? image : ""}
 						fill={true}
 						style={{ objectFit: "cover" }}
 						quality={100}

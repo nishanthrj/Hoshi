@@ -17,10 +17,12 @@ export default async function StatsSection() {
 				<StatsCard
 					completed={data?.completed || 0}
 					planning={
-						mediaType !== "manga" ? data?.plan_to_watch || 0 : data?.plan_to_read || 0
+						("plan_to_watch" in data && data?.plan_to_watch) ||
+						("plan_to_read" in data && data?.plan_to_read) ||
+						0
 					}
-					watching={mediaType !== "manga" ? data?.watching || 0 : undefined}
-					reading={mediaType === "manga" ? data?.reading || 0 : undefined}
+					watching={"watching" in data ? data?.watching || 0 : undefined}
+					reading={"reading" in data ? data?.reading || 0 : undefined}
 					paused={data?.on_hold || 0}
 					dropped={data?.dropped || 0}
 					total={data?.total || 0}

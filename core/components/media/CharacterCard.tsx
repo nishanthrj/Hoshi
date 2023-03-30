@@ -1,7 +1,7 @@
 import MediaImage from "@/components/common/MediaImage";
 
 interface CharacterCardProps {
-	image: string;
+	image: string | null;
 	character: string;
 	voice: string;
 }
@@ -11,7 +11,7 @@ export default function CharacterCard({ image, character, voice }: CharacterCard
 		<div className="w-32 max-xs:w-[7.5rem]">
 			<div className="relative h-40 max-xs:h-[9.25rem]">
 				<MediaImage
-					src={!image.includes("questionmark") ? image : ""}
+					src={image && !image.includes("questionmark") ? image : ""}
 					fill={true}
 					style={{ objectFit: "cover" }}
 					quality={100}

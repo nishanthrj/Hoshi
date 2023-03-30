@@ -14,7 +14,7 @@ export default async function StaffSection() {
 			</h1>
 			{data ? (
 				<div className="grid grid-cols-[repeat(auto-fill,min(21rem,100%))] gap-8 overflow-hidden">
-					{data.map((staff: any) => (
+					{data.map((staff: Staff) => (
 						<StaffCard
 							key={uuid()}
 							name={staff.person.name.replace(",", "")}

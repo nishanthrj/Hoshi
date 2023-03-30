@@ -11,13 +11,13 @@ interface MediaCardProps {
 	id: number;
 	title: string;
 	slug: string;
-	poster: string;
-	score: number;
-	format: string;
-	length: string | number;
-	status: string;
-	genres: string[];
-	synopsis: string;
+	poster: string | null;
+	score: number | null;
+	format: string | null;
+	length: string | number | null;
+	status: string | null;
+	genres: string[] | null;
+	synopsis: string | null;
 	ref: Ref<HTMLDivElement> | null;
 }
 
@@ -80,7 +80,7 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 				<div className="relative">
 					{poster && (
 						<MediaImage
-							src={poster}
+							src={poster ? poster : ""}
 							fill={true}
 							style={{ objectFit: "cover" }}
 							quality={85}
@@ -98,7 +98,7 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 							{title}
 						</Link>
 						<div className="absolute left-72 flex items-center gap-x-2 text-[.9rem] font-semibold">
-							{formatScore(score)}
+							{score && formatScore(score)}
 						</div>
 					</div>
 					<div className="mt-1 text-xs font-semibold capitalize ">

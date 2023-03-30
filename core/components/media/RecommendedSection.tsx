@@ -6,7 +6,7 @@ export default async function RecommendedSection() {
 	const id = useMediaStore.getState().mediaId;
 	const mediaType = useMediaStore.getState().mediaType;
 
-	const data = id ? await getMedia(mediaType, id) : null;
+	const data = await getMedia(mediaType, id);
 
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] pr-4 md:ml-5">
@@ -14,7 +14,7 @@ export default async function RecommendedSection() {
 				Recommended
 			</h1>
 			<div className="flex flex-wrap gap-8">
-				{data.recommended.map((rec: any) => (
+				{data.recommended.map((rec: RecommendedMedia) => (
 					<RecommendedCard
 						key={rec._id}
 						id={rec._id}

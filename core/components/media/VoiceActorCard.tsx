@@ -3,8 +3,8 @@ import MediaImage from "@/components/common/MediaImage";
 interface VoiceActorCardProps {
 	charaName: string;
 	voiceName: string;
-	charaImage: string;
-	voiceImage: string;
+	charaImage: string | null;
+	voiceImage: string | null;
 	charaRole: string;
 	voiceRole: string;
 }
@@ -22,7 +22,7 @@ export default function VoiceActorCard({
 			<div className="grid h-24 grid-cols-[4.25rem_auto] gap-4 overflow-hidden rounded-l bg-dark-600 leading-5 text-dark-200">
 				<div className="relative">
 					<MediaImage
-						src={!charaImage.includes("questionmark") ? charaImage : ""}
+						src={charaImage && !charaImage.includes("questionmark") ? charaImage : ""}
 						fill={true}
 						style={{ objectFit: "cover" }}
 						quality={100}
@@ -46,7 +46,9 @@ export default function VoiceActorCard({
 				<div className="relative">
 					{(voiceName || voiceImage) && (
 						<MediaImage
-							src={!voiceImage.includes("questionmark") ? voiceImage : ""}
+							src={
+								voiceImage && !voiceImage.includes("questionmark") ? voiceImage : ""
+							}
 							fill={true}
 							style={{ objectFit: "cover" }}
 							quality={100}

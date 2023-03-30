@@ -15,18 +15,21 @@ export default async function VoiceActorsSection() {
 			</h1>
 			{data && mediaType !== "manga" ? (
 				<div className="grid grid-cols-[repeat(auto-fill,min(32rem,100%))] gap-8 overflow-hidden">
-					{data.map((chara: any) => {
+					{data.map((chara: Character) => {
 						const va = {
 							name: "",
 							image: "",
 							role: "",
 						};
-						for (const v of chara.voice_actors) {
-							if (v.language !== "Japanese") continue;
-							else {
-								va.name = v?.person.name.replace(",", "");
-								va.image = v?.person.images.jpg.image_url;
-								va.role = v?.language;
+
+						if (chara.voice_actors) {
+							for (const v of chara.voice_actors) {
+								if (v.language !== "Japanese") continue;
+								else {
+									va.name = v.person.name?.replace(",", "");
+									va.image = v.person.images?.jpg.image_url || "";
+									va.role = v?.language;
+								}
 							}
 						}
 

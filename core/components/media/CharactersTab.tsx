@@ -16,7 +16,7 @@ export default async function CharactersTab() {
 			</h1>
 			{data ? (
 				<div className="flex flex-wrap gap-12">
-					{data.map((chara: any) => {
+					{data.map((chara: Character) => {
 						return (
 							<CharacterCard
 								key={uuid()}

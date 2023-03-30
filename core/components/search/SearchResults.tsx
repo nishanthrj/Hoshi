@@ -55,8 +55,13 @@ export default function SearchResults() {
 	return (
 		<div className="my-8 grid w-full grid-cols-[repeat(auto-fill,minmax(26rem,35rem))] justify-center gap-y-8 gap-x-12 overflow-hidden">
 			{data?.pages
-				.flatMap((page) => page.data)
-				.map((media: any, i: number) => {
+				.flatMap((page) => page.data as Media[])
+				.map((media, i) => {
+					let length = null;
+					if ("runtime" in media) length = media.runtime as string;
+					else if ("episodeCount" in media) length = media.episodeCount as number;
+					else if ("chapterCount" in media) length = media.chapterCount as number;
+
 					return (
 						<MediaCard
 							ref={i % 15 === 0 ? ref : null}
@@ -65,15 +70,9 @@ export default function SearchResults() {
 							title={media.title}
 							slug={media.slug}
 							poster={media.poster}
-							score={Math.round(media.score)}
+							score={media.score ? Math.round(media.score) : null}
 							format={media.type}
-							length={
-								mediaType !== "manga"
-									? media.type === "Movie"
-										? media.runtime
-										: media.episodeCount
-									: media.chapterCount
-							}
+							length={length}
 							status={media.status}
 							genres={media.genres}
 							synopsis={media.synopsis}

@@ -5,7 +5,7 @@ interface RecommendedCardProps {
 	id: number;
 	slug: string;
 	title: string;
-	poster: string;
+	poster: string | null;
 }
 
 export default function RecommendedCard({ id, slug, title, poster }: RecommendedCardProps) {
@@ -13,7 +13,7 @@ export default function RecommendedCard({ id, slug, title, poster }: Recommended
 		<div className="w-36 max-xs:w-32">
 			<div className="relative h-[12.65rem] max-xs:h-[11.25rem]">
 				<MediaImage
-					src={poster}
+					src={poster ? poster : ""}
 					fill={true}
 					style={{ objectFit: "cover" }}
 					quality={100}

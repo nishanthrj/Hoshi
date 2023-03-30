@@ -16,10 +16,10 @@ export default async function CharactersSection() {
 			</h1>
 			{data ? (
 				<div className="flex flex-wrap gap-12">
-					{data.slice(0, 6).map((chara: any) => {
+					{data.slice(0, 6).map((chara: Character) => {
 						let va = "";
 
-						if (mediaType !== "manga") {
+						if (mediaType !== "manga" && chara.voice_actors) {
 							for (const v of chara.voice_actors) {
 								if (v.language !== "Japanese") continue;
 								else {

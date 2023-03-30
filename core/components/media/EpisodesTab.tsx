@@ -15,11 +15,10 @@ export default function EpisodesTab({ id }: EpisodesTabProps) {
 
 	const { fetchNextPage, hasNextPage, data } = useInfiniteQuery({
 		queryKey: ["episodes", id],
-		queryFn: ({ pageParam = 0 }) => (id ? getEpisodes(pageParam, id) : []),
+		queryFn: ({ pageParam = 0 }) => getEpisodes(pageParam, id),
 		getNextPageParam: (lastPage) => {
-			return lastPage.links.next
-				? parseInt(lastPage.links.next.match(/page\[offset\]=(\d+)/)?.[1])
-				: undefined;
+			const page = lastPage.links?.next?.match(/page\[offset\]=(\d+)/)?.[1];
+			return lastPage.links.next && page ? parseInt(page) : undefined;
 		},
 		staleTime: 1 * 60 * 60 * 1000,
 		cacheTime: 2 * 60 * 60 * 1000,
@@ -38,15 +37,17 @@ export default function EpisodesTab({ id }: EpisodesTabProps) {
 				<div className="grid grid-cols-[repeat(auto-fill,21rem)] gap-8">
 					{data?.pages
 						.flatMap((page) => page.data)
-						.map((ep: any, i: number) => (
-							<EpisodeCard
-								ref={i % 20 === 0 ? ref : null}
-								key={ep.id}
-								title={ep.attributes.canonicalTitle}
-								number={ep.attributes.number}
-								image={ep.attributes.thumbnail?.original}
-							/>
-						))}
+						.map((ep: Episode, i: number) => {
+							return (
+								<EpisodeCard
+									ref={i % 20 === 0 ? ref : null}
+									key={ep.id}
+									title={ep.attributes.canonicalTitle}
+									number={ep.attributes.number}
+									image={ep.attributes.thumbnail?.original}
+								/>
+							);
+						})}
 				</div>
 			) : (
 				<p className="pl-4 text-base font-normal text-dark-100">

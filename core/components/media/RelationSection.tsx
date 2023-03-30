@@ -15,7 +15,7 @@ export default async function RelationSection() {
 			</h1>
 			{data ? (
 				<div className="grid grid-cols-[repeat(auto-fill,min(25rem,100%))] gap-8 overflow-hidden">
-					{data.map((media: any) => (
+					{data.map((media: RelatedMedia) => (
 						<RelationCard
 							key={uuid()}
 							id={media.id}

@@ -3,28 +3,29 @@ import { useMediaStore } from "@/stores/media";
 import { getMedia } from "@/utils/fetch";
 import Tag from "@/components/common/Tag";
 
-export const formatLength = (mediaType: string, media: any): string | null => {
-	if (mediaType === "movie" && media.runtime) {
-		return media.runtime;
-	} else if (mediaType === "anime" && media.episodeCount) {
-		return `${media.episodeCount} Episode${media.episodeCount > 1 ? "s" : ""}`;
-	} else if (mediaType === "manga" && media.chapterCount) {
-		return `${media.chapterCount} Chapter${media.chapterCount > 1 ? "s" : ""}`;
-	} else return null;
-};
-
 export default async function HeaderInfo() {
 	const id = useMediaStore.getState().mediaId;
 	const mediaType = useMediaStore.getState().mediaType;
 
-	const data = id ? await getMedia(mediaType, id) : null;
+	const data = await getMedia(mediaType, id);
 
-	const length = formatLength(mediaType, data);
+	let length;
+	if ("runtime" in data) {
+		length = data.runtime;
+	} else if ("episodeCount" in data) {
+		length = `${data.episodeCount} Episode${
+			data.episodeCount && data.episodeCount > 1 ? "s" : ""
+		}`;
+	} else if ("chapterCount" in data) {
+		length = `${data.chapterCount} Chapter${
+			data.chapterCount && data.chapterCount > 1 ? "s" : ""
+		}`;
+	} else length = null;
 
 	return (
 		<div className="relative mt-2 w-[min(95%,60rem)] font-medium">
 			<span className="text-[.8rem] text-dark-200 max-xs:hidden ">
-				{data.studio?.join(", ")}
+				{"studio" in data && data.studio?.join(", ")}
 			</span>
 			<h1 className="text-xl font-semibold text-dark-50 line-clamp-2 max-xs:text-center">
 				{data.title}
@@ -35,7 +36,7 @@ export default async function HeaderInfo() {
 				{data.status}
 			</span>
 			<div className="mt-8 flex w-full gap-2 text-dark-100 max-xs:justify-center">
-				{data.genres.sort().map((genre: string) => (
+				{data.genres?.sort().map((genre: string) => (
 					<Tag key={uuid()}>{genre}</Tag>
 				))}
 			</div>
