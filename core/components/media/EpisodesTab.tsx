@@ -20,8 +20,8 @@ export default function EpisodesTab({ id }: EpisodesTabProps) {
 			const page = lastPage.links?.next?.match(/page\[offset\]=(\d+)/)?.[1];
 			return lastPage.links.next && page ? parseInt(page) : undefined;
 		},
-		staleTime: 1 * 60 * 60 * 1000,
-		cacheTime: 2 * 60 * 60 * 1000,
+		staleTime: 3 * 60 * 60 * 1000,
+		cacheTime: 6 * 60 * 60 * 1000,
 	});
 
 	useEffect(() => {
