@@ -17,7 +17,7 @@ export default async function DetailsCard() {
 			<DetailsItem title="Status">{data.status}</DetailsItem>
 			<DetailsItem title="Source">{data.source}</DetailsItem>
 			{mediaType !== "manga" ? (
-				mediaType !== "movie" ? (
+				mediaType === "movie" ? (
 					<DetailsItem title="Runtime">{data.runtime}</DetailsItem>
 				) : (
 					<DetailsItem title="Episodes">{data.episodeCount}</DetailsItem>
