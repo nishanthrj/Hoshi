@@ -91,7 +91,7 @@ async def get_anime_trailer(malId: int):
     data = data.get('data', {}).get('promo')
     if data:
         for promo in data:
-            if "PV" in promo['title'] and "Character" not in promo['title']:
+            if "PV" in promo['title'] and ("Character" not in promo['title'] or "English" not in promo['title']):
                 return JSONResponse(content=promo)
 
     return JSONResponse(content=data[0] if data else None)
