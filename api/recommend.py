@@ -42,8 +42,8 @@ def recommend(media_format: str, media_type: str) -> None:
    
     df['tempId'] = range(len(df))
     
-    df['genres'] = df['genres'].apply(lambda x: sorted(x) if x else [])
-    df['tags'] = df['tags'].apply(lambda x: sorted(x) if x else [])
+    df['genres'] = df['genres'].apply(lambda x: sorted([g.replace(" ", "") for g in x]) if x else [])
+    df['tags'] = df['tags'].apply(lambda x: sorted([t.replace(" ", "") for t in x]) if x else [])
     df['synopsis'] = df['synopsis'].fillna('')
     df['synopsis'] = df['synopsis'].str.lower()
     
