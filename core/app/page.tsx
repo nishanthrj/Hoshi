@@ -13,15 +13,13 @@ export default function Home() {
 	return (
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
-			<section className="mt-12 flex w-full flex-col items-center pl-4">
+			<section className="mt-12 w-full pl-4">
 				<div></div>
-				<div>
+				<div className="flex flex-col items-center">
 					<MediaSection title="popular this season" />
 					<MediaSection title="upcoming next season" />
 					<MediaSection title="highest rated anime" />
 					<MediaSection title="most popular anime" />
-				</div>
-				<div>
 					<MediaSection title="highest rated manga" />
 					<MediaSection title="most popular manga" />
 					<MediaSection title="most popular manhwa" />

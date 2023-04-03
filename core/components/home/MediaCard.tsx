@@ -10,8 +10,8 @@ interface MediaCardProps {
 
 export default function MediaCard({ id, slug, title, poster }: MediaCardProps) {
 	return (
-		<div className="w-48 max-xs:w-32">
-			<div className="relative h-[17rem] max-xs:h-[11.25rem]">
+		<div>
+			<div className="relative aspect-[4/6]">
 				<MediaImage
 					src={poster ? poster : ""}
 					fill={true}
