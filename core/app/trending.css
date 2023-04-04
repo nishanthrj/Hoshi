@@ -16,10 +16,5 @@
 }
 .splide .splide__arrow {
 	background: none;
-	top: 92%;
 	margin-left: 1rem;
-}
-
-.splide__arrow--next {
-	left: 3rem;
 }

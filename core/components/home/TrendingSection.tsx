@@ -18,8 +18,8 @@ export default function TrendingSection() {
 			}}
 			aria-label="Trending Media">
 			<div className="splide__arrows">
-				<MdArrowBack className="splide__arrow splide__arrow--prev text-xs text-dark-100" />
-				<MdArrowForward className="splide__arrow splide__arrow--next text-xs text-dark-100" />
+				<MdArrowBack className="splide__arrow splide__arrow--prev top-[92%] left-[1%] text-center text-xs text-dark-100 sm:left-6 max-xs:top-[90%]" />
+				<MdArrowForward className="splide__arrow splide__arrow--next top-[92%] right-[5%] text-center text-xs text-dark-100 sm:left-14 max-xs:top-[90%]" />
 			</div>
 			<SplideTrack>
 				<SplideSlide>

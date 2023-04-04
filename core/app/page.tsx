@@ -15,7 +15,7 @@ export default function Home() {
 	return (
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
-			<section className="mt-12 w-full pl-4">
+			<section className="mt-14 w-full pl-4">
 				<div className="relative mx-auto grid h-96 w-[min(70rem,100%)] pr-4">
 					<TrendingSection />
 				</div>

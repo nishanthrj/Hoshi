@@ -3,21 +3,21 @@ import Tag from "@/components/common/Tag";
 
 export default function TrendingCard() {
 	return (
-		<div className="relative mx-auto grid h-96 w-[min(70rem,100%)] grid-cols-[60%_40%] overflow-hidden rounded-lg bg-dark-700">
-			<div className="relative mt-7 ml-8 w-11/12 font-medium">
-				<span className="text-[.8rem] text-dark-200 max-xs:hidden ">Anime • TV</span>
+		<div className="relative mx-auto grid h-96 w-[min(70rem,100%)] grid-cols-1 overflow-hidden rounded-lg bg-dark-700 sm:grid-cols-[60%_40%] max-xs:mt-12 max-xs:h-80">
+			<div className="relative z-30 mt-7 w-full p-3 font-medium sm:ml-8 sm:w-11/12 max-xs:ml-0 max-xs:mt-3 max-xs:text-center">
+				<span className="text-[.8rem] text-dark-100 sm:text-dark-200">Anime • TV</span>
 				<h1 className="text-2xl font-semibold text-dark-50 line-clamp-2 max-xs:text-center">
 					Bocchi the Rock
 				</h1>
-				<span className="absolute w-full text-xs text-dark-100 max-xs:text-center ">
+				<span className="absolute w-full text-xs text-dark-100 max-xs:relative max-xs:text-center">
 					88.9% • 371,521 Users • 18,090 Likes
 				</span>
-				<div className="mt-8 flex w-full gap-2 text-dark-100 max-xs:justify-center">
-					<Tag>Music</Tag>
-					<Tag>Comedy</Tag>
-					<Tag>Slice of life</Tag>
+				<div className="mt-8 flex w-full gap-2 text-dark-100 max-xs:mt-4 max-xs:justify-center">
+					<Tag className="max-xs:bg-opacity-75">Music</Tag>
+					<Tag className="max-xs:bg-opacity-75">Comedy</Tag>
+					<Tag className="max-xs:bg-opacity-75">Slice of life</Tag>
 				</div>
-				<p className="mt-4 text-justify text-sm font-normal leading-6 text-dark-100 line-clamp-6 max-xs:mt-6 max-xs:text-xs ">
+				<p className="mt-4 text-justify text-xs font-normal leading-5 text-dark-100 line-clamp-6 sm:text-sm sm:leading-6 max-xs:mt-6 max-xs:text-xs ">
 					Hitori Gotoh, “Bocchi-chan,” is a girl who's so introverted and shy around
 					people that she'd always start her conversations with “Ah...” During her middle
 					school years, she started playing the guitar, wanting to join a band because she
@@ -33,20 +33,22 @@ export default function TrendingCard() {
 					little by little...
 				</p>
 			</div>
-			<div className="relative aspect-[4/6] -translate-y-[15%]">
-				<div className="absolute inset-0 z-50 bg-gradient-to-r from-[#171520] opacity-100"></div>
+			<div className="absolute h-full w-full sm:relative">
+				<div className="absolute aspect-[4/6] h-full w-full">
+					<div className="absolute inset-0 z-50 hidden bg-gradient-to-r from-[#171520] opacity-100 sm:block"></div>
 
-				<MediaImage
-					src={
-						"https://media.kitsu.io/anime/44196/poster_image/large-04fc7c066e52d4d2b9d0217b383597bb.jpeg"
-					}
-					fill={true}
-					style={{ objectFit: "cover" }}
-					quality={100}
-					sizes="500px"
-					alt="cover"
-					className="rounded-sm brightness-[80%]"
-				/>
+					<MediaImage
+						src={
+							"https://media.kitsu.io/anime/44196/poster_image/large-04fc7c066e52d4d2b9d0217b383597bb.jpeg"
+						}
+						fill={true}
+						style={{ objectFit: "cover" }}
+						quality={100}
+						sizes="500px"
+						alt="cover"
+						className="rounded-sm brightness-[25%] sm:brightness-[80%]"
+					/>
+				</div>
 			</div>
 		</div>
 	);
