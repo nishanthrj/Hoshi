@@ -1,1 +1,25 @@
 @import url("https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css");
+
+.splide {
+	overflow-y: hidden;
+}
+
+.splide__pagination {
+	display: none;
+}
+
+.splide .splide__arrow svg {
+	fill: none;
+	height: 20em;
+	width: 20em;
+	color: #fff;
+}
+.splide .splide__arrow {
+	background: none;
+	top: 92%;
+	margin-left: 1rem;
+}
+
+.splide__arrow--next {
+	left: 3rem;
+}

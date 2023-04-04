@@ -16,7 +16,9 @@ export default function Home() {
 		<main className="grid grid-cols-[min-content_auto]">
 			<Navbar />
 			<section className="mt-12 w-full pl-4">
-				<TrendingSection />
+				<div className="relative mx-auto grid h-96 w-[min(70rem,100%)]">
+					<TrendingSection />
+				</div>
 				<div className="flex flex-col items-center">
 					<MediaSection title="popular this season" />
 					<MediaSection title="upcoming next season" />
