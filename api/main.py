@@ -9,13 +9,18 @@ Website: https://hoshi.ga	|	URL: https://api.hoshi.ga	|	License: [GPL-3.0](https
 
 A simple REST API used in Hoshi.
 """
-app = FastAPI(title='Hoshi API', version='1.0.0', description=description, redoc_url='/docs', docs_url=None)
+app = FastAPI(
+    title="Hoshi API",
+    version="1.0.0",
+    description=description,
+    redoc_url="/docs",
+    docs_url=None,
+)
 
 origins = [
     "http://localhost",
     "http://localhost:3000",
     "http://localhost:8000",
-    
 ]
 
 app.add_middleware(
@@ -26,17 +31,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get('/', response_model=Root, include_in_schema=False)
+
+@app.get("/", response_model=Root, include_in_schema=False)
 async def root():
     data = {
-		'version': '0.1.0',
-		'website': 'https://hoshi.ga',
-		'author': 'https://github.com/nishanthrj',
-		'documentation': 'https://api.hoshi.ga/docs',
-		'github': 'https://github.com/nishanthrj/Hoshi',
-	}
+        "version": "0.1.0",
+        "website": "https://hoshi.ga",
+        "author": "https://github.com/nishanthrj",
+        "documentation": "https://api.hoshi.ga/docs",
+        "github": "https://github.com/nishanthrj/Hoshi",
+    }
     return data
+
 
 app.include_router(anime)
 app.include_router(manga)
-

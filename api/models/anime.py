@@ -1,14 +1,16 @@
 from pydantic import BaseModel, Field
 from datetime import datetime
 
+
 class Recommendation(BaseModel):
     id: int
     title: str
     slug: str
     poster: str | None
-    
+
+
 class Anime(BaseModel):
-    id: int = Field(..., alias='_id')
+    id: int = Field(..., alias="_id")
     malId: int
     kitsuId: int
     title: str
@@ -33,13 +35,13 @@ class Anime(BaseModel):
     likes: int | None
     recommended: list[Recommendation] | None
 
+
 class Paginations(BaseModel):
     total: int
     lastPage: int
     currentPage: int
-    
+
+
 class SearchResults(BaseModel):
     data: list[Anime] | list
     paginations: Paginations | None
-    
-
