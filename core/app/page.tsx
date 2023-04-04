@@ -20,13 +20,13 @@ export default function Home() {
 					<TrendingSection />
 				</div>
 				<div className="flex flex-col items-center">
-					<MediaSection title="popular this season" />
-					<MediaSection title="upcoming next season" />
-					<MediaSection title="highest rated anime" />
-					<MediaSection title="most popular anime" />
-					<MediaSection title="highest rated manga" />
-					<MediaSection title="most popular manga" />
-					<MediaSection title="most popular manhwa" />
+					<MediaSection title="popular this season" path="\anime\this-season" />
+					<MediaSection title="upcoming next season" path="\anime\next-season" />
+					<MediaSection title="highest rated anime" path="\anime\top" />
+					<MediaSection title="most popular anime" path="\anime\popular" />
+					<MediaSection title="highest rated manga" path="\manga\top" />
+					<MediaSection title="most popular manga" path="\manga\popular" />
+					<MediaSection title="most popular manhwa" path="\manga\top-manhwa" />
 				</div>
 			</section>
 		</main>

@@ -3,10 +3,11 @@ import MediaCard from "@/components/home/MediaCard";
 
 interface MediaSectionProps {
 	title: string;
+	path: string;
 	data?: any;
 }
 
-export default function MediaSection({ title, data }: MediaSectionProps) {
+export default function MediaSection({ title, path, data }: MediaSectionProps) {
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] pr-4 md:ml-5">
 			<div className="flex items-center justify-between">
@@ -14,9 +15,9 @@ export default function MediaSection({ title, data }: MediaSectionProps) {
 					{title}
 				</h1>
 				<Link
-					href="/anime/top"
+					href={path}
 					prefetch={false}
-					className="pr-6 text-xs font-semibold text-dark-200 max-xs:hidden">
+					className="pr-3 text-xs font-semibold text-dark-200 transition-colors duration-200 hover:text-dark-100 max-xs:hidden">
 					View All
 				</Link>
 			</div>
