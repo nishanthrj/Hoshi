@@ -13,7 +13,7 @@ export default function TrendingSection() {
 				gap: "1rem",
 				perPage: 1,
 				snap: true,
-				autoplay: false,
+				autoplay: true,
 				speed: 1000,
 			}}
 			aria-label="Trending Media">
