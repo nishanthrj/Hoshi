@@ -3,7 +3,7 @@ import Tag from "@/components/common/Tag";
 
 export default function TrendingCard() {
 	return (
-		<div className="relative mx-auto grid h-96 w-[min(70rem,100%)] grid-cols-[60%_40%] overflow-hidden rounded-lg bg-dark-800">
+		<div className="relative mx-auto grid h-96 w-[min(70rem,100%)] grid-cols-[60%_40%] overflow-hidden rounded-lg bg-dark-700">
 			<div className="relative mt-10 ml-8 w-11/12 font-medium">
 				<span className="text-[.8rem] text-dark-200 max-xs:hidden ">Cloverworks</span>
 				<h1 className="text-xl font-semibold text-dark-50 line-clamp-2 max-xs:text-center">
@@ -34,7 +34,7 @@ export default function TrendingCard() {
 				</p>
 			</div>
 			<div className="relative aspect-[4/6] -translate-y-[15%]">
-				<div className="absolute inset-0 z-50 bg-gradient-to-r from-black to-transparent opacity-90"></div>
+				<div className="absolute inset-0 z-50 bg-gradient-to-r from-[#171520] opacity-100"></div>
 
 				<MediaImage
 					src={
@@ -45,7 +45,7 @@ export default function TrendingCard() {
 					quality={100}
 					sizes="500px"
 					alt="cover"
-					className="rounded-sm"
+					className="rounded-sm brightness-[80%]"
 				/>
 			</div>
 		</div>
