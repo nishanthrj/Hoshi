@@ -4,13 +4,13 @@ import Tag from "@/components/common/Tag";
 export default function TrendingCard() {
 	return (
 		<div className="relative mx-auto grid h-96 w-[min(70rem,100%)] grid-cols-[60%_40%] overflow-hidden rounded-lg bg-dark-700">
-			<div className="relative mt-10 ml-8 w-11/12 font-medium">
-				<span className="text-[.8rem] text-dark-200 max-xs:hidden ">Cloverworks</span>
-				<h1 className="text-xl font-semibold text-dark-50 line-clamp-2 max-xs:text-center">
+			<div className="relative mt-7 ml-8 w-11/12 font-medium">
+				<span className="text-[.8rem] text-dark-200 max-xs:hidden ">Anime • TV</span>
+				<h1 className="text-2xl font-semibold text-dark-50 line-clamp-2 max-xs:text-center">
 					Bocchi the Rock
 				</h1>
 				<span className="absolute w-full text-xs text-dark-100 max-xs:text-center ">
-					TV • 12 Episodes • Finished
+					88.9% • 371,521 Users • 18,090 Likes
 				</span>
 				<div className="mt-8 flex w-full gap-2 text-dark-100 max-xs:justify-center">
 					<Tag>Music</Tag>
