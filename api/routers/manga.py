@@ -2,7 +2,7 @@ from fastapi import APIRouter, Path, Query
 from fastapi.responses import JSONResponse
 from models.manga import Manga, SearchResults
 from db import database
-from utils import build_pipeline
+from utils import build_pipeline, trending_query
 from aiohttp_retry import RetryClient, ExponentialRetry
 
 
@@ -69,6 +69,21 @@ async def get_top_manga():
     result = await collection.aggregate(pipeline).to_list(None)
 
     return JSONResponse(content=result)
+
+
+@manga.get(
+    "/manga/trending",
+    tags=["Manga"],
+)
+async def get_trending_manga():
+    res = await client.post(
+        "https://graphql.anilist.co",
+        json={"query": trending_query, "variables": {"type": "MANGA"}},
+    )
+
+    data = await res.json()
+
+    return JSONResponse(content=data)
 
 
 @manga.get(
