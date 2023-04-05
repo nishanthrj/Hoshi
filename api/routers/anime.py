@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from models.anime import Anime, SearchResults
 from db import database
-from utils import build_pipeline, season_pipeline
+from utils import build_pipeline, season_pipeline, trending_query
 from fastapi.responses import JSONResponse
 from aiohttp_retry import RetryClient, ExponentialRetry
 
@@ -70,6 +70,21 @@ async def get_top_anime():
     result = await collection.aggregate(pipeline).to_list(None)
 
     return JSONResponse(content=result)
+
+
+@anime.get(
+    "/anime/trending",
+    tags=["Anime"],
+)
+async def get_trending_anime():
+    res = await client.post(
+        "https://graphql.anilist.co",
+        json={"query": trending_query, "variables": {"type": "ANIME"}},
+    )
+
+    data = await res.json()
+
+    return JSONResponse(content=data)
 
 
 @anime.get(

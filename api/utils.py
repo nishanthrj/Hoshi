@@ -167,3 +167,25 @@ def season_pipeline(season: str):
     ]
 
     return pipeline
+
+
+trending_query = """query($type: MediaType) {
+      Page(page: 1, perPage: 10) {
+        media(type: $type, isAdult: false, sort: TRENDING_DESC) {
+          id
+          idMal
+          title {
+            english
+            romaji
+          }
+          format
+          genres
+          popularity
+          description
+          coverImage {
+            extraLarge
+          }
+          averageScore
+        }
+      }
+    }"""
