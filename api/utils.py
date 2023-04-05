@@ -145,7 +145,8 @@ def build_pipeline(
 def season_pipeline(season: str):
     x = 0 if season == "current" else 1
     seasons = ["Winter", "Spring", "Summer", "Fall"]
-    this_season = f"{seasons[math.floor((int(datetime.today().month) - 1) % 3) + x]} {datetime.today().year}"
+    this_season = f"{seasons[math.floor((int(datetime.today().month) - 1) / 3) + x]} {datetime.today().year}"
+    print(this_season)
     pipeline = [
         {
             "$search": {
