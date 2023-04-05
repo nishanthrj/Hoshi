@@ -43,6 +43,20 @@ async def search_manga(
     return JSONResponse(content=result[0])
 
 
+@manga.get(
+    "/manga/popular",
+    response_model=SearchResults,
+    response_model_by_alias=False,
+    tags=["Manga"],
+)
+async def get_popular_manga():
+    pipeline = [{"$sort": {"popularity": -1}}, {"$limit": 100}]
+
+    result = await collection.aggregate(pipeline).to_list(None)
+
+    return JSONResponse(content=result[0])
+
+
 @manga.get("/manga/external", include_in_schema=False)
 async def get_external_manga(kitsuId: int):
     result = await collection.find_one({"kitsuId": kitsuId})
