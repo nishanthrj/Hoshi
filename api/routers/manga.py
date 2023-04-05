@@ -57,6 +57,53 @@ async def get_popular_manga():
     return JSONResponse(content=result[0])
 
 
+@manga.get(
+    "/manga/top",
+    response_model=SearchResults,
+    response_model_by_alias=False,
+    tags=["Manga"],
+)
+async def get_top_manga():
+    pipeline = [{"$sort": {"score": -1}}, {"$limit": 100}]
+
+    result = await collection.aggregate(pipeline).to_list(None)
+
+    return JSONResponse(content=result[0])
+
+
+@manga.get(
+    "/manga/top-manhwa",
+    response_model=SearchResults,
+    response_model_by_alias=False,
+    tags=["Manga"],
+)
+async def get_top_manhwa():
+    pipeline = [
+        {
+            "$search": {
+                "index": "animesearch",
+                "compound": {
+                    "must": [
+                        {
+                            "phrase": {
+                                "path": "type",
+                                "query": "Manhwa",
+                            },
+                        },
+                    ],
+                },
+                "returnStoredSource": True,
+            },
+        },
+        {"$sort": {"score": -1}},
+        {"$limit": 100},
+    ]
+
+    result = await collection.aggregate(pipeline).to_list(None)
+
+    return JSONResponse(content=result[0])
+
+
 @manga.get("/manga/external", include_in_schema=False)
 async def get_external_manga(kitsuId: int):
     result = await collection.find_one({"kitsuId": kitsuId})
