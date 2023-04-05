@@ -55,7 +55,7 @@ async def get_popular_anime():
 
     result = await collection.aggregate(pipeline).to_list(None)
 
-    return JSONResponse(content=result[0])
+    return JSONResponse(content=result)
 
 
 @anime.get(
@@ -69,7 +69,7 @@ async def get_top_anime():
 
     result = await collection.aggregate(pipeline).to_list(None)
 
-    return JSONResponse(content=result[0])
+    return JSONResponse(content=result)
 
 
 @anime.get(

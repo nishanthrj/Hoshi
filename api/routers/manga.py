@@ -54,7 +54,7 @@ async def get_popular_manga():
 
     result = await collection.aggregate(pipeline).to_list(None)
 
-    return JSONResponse(content=result[0])
+    return JSONResponse(content=result)
 
 
 @manga.get(
@@ -68,7 +68,7 @@ async def get_top_manga():
 
     result = await collection.aggregate(pipeline).to_list(None)
 
-    return JSONResponse(content=result[0])
+    return JSONResponse(content=result)
 
 
 @manga.get(
@@ -101,7 +101,7 @@ async def get_top_manhwa():
 
     result = await collection.aggregate(pipeline).to_list(None)
 
-    return JSONResponse(content=result[0])
+    return JSONResponse(content=result)
 
 
 @manga.get("/manga/external", include_in_schema=False)
