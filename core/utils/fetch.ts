@@ -20,6 +20,104 @@ export const getMedia = async (mediaType: string, id: number): Promise<Anime | M
 	return res.json();
 };
 
+export const getTopAnime = async (): Promise<Anime[]> => {
+	const res = await fetch(`http://127.0.0.1:8000/anime/top`, {
+		next: { revalidate: 1 * 60 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const data = await res.json();
+
+	return data;
+};
+
+export const getPopularAnime = async (): Promise<Anime[]> => {
+	const res = await fetch(`http://127.0.0.1:8000/anime/popular`, {
+		next: { revalidate: 1 * 60 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const data = await res.json();
+
+	return data;
+};
+
+export const getCurrentSeason = async (): Promise<Anime[]> => {
+	const res = await fetch(`http://127.0.0.1:8000/anime/this-season`, {
+		next: { revalidate: 1 * 60 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const data = await res.json();
+
+	return data;
+};
+
+export const getNextSeason = async (): Promise<Anime[]> => {
+	const res = await fetch(`http://127.0.0.1:8000/anime/next-season`, {
+		next: { revalidate: 1 * 60 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const data = await res.json();
+
+	return data;
+};
+
+export const getPopularManga = async (): Promise<Manga[]> => {
+	const res = await fetch(`http://127.0.0.1:8000/manga/popular`, {
+		next: { revalidate: 1 * 60 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const data = await res.json();
+
+	return data;
+};
+
+export const getTopManga = async (): Promise<Manga[]> => {
+	const res = await fetch(`http://127.0.0.1:8000/manga/top`, {
+		next: { revalidate: 1 * 60 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const data = await res.json();
+
+	return data;
+};
+
+export const getTopManhwa = async (): Promise<Anime[]> => {
+	const res = await fetch(`http://127.0.0.1:8000/manga/top-manhwa`, {
+		next: { revalidate: 1 * 60 * 60 },
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const data = await res.json();
+
+	return data;
+};
+
 export const getTrendingMedia = async (): Promise<TrendingData> => {
 	const animeRes = await fetch(`http://127.0.0.1:8000/anime/trending`, {
 		next: { revalidate: 20 * 60 },
