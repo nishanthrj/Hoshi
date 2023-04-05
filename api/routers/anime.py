@@ -58,6 +58,20 @@ async def get_popular_anime():
     return JSONResponse(content=result[0])
 
 
+@anime.get(
+    "/anime/top",
+    response_model=SearchResults,
+    response_model_by_alias=False,
+    tags=["Anime"],
+)
+async def get_top_anime():
+    pipeline = [{"$sort": {"score": -1}}, {"$limit": 100}]
+
+    result = await collection.aggregate(pipeline).to_list(None)
+
+    return JSONResponse(content=result[0])
+
+
 @anime.get("/anime/external", tags=["Anime"], include_in_schema=False)
 async def get_external_anime(kitsuId: int):
     result = await collection.find_one({"kitsuId": kitsuId})
