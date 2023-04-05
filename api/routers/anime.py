@@ -83,6 +83,7 @@ async def get_trending_anime():
     )
 
     data = await res.json()
+    data = data["data"]["Page"]["media"]
 
     return JSONResponse(content=data)
 
