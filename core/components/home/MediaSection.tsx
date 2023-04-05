@@ -4,7 +4,7 @@ import MediaCard from "@/components/home/MediaCard";
 interface MediaSectionProps {
 	title: string;
 	path: string;
-	data?: any;
+	data: Anime[] | Manga[];
 }
 
 export default function MediaSection({ title, path, data }: MediaSectionProps) {
@@ -22,54 +22,18 @@ export default function MediaSection({ title, path, data }: MediaSectionProps) {
 				</Link>
 			</div>
 			<div className="grid grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] gap-4 overflow-hidden sm:grid-rows-[1fr_0] max-xs:grid-cols-[repeat(auto-fit,minmax(100px,1fr))]">
-				<MediaCard
-					id={0}
-					title={"Bocchi the Rock"}
-					slug={"bocchi-the-rock"}
-					poster={
-						"https://media.kitsu.io/anime/44196/poster_image/large-04fc7c066e52d4d2b9d0217b383597bb.jpeg"
-					}
-				/>
-				<MediaCard
-					id={0}
-					title={"Bocchi the Rock"}
-					slug={"bocchi-the-rock"}
-					poster={
-						"https://media.kitsu.io/anime/44196/poster_image/large-04fc7c066e52d4d2b9d0217b383597bb.jpeg"
-					}
-				/>
-				<MediaCard
-					id={0}
-					title={"Bocchi the Rock"}
-					slug={"bocchi-the-rock"}
-					poster={
-						"https://media.kitsu.io/anime/44196/poster_image/large-04fc7c066e52d4d2b9d0217b383597bb.jpeg"
-					}
-				/>
-				<MediaCard
-					id={0}
-					title={"Bocchi the Rock"}
-					slug={"bocchi-the-rock"}
-					poster={
-						"https://media.kitsu.io/anime/44196/poster_image/large-04fc7c066e52d4d2b9d0217b383597bb.jpeg"
-					}
-				/>
-				<MediaCard
-					id={0}
-					title={"Bocchi the Rock"}
-					slug={"bocchi-the-rock"}
-					poster={
-						"https://media.kitsu.io/anime/44196/poster_image/large-04fc7c066e52d4d2b9d0217b383597bb.jpeg"
-					}
-				/>
-				<MediaCard
-					id={0}
-					title={"Bocchi the Rock"}
-					slug={"bocchi-the-rock"}
-					poster={
-						"https://media.kitsu.io/anime/44196/poster_image/large-04fc7c066e52d4d2b9d0217b383597bb.jpeg"
-					}
-				/>
+				{data &&
+					data
+						.slice(0, 6)
+						.map((media) => (
+							<MediaCard
+								key={media._id}
+								id={media._id}
+								title={media.title}
+								slug={media.slug}
+								poster={media.poster}
+							/>
+						))}
 			</div>
 		</div>
 	);
