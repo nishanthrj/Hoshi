@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from models.anime import Anime, SearchResults
 from db import database
-from utils import build_pipeline
+from utils import build_pipeline, season_pipeline
 from fastapi.responses import JSONResponse
 from aiohttp_retry import RetryClient, ExponentialRetry
 
@@ -69,6 +69,28 @@ async def get_top_anime():
 
     result = await collection.aggregate(pipeline).to_list(None)
 
+    return JSONResponse(content=result[0])
+
+
+@anime.get(
+    "/anime/this-season",
+    response_model=SearchResults,
+    response_model_by_alias=False,
+    tags=["Anime"],
+)
+async def get_current_season():
+    result = await collection.aggregate(season_pipeline("current")).to_list(None)
+    return JSONResponse(content=result[0])
+
+
+@anime.get(
+    "/anime/next-season",
+    response_model=SearchResults,
+    response_model_by_alias=False,
+    tags=["Anime"],
+)
+async def get_next_season():
+    result = await collection.aggregate(season_pipeline("next")).to_list(None)
     return JSONResponse(content=result[0])
 
 

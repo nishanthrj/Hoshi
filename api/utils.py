@@ -1,3 +1,7 @@
+import math
+from datetime import datetime
+
+
 def regular_clause(query, path):
     return {"text": {"query": query, "path": path}}
 
@@ -134,5 +138,32 @@ def build_pipeline(
                     )
 
             pipeline[0]["$search"]["compound"]["must"].append(mustNot_clause)
+
+    return pipeline
+
+
+def season_pipeline(season: str):
+    x = 0 if season == "current" else 3
+    seasons = ["Winter", "Spring", "Summer", "Fall"]
+    this_season = f"{seasons[math.floor((int(datetime.today().month)) + x / 3)]} {datetime.today().year}"
+    pipeline = [
+        {
+            "$search": {
+                "index": "animesearch",
+                "compound": {
+                    "must": [
+                        {
+                            "phrase": {
+                                "path": "season",
+                                "query": this_season,
+                            },
+                        },
+                    ],
+                },
+                "returnStoredSource": True,
+            },
+        },
+        {" $sort": {"score": -1}},
+    ]
 
     return pipeline
