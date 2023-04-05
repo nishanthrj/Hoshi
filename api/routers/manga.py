@@ -96,7 +96,7 @@ async def get_top_manhwa():
     pipeline = [
         {
             "$search": {
-                "index": "animesearch",
+                "index": "mangasearch",
                 "compound": {
                     "must": [
                         {
