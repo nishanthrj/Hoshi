@@ -1,9 +1,14 @@
 "use client";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import { MdArrowForward, MdArrowBack } from "react-icons/md";
-import TrendingCard from "./TrendingCard";
+import { v4 as uuid } from "uuid";
+import TrendingCard from "@/components/home/TrendingCard";
 
-export default function TrendingSection() {
+interface TrendingSectionProps {
+	data: TrendingData;
+}
+
+export default function TrendingSection({ data }: TrendingSectionProps) {
 	return (
 		<Splide
 			hasTrack={false}
@@ -22,12 +27,16 @@ export default function TrendingSection() {
 				<MdArrowForward className="splide__arrow splide__arrow--next top-[92%] right-[5%] text-center text-xs text-dark-100 sm:left-14 max-xs:top-[90%]" />
 			</div>
 			<SplideTrack>
-				<SplideSlide>
-					<TrendingCard />
-				</SplideSlide>
-				<SplideSlide>
-					<TrendingCard />
-				</SplideSlide>
+				{data.anime.map((media, i) => (
+					<SplideSlide key={uuid()}>
+						<TrendingCard media={media} rank={i + 1} type="Anime" />
+					</SplideSlide>
+				))}
+				{data.manga.map((media, i) => (
+					<SplideSlide key={uuid()}>
+						<TrendingCard media={media} rank={i + 1} type="Manga" />
+					</SplideSlide>
+				))}
 			</SplideTrack>
 		</Splide>
 	);

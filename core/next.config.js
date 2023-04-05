@@ -21,6 +21,10 @@ module.exports = {
 				protocol: "https",
 				hostname: "img.youtube.com",
 			},
+			{
+				protocol: "https",
+				hostname: "s4.anilist.co",
+			},
 		],
 	},
 };
