@@ -10,9 +10,9 @@ interface TrendingCardProps {
 export default function TrendingCard({ media, rank, type }: TrendingCardProps) {
 	return (
 		<div className="relative mx-auto grid h-96 w-[min(70rem,100%)] grid-cols-1 overflow-hidden rounded-lg bg-dark-700 sm:grid-cols-[60%_40%] max-xs:mt-12 max-xs:h-80">
-			<div className="relative z-30 mt-7 w-full p-3 font-medium sm:ml-8 sm:w-11/12 max-xs:ml-0 max-xs:mt-3 max-xs:text-center">
+			<div className="relative z-30 mt-2 w-full p-3 font-medium sm:ml-8 sm:w-11/12 max-xs:ml-0 max-xs:mt-3 max-xs:text-center">
 				<span className="text-[.8rem] text-dark-100 sm:text-dark-200">
-					<span className="font-bold">#{rank}</span> Trending {type}
+					<span className="text-sm font-semibold">#{rank}</span> Trending {type}
 				</span>
 				<h1 className="text-2xl font-semibold text-dark-50 line-clamp-2 max-xs:text-center">
 					{media.title.romaji}
@@ -22,14 +22,14 @@ export default function TrendingCard({ media, rank, type }: TrendingCardProps) {
 					Users
 				</span>
 				<div className="mt-8 flex w-full gap-2 text-dark-100 max-xs:mt-4 max-xs:justify-center">
-					{media.genres.map((genre) => (
+					{media.genres.slice(0, 3).map((genre) => (
 						<Tag key={genre} className="max-xs:bg-opacity-75">
 							{genre}
 						</Tag>
 					))}
 				</div>
-				<p className="mt-4 text-justify text-xs font-normal leading-5 text-dark-100 line-clamp-6 sm:text-sm sm:leading-6 max-xs:mt-6 max-xs:text-xs ">
-					{media.description}
+				<p className="mt-4 text-justify text-xs font-normal leading-5 text-dark-100 line-clamp-6 sm:text-sm sm:leading-6 max-xs:mt-6 max-xs:text-xs max-xs:line-clamp-5">
+					{media.description.replace(/<\/?[^>]+(>|$)/g, "")}
 				</p>
 			</div>
 			<div className="absolute h-full w-full sm:relative">
@@ -43,6 +43,7 @@ export default function TrendingCard({ media, rank, type }: TrendingCardProps) {
 						quality={100}
 						sizes="500px"
 						alt="cover"
+						priority={true}
 						className="rounded-sm brightness-[25%] sm:brightness-[80%]"
 					/>
 				</div>
