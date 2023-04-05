@@ -20,6 +20,26 @@ export const getMedia = async (mediaType: string, id: number): Promise<Anime | M
 	return res.json();
 };
 
+export const getTrendingMedia = async (): Promise<TrendingData> => {
+	const animeRes = await fetch(`http://127.0.0.1:8000/anime/trending`, {
+		next: { revalidate: 20 * 60 },
+	});
+	const mangaRes = await fetch(`http://127.0.0.1:8000/manga/trending`, {
+		next: { revalidate: 20 * 60 },
+	});
+
+	if (!animeRes.ok || !mangaRes.ok) {
+		throw new Error("Failed to fetch data");
+	}
+
+	const data = {
+		anime: await animeRes.json(),
+		manga: await mangaRes.json(),
+	};
+
+	return data;
+};
+
 export const getMediaFromRelation = async (
 	mediaType: string,
 	kitsuId: number,

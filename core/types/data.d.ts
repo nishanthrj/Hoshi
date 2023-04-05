@@ -45,6 +45,28 @@ interface SearchResults {
 	};
 }
 
+interface TrendingMedia {
+	id: number;
+	idMal: number | null;
+	title: {
+		english: string | null;
+		romaji: string | null;
+	};
+	format: string;
+	genres: string[];
+	popularity: number;
+	description: string;
+	coverImage: {
+		extraLarge: string | null;
+	};
+	averageScore: number;
+}
+
+interface TrendingData {
+	anime: TrendingMedia[];
+	manga: TrendingMedia[];
+}
+
 interface SearchFilters {
 	sort_by?: string;
 	exclude_tags?: string;
