@@ -95,7 +95,7 @@ async def get_trending_anime():
 )
 async def get_current_season():
     result = await collection.aggregate(season_pipeline("current")).to_list(None)
-    return JSONResponse(content=result[0])
+    return JSONResponse(content=result)
 
 
 @anime.get(
@@ -106,7 +106,7 @@ async def get_current_season():
 )
 async def get_next_season():
     result = await collection.aggregate(season_pipeline("next")).to_list(None)
-    return JSONResponse(content=result[0])
+    return JSONResponse(content=result)
 
 
 @anime.get("/anime/external", tags=["Anime"], include_in_schema=False)
