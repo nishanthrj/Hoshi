@@ -13,7 +13,7 @@ import {
 import Navbar from "@/components/navbar/Navbar";
 import MediaSection from "@/components/home/MediaSection";
 import TrendingSection from "@/components/home/TrendingSection";
-import "./trending.css";
+import "./splide.css";
 
 export const metadata: Metadata = {
 	title: "Home | Hoshi",
