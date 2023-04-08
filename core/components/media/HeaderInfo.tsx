@@ -9,18 +9,18 @@ export default async function HeaderInfo() {
 
 	const data = await getMedia(mediaType, id);
 
-	let length;
+	let length = null;
 	if ("runtime" in data) {
 		length = data.runtime;
-	} else if ("episodeCount" in data) {
+	} else if ("episodeCount" in data && data.episodeCount) {
 		length = `${data.episodeCount} Episode${
 			data.episodeCount && data.episodeCount > 1 ? "s" : ""
 		}`;
-	} else if ("chapterCount" in data) {
+	} else if ("chapterCount" in data && data.chapterCount) {
 		length = `${data.chapterCount} Chapter${
 			data.chapterCount && data.chapterCount > 1 ? "s" : ""
 		}`;
-	} else length = null;
+	}
 
 	return (
 		<div className="relative mt-2 w-[min(95%,60rem)] font-medium">
