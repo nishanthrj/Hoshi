@@ -18,8 +18,11 @@ export default function TrendingCard({ media, rank, type }: TrendingCardProps) {
 					{media.title.romaji}
 				</h1>
 				<span className="absolute w-full text-xs text-dark-100 max-xs:relative max-xs:text-center">
-					{media.format} • {media.averageScore}% • {media.popularity.toLocaleString()}{" "}
-					Users
+					{media.format}{" "}
+					{media.format && (media.averageScore || media.popularity) && " • "}
+					{media.averageScore && `${media.averageScore}%`}{" "}
+					{media.averageScore && media.popularity && " • "}
+					{`${media.popularity.toLocaleString()} Users`}
 				</span>
 				<div className="mt-8 flex w-full gap-2 text-dark-100 max-xs:mt-4 max-xs:justify-center">
 					{media.genres.slice(0, 3).map((genre) => (
