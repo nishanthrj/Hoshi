@@ -20,8 +20,8 @@ export default async function TrailerSection() {
 				/>
 			) : (
 				<p className="h-80 pl-4 text-base font-normal text-dark-100">
-					D-Don't think I'm doing this for you (˶ •̀ _•́ ˶), but the trailer is not
-					available.
+					D-Don&apos;t think I&apos;m doing this for you (˶ •̀ _•́ ˶), but the trailer is
+					not available.
 				</p>
 			)}
 		</div>

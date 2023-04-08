@@ -40,8 +40,8 @@ export default async function CharactersSection() {
 				</div>
 			) : (
 				<p className="h-32 pl-4 text-base font-normal text-dark-100">
-					D-Don't think I'm doing this for you (˶ •̀ _•́ ˶), but the characters info is not
-					available.
+					D-Don&apos;t think I&apos;m doing this for you (˶ •̀ _•́ ˶), but the characters
+					info is not available.
 				</p>
 			)}
 		</div>
