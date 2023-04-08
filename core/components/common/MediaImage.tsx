@@ -14,5 +14,7 @@ export default function MediaImage({ src, ...props }: ImageProps) {
 		placeholder = size >= 300 ? "/placeholderXL.png" : "/placeholder.png";
 	}
 
-	return <Image onError={() => setError(true)} src={!error ? src : placeholder} {...props} />;
+	return (
+		<Image onError={() => setError(true)} src={!error ? src : placeholder} {...props} alt="" />
+	);
 }
