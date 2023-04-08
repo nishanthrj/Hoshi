@@ -13,7 +13,7 @@ export default async function CurrentSeason() {
 	return (
 		<main className="mt-8 grid grid-cols-[min-content_auto]">
 			<Navbar />
-			<section className="mt-12 w-full pl-4">
+			<section className="mt-12 w-full sm:pl-4">
 				<h1 className="mb-4 text-center text-3xl font-bold capitalize tracking-normal text-dark-100 md:text-4xl">
 					Popular this season
 				</h1>

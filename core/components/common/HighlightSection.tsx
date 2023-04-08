@@ -7,7 +7,7 @@ interface HighlightSectionProps {
 
 export default function HighlightSection({ mediaType, data }: HighlightSectionProps) {
 	return (
-		<div className="my-8 grid w-full grid-cols-[repeat(auto-fill,minmax(26rem,35rem))] justify-center gap-y-8 gap-x-12 overflow-hidden">
+		<div className="my-8 grid w-full grid-cols-[repeat(auto-fill,minmax(min(26rem,100%),35rem))] justify-center gap-y-8 gap-x-12 overflow-hidden">
 			{data?.map((media) => {
 				let length = null;
 				if ("runtime" in media) length = media.runtime as string;
