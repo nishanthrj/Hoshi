@@ -7,14 +7,18 @@ import { debounce } from "@/utils/common";
 
 export default function SearchBar() {
 	const setQuery = useSearchStore((state) => state.setQuery);
-	const handleSearch = function (e: React.FormEvent) {
-		const searchField = e.target as HTMLInputElement;
-		const value: string = searchField.value;
-		if (value.length >= 3) setQuery(value);
-		else setQuery("");
-	};
 
-	const setSearchQuery = useCallback(debounce(handleSearch), []);
+	const handleSearch = useCallback(
+		(e: React.FormEvent) => {
+			const searchField = e.target as HTMLInputElement;
+			const value: string = searchField.value;
+			if (value.length >= 3) setQuery(value);
+			else setQuery("");
+		},
+		[setQuery],
+	);
+
+	const setSearchQuery = debounce(handleSearch);
 
 	return (
 		<div className="pr-4 xl:pr-0">
