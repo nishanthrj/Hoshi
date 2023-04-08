@@ -50,7 +50,7 @@ export default function SearchResults() {
 
 	useEffect(() => {
 		if (inView && hasNextPage) fetchNextPage();
-	}, [inView]);
+	}, [inView, hasNextPage, fetchNextPage]);
 
 	return (
 		<div className="my-8 grid w-full grid-cols-[repeat(auto-fill,minmax(26rem,35rem))] justify-center gap-y-8 gap-x-12 overflow-hidden">

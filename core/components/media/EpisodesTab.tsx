@@ -26,7 +26,7 @@ export default function EpisodesTab({ id }: EpisodesTabProps) {
 
 	useEffect(() => {
 		if (inView && hasNextPage) fetchNextPage();
-	}, [inView]);
+	}, [inView, hasNextPage, fetchNextPage]);
 
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] pr-4 md:ml-5">

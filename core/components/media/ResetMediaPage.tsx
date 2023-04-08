@@ -8,7 +8,7 @@ export default function ResetSearchPage() {
 
 	useEffect(() => {
 		setActiveTab("overview");
-	}, []);
+	}, [setActiveTab]);
 
 	return <></>;
 }

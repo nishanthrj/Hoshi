@@ -11,7 +11,7 @@ export default function ResetSearchPage() {
 	useEffect(() => {
 		setOpenDropdown(null);
 		reset();
-	}, []);
+	});
 
 	return <></>;
 }

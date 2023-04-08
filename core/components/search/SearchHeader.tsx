@@ -14,7 +14,7 @@ export default function SearchHeader() {
 	useEffect(() => {
 		setOpenDropdown(null);
 		reset();
-	}, [mediaType]);
+	}, [mediaType, reset, setOpenDropdown]);
 
 	return (
 		<header className="inline-flex select-none items-center gap-2 text-2xl font-bold text-dark-50">
