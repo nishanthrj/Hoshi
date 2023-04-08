@@ -122,4 +122,5 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 	},
 );
 
+MediaCard.displayName = "MediaCard";
 export default MediaCard;

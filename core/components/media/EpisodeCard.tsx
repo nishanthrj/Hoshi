@@ -32,4 +32,5 @@ const EpisodeCard = forwardRef<HTMLDivElement, EpisodeCardProps>(
 	},
 );
 
+EpisodeCard.displayName = "EpisodeCard";
 export default EpisodeCard;
