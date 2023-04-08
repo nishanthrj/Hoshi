@@ -17,7 +17,7 @@ export default async function TopManga() {
 				<h1 className="mb-4 text-center text-3xl font-bold capitalize tracking-normal text-dark-100 md:text-4xl">
 					Highest rated manga
 				</h1>
-				<HighlightSection data={data} mediaType="anime" />
+				<HighlightSection data={data} mediaType="manga" />
 			</section>
 		</main>
 	);
