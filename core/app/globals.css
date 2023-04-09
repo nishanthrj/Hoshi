@@ -16,6 +16,10 @@
 		@apply line-clamp-none;
 	}
 
+	*::-webkit-scrollbar {
+		@apply w-2;
+	}
+
 	*::-webkit-scrollbar-track {
 		@apply hidden;
 	}
