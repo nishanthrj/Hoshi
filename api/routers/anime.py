@@ -35,7 +35,6 @@ async def search_anime(
     sort_by: str = "score",
     page: int = 1,
 ):
-
     params = locals()
     params["media_type"] = "anime"
 
@@ -126,7 +125,7 @@ async def get_anime_relation(kitsuId: int):
     results = []
     relationship = []
 
-    for entry in data["included"]:
+    for entry in data.get("included"):
         if entry["type"] == "anime" or entry["type"] == "manga":
             result = {
                 "id": entry["id"],
