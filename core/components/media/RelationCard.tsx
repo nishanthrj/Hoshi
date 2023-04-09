@@ -33,12 +33,12 @@ export default function RelationCard({
 					className="rounded-sm"
 				/>
 			</div>
-			<div className="flex flex-col pt-3 pb-2 capitalize">
+			<div className="flex flex-col pb-2 pt-3 capitalize">
 				<span className="text-xs font-medium">{relation}</span>
 				<Link
-					href={`/${type}/relation/${id}`}
+					href={`/${type}/relation?ext=kitsu&id=${id}`}
 					prefetch={false}
-					className="mt-1 text-dark-50 line-clamp-2 max-xs:text-sm">
+					className="mt-1 line-clamp-2 text-dark-50 max-xs:text-sm">
 					{title}
 				</Link>
 				<span className="mt-auto text-xs font-medium">

@@ -34,7 +34,6 @@ async def search_manga(
     sort_by: str = "score",
     page: int = 1,
 ):
-
     params = locals()
     params["media_type"] = "manga"
 
@@ -121,8 +120,11 @@ async def get_top_manhwa():
 
 
 @manga.get("/manga/external", include_in_schema=False)
-async def get_external_manga(kitsuId: int):
-    result = await collection.find_one({"kitsuId": kitsuId})
+async def get_external_manga(ext: str, id: int):
+    if ext == "mal":
+        result = await collection.find_one({"malId": id})
+    else:
+        result = await collection.find_one({"kitsuId": id})
     return JSONResponse(content=result)
 
 

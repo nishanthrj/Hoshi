@@ -140,10 +140,11 @@ export const getTrendingMedia = async (): Promise<TrendingData> => {
 
 export const getMediaFromRelation = async (
 	mediaType: string,
-	kitsuId: number,
+	ext: string,
+	id: number,
 ): Promise<Anime | Manga> => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/external?kitsuId=${kitsuId}`, {
+	const res = await fetch(`http://127.0.0.1:8000/${type}/external?ext=${ext}&id=${id}`, {
 		next: { revalidate: 1 * 60 * 60 },
 	});
 	if (!res.ok) {

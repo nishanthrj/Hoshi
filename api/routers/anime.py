@@ -110,8 +110,11 @@ async def get_next_season():
 
 
 @anime.get("/anime/external", tags=["Anime"], include_in_schema=False)
-async def get_external_anime(kitsuId: int):
-    result = await collection.find_one({"kitsuId": kitsuId})
+async def get_external_anime(ext: str, id: int):
+    if ext == "mal":
+        result = await collection.find_one({"malId": id})
+    else:
+        result = await collection.find_one({"kitsuId": id})
     return JSONResponse(content=result)
 
 
