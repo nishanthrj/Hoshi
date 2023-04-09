@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MediaImage from "@/components/common/MediaImage";
 import Tag from "@/components/common/Tag";
 
@@ -14,9 +15,12 @@ export default function TrendingCard({ media, rank, type }: TrendingCardProps) {
 				<span className="text-[.8rem] text-dark-100 sm:text-dark-200">
 					<span className="text-sm font-semibold">#{rank}</span> Trending {type}
 				</span>
-				<h1 className="text-2xl font-semibold text-dark-50 line-clamp-2 max-xs:text-center">
+				<Link
+					href={`/${type}/relation?ext=mal&id=${media.idMal}`}
+					prefetch={false}
+					className="line-clamp-2 text-2xl font-semibold text-dark-50 max-xs:text-center">
 					{media.title.romaji}
-				</h1>
+				</Link>
 				<span className="absolute w-full text-xs text-dark-100 max-xs:relative max-xs:text-center">
 					{media.format}{" "}
 					{media.format && (media.averageScore || media.popularity) && " • "}
@@ -31,7 +35,7 @@ export default function TrendingCard({ media, rank, type }: TrendingCardProps) {
 						</Tag>
 					))}
 				</div>
-				<p className="mt-4 text-justify text-xs font-normal leading-5 text-dark-100 line-clamp-6 sm:text-sm sm:leading-6 max-xs:mt-6 max-xs:text-xs max-xs:line-clamp-5">
+				<p className="mt-4 line-clamp-6 text-justify text-xs font-normal leading-5 text-dark-100 sm:text-sm sm:leading-6 max-xs:mt-6 max-xs:line-clamp-5 max-xs:text-xs">
 					{media.description.replace(/<\/?[^>]+(>|$)/g, "")}
 				</p>
 			</div>
