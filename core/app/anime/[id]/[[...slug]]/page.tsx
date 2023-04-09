@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
-import { notFound } from "next/navigation";
+import { redirect, notFound } from "next/navigation";
 import { useMediaStore } from "@/stores/media";
 import { getMedia } from "@/utils/fetch";
 import MediaHeader from "@/components/media/MediaHeader";
