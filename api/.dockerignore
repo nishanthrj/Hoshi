@@ -3,6 +3,13 @@ venv/
 
 # Environment Variables
 .env
+.env*.local
 
 # Python Cache
 __pycache__/
+
+# Temporary Files
+temp/
+
+# Extra Files
+extras/
