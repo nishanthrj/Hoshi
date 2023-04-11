@@ -12,7 +12,7 @@ export default function NavLink({ name, path, Icon }: NavLinkProp) {
 	const pathname = useNavbarStore.getState().currentPath;
 
 	return (
-		<Link href={path}>
+		<Link href={path} prefetch={false}>
 			<span
 				className={`mb-5 inline-flex cursor-pointer gap-5 pl-2 text-base 
 				font-medium leading-9 transition-colors duration-300 hover:text-dark-100 
