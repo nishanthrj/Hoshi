@@ -6,5 +6,5 @@ export async function GET(request: Request) {
 	const id: number = Number(searchParams.get("id"));
 	const ext: string = searchParams.get("ext")!;
 	const data = await getMediaFromRelation("anime", ext, id);
-	redirect(`/anime/${data._id}/${data.slug}`);
+	redirect(`/anime/${data._id}`);
 }
