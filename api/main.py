@@ -21,6 +21,8 @@ origins = [
     "http://localhost",
     "http://localhost:3000",
     "http://localhost:8000",
+    "https://hoshi.ga",
+    "https://api.hoshi.ga",
 ]
 
 app.add_middleware(
