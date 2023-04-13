@@ -6,12 +6,12 @@ export const getSearchResults = (
 	filters: SearchFilters,
 ): Promise<SearchResults> =>
 	axios
-		.get(`http://127.0.0.1:8000/${mediaType}`, { params: { page: page, ...filters } })
+		.get(`https://api.hoshi.ga/${mediaType}`, { params: { page: page, ...filters } })
 		.then((res) => res.data);
 
 export const getMedia = async (mediaType: string, id: number): Promise<Anime | Manga> => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/${id}`, {
+	const res = await fetch(`https://api.hoshi.ga/${type}/${id}`, {
 		next: { revalidate: 1 * 60 * 60 },
 	});
 	if (!res.ok) {
@@ -21,7 +21,7 @@ export const getMedia = async (mediaType: string, id: number): Promise<Anime | M
 };
 
 export const getTopAnime = async (): Promise<Anime[]> => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/top`, {
+	const res = await fetch(`https://api.hoshi.ga/anime/top`, {
 		next: { revalidate: 1 * 60 * 60 },
 	});
 
@@ -35,7 +35,7 @@ export const getTopAnime = async (): Promise<Anime[]> => {
 };
 
 export const getPopularAnime = async (): Promise<Anime[]> => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/popular`, {
+	const res = await fetch(`https://api.hoshi.ga/anime/popular`, {
 		next: { revalidate: 1 * 60 * 60 },
 	});
 
@@ -49,7 +49,7 @@ export const getPopularAnime = async (): Promise<Anime[]> => {
 };
 
 export const getCurrentSeason = async (): Promise<Anime[]> => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/this-season`, {
+	const res = await fetch(`https://api.hoshi.ga/anime/this-season`, {
 		next: { revalidate: 1 * 60 * 60 },
 	});
 
@@ -63,7 +63,7 @@ export const getCurrentSeason = async (): Promise<Anime[]> => {
 };
 
 export const getNextSeason = async (): Promise<Anime[]> => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/next-season`, {
+	const res = await fetch(`https://api.hoshi.ga/anime/next-season`, {
 		next: { revalidate: 1 * 60 * 60 },
 	});
 
@@ -77,7 +77,7 @@ export const getNextSeason = async (): Promise<Anime[]> => {
 };
 
 export const getPopularManga = async (): Promise<Manga[]> => {
-	const res = await fetch(`http://127.0.0.1:8000/manga/popular`, {
+	const res = await fetch(`https://api.hoshi.ga/manga/popular`, {
 		next: { revalidate: 1 * 60 * 60 },
 	});
 
@@ -91,7 +91,7 @@ export const getPopularManga = async (): Promise<Manga[]> => {
 };
 
 export const getTopManga = async (): Promise<Manga[]> => {
-	const res = await fetch(`http://127.0.0.1:8000/manga/top`, {
+	const res = await fetch(`https://api.hoshi.ga/manga/top`, {
 		next: { revalidate: 1 * 60 * 60 },
 	});
 
@@ -105,7 +105,7 @@ export const getTopManga = async (): Promise<Manga[]> => {
 };
 
 export const getTopManhwa = async (): Promise<Anime[]> => {
-	const res = await fetch(`http://127.0.0.1:8000/manga/top-manhwa`, {
+	const res = await fetch(`https://api.hoshi.ga/manga/top-manhwa`, {
 		next: { revalidate: 1 * 60 * 60 },
 	});
 
@@ -119,10 +119,10 @@ export const getTopManhwa = async (): Promise<Anime[]> => {
 };
 
 export const getTrendingMedia = async (): Promise<TrendingData> => {
-	const animeRes = await fetch(`http://127.0.0.1:8000/anime/trending`, {
+	const animeRes = await fetch(`https://api.hoshi.ga/anime/trending`, {
 		next: { revalidate: 20 * 60 },
 	});
-	const mangaRes = await fetch(`http://127.0.0.1:8000/manga/trending`, {
+	const mangaRes = await fetch(`https://api.hoshi.ga/manga/trending`, {
 		next: { revalidate: 20 * 60 },
 	});
 
@@ -144,7 +144,7 @@ export const getMediaFromRelation = async (
 	id: number,
 ): Promise<Anime | Manga> => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/external?ext=${ext}&id=${id}`, {
+	const res = await fetch(`https://api.hoshi.ga/${type}/external?ext=${ext}&id=${id}`, {
 		next: { revalidate: 1 * 60 * 60 },
 	});
 	if (!res.ok) {
@@ -158,7 +158,7 @@ export const getRelatedMedia = async (
 	kitsuId: number,
 ): Promise<RelatedMedia[]> => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/relation?kitsuId=${kitsuId}`, {
+	const res = await fetch(`https://api.hoshi.ga/${type}/relation?kitsuId=${kitsuId}`, {
 		next: { revalidate: 6 * 60 * 60 },
 	});
 	if (!res.ok) {
@@ -169,7 +169,7 @@ export const getRelatedMedia = async (
 
 export const getCharacters = async (mediaType: string, malId: number): Promise<Character[]> => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/characters?malId=${malId}`, {
+	const res = await fetch(`https://api.hoshi.ga/${type}/characters?malId=${malId}`, {
 		next: { revalidate: 6 * 60 * 60 },
 	});
 
@@ -184,7 +184,7 @@ export const getCharacters = async (mediaType: string, malId: number): Promise<C
 
 export const getTrailer = async (mediaType: string, malId: number): Promise<Trailer> => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/trailer?malId=${malId}`, {
+	const res = await fetch(`https://api.hoshi.ga/${type}/trailer?malId=${malId}`, {
 		next: { revalidate: 6 * 60 * 60 },
 	});
 
@@ -202,7 +202,7 @@ export const getStats = async (
 	malId: number,
 ): Promise<AnimeStats | MangaStats> => {
 	const type = mediaType !== "movie" ? mediaType : "anime";
-	const res = await fetch(`http://127.0.0.1:8000/${type}/stats?malId=${malId}`, {
+	const res = await fetch(`https://api.hoshi.ga/${type}/stats?malId=${malId}`, {
 		next: { revalidate: 20 * 60 },
 	});
 
@@ -216,7 +216,7 @@ export const getStats = async (
 };
 
 export const getStaff = async (malId: number): Promise<Staff[]> => {
-	const res = await fetch(`http://127.0.0.1:8000/anime/staff?malId=${malId}`, {
+	const res = await fetch(`https://api.hoshi.ga/anime/staff?malId=${malId}`, {
 		next: { revalidate: 6 * 60 * 60 },
 	});
 
@@ -231,7 +231,7 @@ export const getStaff = async (malId: number): Promise<Staff[]> => {
 
 export const getEpisodes = (offset: number, kitsuId: number): Promise<Episodes> =>
 	axios
-		.get(`http://127.0.0.1:8000/anime/episodes`, {
+		.get(`https://api.hoshi.ga/anime/episodes`, {
 			params: { kitsuId: kitsuId, offset: offset },
 		})
 		.then((res) => res.data);
