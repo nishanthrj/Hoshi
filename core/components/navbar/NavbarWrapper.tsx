@@ -29,7 +29,7 @@ export default function NavbarWrapper({ children }: NavbarWrapperProps) {
 			}`}>
 			<MenuIcon />
 			<div
-				className={`fixed top-0 left-0 min-h-screen overflow-hidden border-r border-dark-100/25 bg-dark/75 font-sans backdrop-blur transition-[width] duration-1000 ${
+				className={`fixed left-0 top-0 min-h-full overflow-hidden border-r border-dark-100/25 bg-dark/75 font-sans backdrop-blur transition-[width] duration-1000 ${
 					isOpen ? "w-64 max-xs:w-full" : "w-0 md:w-16"
 				}`}>
 				<Logo />
