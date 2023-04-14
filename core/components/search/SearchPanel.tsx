@@ -3,7 +3,7 @@ import FilterField from "@/components/search/FilterField";
 
 export default function SearchPanel() {
 	return (
-		<div className="mt-14 grid w-full grid-cols-1 gap-x-4 gap-y-5 overflow-hidden xl:grid-cols-[auto_min-content]">
+		<div className="mt-14 grid w-full grid-cols-1 gap-x-4 gap-y-5 overflow-hidden pl-4 xl:grid-cols-[auto_min-content]">
 			<SearchBar />
 			<div className="filters grid w-full snap-x grid-cols-[repeat(5,11rem)] gap-4 overflow-x-auto pb-96 pr-4 xl:grid-cols-[repeat(4,11rem)]">
 				<FilterField name="genres" />

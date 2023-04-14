@@ -82,7 +82,7 @@ export default function MediaCard({
 					<Link
 						href={`/${mediaType}/${id}/${slug}`}
 						prefetch={false}
-						className="w-4/5 break-words text-base text-dark-50 line-clamp-2 max-xs:text-sm">
+						className="line-clamp-2 w-4/5 break-words text-base text-dark-50 max-xs:text-sm">
 						{title}
 					</Link>
 					<div className="absolute left-72 flex items-center gap-x-2 text-[.9rem] font-semibold max-xs:text-xs">
@@ -96,14 +96,14 @@ export default function MediaCard({
 						{status}
 					</span>
 				</div>
-				<div className="mt-3 flex w-full gap-2 text-dark-100">
+				<div className="genres mt-3 flex w-full gap-2 overflow-x-scroll text-dark-100">
 					{genres?.slice(0, 3).map((genre) => (
 						<Tag key={uuid()} className="text-[.6rem]">
 							{genre}
 						</Tag>
 					))}
 				</div>
-				<p className="synopsis mt-4 text-[.7rem] font-normal leading-[1.6] line-clamp-5 max-xs:text-[.6rem] max-xs:line-clamp-3">
+				<p className="synopsis mt-4 line-clamp-5 text-[.7rem] font-normal leading-[1.6] max-xs:line-clamp-3 max-xs:text-[.6rem]">
 					{synopsis}
 				</p>
 			</div>

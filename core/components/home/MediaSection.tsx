@@ -11,9 +11,12 @@ export default function MediaSection({ title, path, data }: MediaSectionProps) {
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] pr-4 md:ml-5">
 			<div className="flex items-center justify-between">
-				<h1 className="mb-4 text-lg font-semibold uppercase tracking-normal text-dark-100">
+				<Link
+					href={path}
+					prefetch={false}
+					className="mb-4 text-lg font-semibold uppercase tracking-normal text-dark-100">
 					{title}
-				</h1>
+				</Link>
 				<Link
 					href={path}
 					prefetch={false}

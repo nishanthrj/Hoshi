@@ -19,7 +19,7 @@ export default function Search() {
 	return (
 		<main className="mt-8 grid grid-cols-[min-content_auto]">
 			<Navbar />
-			<section className="mt-12 w-full pl-4">
+			<section className="mt-12 w-full sm:pl-4">
 				<SearchHeader />
 				<SearchPanel />
 				<div className="mt-[-22rem] grid grid-cols-1 gap-x-20 xl:mr-12 xl:grid-cols-[auto_min-content]">

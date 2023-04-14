@@ -17,7 +17,7 @@ export default function SearchHeader() {
 	}, [mediaType, reset, setOpenDropdown]);
 
 	return (
-		<header className="inline-flex select-none items-center gap-2 text-2xl font-bold text-dark-50">
+		<header className="inline-flex select-none items-center gap-2 pl-4 text-2xl font-bold text-dark-50">
 			Search
 			<span className="rounded-md bg-dark-600 px-4 py-2 capitalize">{mediaType}</span>
 			<AiOutlineSwap

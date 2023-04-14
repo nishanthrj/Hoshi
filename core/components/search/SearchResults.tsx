@@ -53,7 +53,7 @@ export default function SearchResults() {
 	}, [inView, hasNextPage, fetchNextPage]);
 
 	return (
-		<div className="my-8 grid w-full grid-cols-[repeat(auto-fill,minmax(26rem,35rem))] justify-center gap-y-8 gap-x-12 overflow-hidden">
+		<div className="my-8 grid w-full grid-cols-[repeat(auto-fill,minmax(min(26rem,100%),35rem))] justify-center gap-x-12 gap-y-8 overflow-hidden">
 			{data?.pages
 				.flatMap((page) => page.data as Media[])
 				.map((media, i) => {

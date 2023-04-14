@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer utilities {
-	.filters::-webkit-scrollbar {
+	.filters::-webkit-scrollbar,
+	.genres::-webkit-scrollbar {
 		@apply hidden;
 	}
 

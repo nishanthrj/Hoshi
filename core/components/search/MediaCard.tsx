@@ -76,8 +76,8 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 		return (
 			<div
 				ref={ref}
-				className="grid h-60 grid-cols-[10.75rem_auto] overflow-hidden rounded-md bg-dark-600 text-sm font-medium text-dark-200 shadow">
-				<div className="relative">
+				className="grid h-60 grid-cols-[10.75rem_auto] overflow-hidden rounded-md bg-dark-600 text-sm font-medium text-dark-200 shadow sm:rounded-md max-xs:h-48 max-xs:grid-cols-[8rem_auto]">
+				<div className="relative aspect-[4/6] h-full w-full">
 					{poster && (
 						<MediaImage
 							src={poster ? poster : ""}
@@ -89,31 +89,33 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 						/>
 					)}
 				</div>
-				<div className="card-info h-56 w-full overflow-y-hidden p-4 pb-0 hover:overflow-y-auto">
+				<div className="card-info h-56 w-full overflow-x-hidden overflow-y-hidden p-4 pb-0 hover:overflow-y-auto">
 					<div className="relative flex w-full justify-between pr-2">
 						<Link
 							href={`/${mediaType}/${id}/${slug}`}
 							prefetch={false}
-							className="w-4/5 break-words text-base text-dark-50 line-clamp-2">
+							className="line-clamp-2 w-4/5 break-words text-base text-dark-50 max-xs:text-sm">
 							{title}
 						</Link>
-						<div className="absolute left-72 flex items-center gap-x-2 text-[.9rem] font-semibold">
+						<div className="absolute left-72 flex items-center gap-x-2 text-[.9rem] font-semibold max-xs:text-xs">
 							{score && formatScore(score)}
 						</div>
 					</div>
-					<div className="mt-1 text-xs font-semibold capitalize ">
+					<div className="mt-1 text-xs font-semibold capitalize max-xs:text-[.65rem] ">
 						<span>
 							{format} {format && (length || status) && " • "}
 							{length && formatLength(mediaType, length)} {length && status && " • "}
 							{status}
 						</span>
 					</div>
-					<div className="mt-3 flex w-full gap-2 text-dark-100">
-						{genres?.slice(0, 4).map((genre) => (
-							<Tag key={uuid()}>{genre}</Tag>
+					<div className="genres mt-3 flex w-full gap-2 overflow-x-scroll text-dark-100">
+						{genres?.slice(0, 3).map((genre) => (
+							<Tag key={uuid()} className="text-[.6rem]">
+								{genre}
+							</Tag>
 						))}
 					</div>
-					<p className="synopsis mt-4 text-[.7rem] font-normal leading-[1.6] line-clamp-5">
+					<p className="synopsis mt-4 line-clamp-5 text-[.7rem] font-normal leading-[1.6] max-xs:line-clamp-3 max-xs:text-[.6rem]">
 						{synopsis}
 					</p>
 				</div>

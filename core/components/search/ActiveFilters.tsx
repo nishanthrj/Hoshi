@@ -20,7 +20,7 @@ export default function ActiveFilters() {
 		]);
 
 	return (
-		<div className="flex gap-4 text-sm font-semibold text-dark-200">
+		<div className="flex gap-4 pl-4 text-sm font-semibold text-dark-200">
 			<AiFillTags className="h-6 w-6" />
 			<div className="flex w-full flex-wrap gap-2 overflow-hidden">
 				{query && <Tag>Search: {query}</Tag>}
