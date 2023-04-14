@@ -16,10 +16,10 @@ export default function Navbar() {
 	const loggedIn = true;
 	return (
 		<NavbarWrapper>
-			<nav className="mt-8 ml-2 flex h-screen flex-col whitespace-nowrap text-dark-200 transition-colors duration-300">
+			<nav className="ml-2 mt-8 flex h-screen flex-col whitespace-nowrap text-dark-200 transition-colors duration-300">
 				<NavLink name="Home" path="/" Icon={MdHome} />
 				<NavLink name="Search" path="/search" Icon={MdSearch} />
-				<NavLink name="Explore" path="/explore" Icon={MdExplore} />
+				{/* <NavLink name="Explore" path="/explore" Icon={MdExplore} /> */}
 
 				{loggedIn ? (
 					<>
