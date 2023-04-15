@@ -5,7 +5,6 @@ import { useMediaStore } from "@/stores/media";
 import { getMedia } from "@/utils/fetch";
 import MediaHeader from "@/components/media/MediaHeader";
 import TabNavbar from "@/components/media/TabNavbar";
-import Navbar from "@/components/navbar/Navbar";
 import TabWrapper from "@/components/media/TabWrapper";
 import OverviewTab from "@/components/media/OverviewTab";
 import CharactersTab from "@/components/media/CharactersTab";
@@ -42,8 +41,7 @@ export default async function Manga({ params }: MangaPageParams) {
 	}
 
 	return (
-		<main className="grid grid-cols-[min-content_auto]">
-			<Navbar />
+		<main>
 			<ResetMediaPage />
 			<section className="my-12 w-full pl-4">
 				{/* @ts-expect-error Async Server Component */}

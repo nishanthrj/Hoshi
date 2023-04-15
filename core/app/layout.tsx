@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
 import { Overpass } from "next/font/google";
+import Navbar from "@/components/navbar/Navbar";
 
 export const metadata: Metadata = {
 	title: {
@@ -19,7 +20,11 @@ const font = Overpass({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" className={`${font.variable}`}>
-			<body className="overflow-x-hidden bg-dark">{children}</body>
+			<body className="grid grid-cols-[min-content_auto] overflow-x-hidden bg-dark">
+				{/* @ts-expect-error Async Server Component */}
+				<Navbar />
+				{children}
+			</body>
 		</html>
 	);
 }

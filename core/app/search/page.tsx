@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { useNavbarStore } from "@/stores/navbar";
-import Navbar from "@/components/navbar/Navbar";
 import SearchHeader from "@/components/search/SearchHeader";
 import ActiveFilters from "@/components/search/ActiveFilters";
 import SortField from "@/components/search/SortField";
@@ -17,8 +16,7 @@ export default function Search() {
 	useNavbarStore.setState({ currentPath: "/search" });
 
 	return (
-		<main className="mt-8 grid grid-cols-[min-content_auto]">
-			<Navbar />
+		<main className="mt-8">
 			<section className="mt-12 w-full sm:pl-4">
 				<SearchHeader />
 				<SearchPanel />

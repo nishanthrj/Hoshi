@@ -10,7 +10,6 @@ import {
 	getCurrentSeason,
 	getNextSeason,
 } from "@/utils/fetch";
-import Navbar from "@/components/navbar/Navbar";
 import MediaSection from "@/components/home/MediaSection";
 import TrendingSection from "@/components/home/TrendingSection";
 import "./splide.css";
@@ -32,8 +31,7 @@ export default async function Home() {
 	const nextSeason = await getNextSeason();
 
 	return (
-		<main className="grid grid-cols-[min-content_auto]">
-			<Navbar />
+		<main>
 			<section className="mt-14 w-full pl-4">
 				<div className="relative mx-auto grid h-96 w-[min(70rem,100%)] pr-4">
 					<TrendingSection data={trendingData} />
