@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { useNavbarStore } from "@/stores/navbar";
-import InputField from "@/components/common/InputField";
+import LoginForm from "@/components/auth/LoginForm";
 
 export const metadata: Metadata = {
 	title: "Login",
 };
 
-export default function Login() {
+export default async function Login() {
 	useNavbarStore.setState({ currentPath: "/login" });
 
 	return (
@@ -16,15 +16,7 @@ export default function Login() {
 				<h1 className="mb-8 text-center text-2xl font-bold uppercase tracking-wider">
 					Login
 				</h1>
-				<form method="POST" className="flex flex-col">
-					<InputField id="email" type="email" text="E-Mail" />
-					<InputField id="password" type="password" text="Password" />
-					<button
-						type="submit"
-						className="mb-8 mt-3 h-12 rounded-md border-none bg-dark-400 p-3 text-lg font-bold text-dark-50 transition-all duration-300 hover:brightness-125">
-						Login
-					</button>
-				</form>
+				<LoginForm />
 				<p className="text-center text-dark-200">
 					Not registered?
 					<br className="hidden max-xs:block" />
