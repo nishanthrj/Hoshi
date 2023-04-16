@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
 			credentials: {},
 			async authorize(credentials) {
 				const { email, password } = credentials as Credentials;
-				const user = await prisma.user.findUnique({
+				const user: User = await prisma.user.findUnique({
 					where: {
 						email: email,
 					},
@@ -34,6 +34,29 @@ export const authOptions: NextAuthOptions = {
 			},
 		}),
 	],
+
+	callbacks: {
+		async jwt({ token, user }) {
+			if (user) {
+				token.id = user.id;
+				token.username = (user as CustomAdapterUser).username;
+				token.email = user.email;
+			}
+			return token;
+		},
+
+		async session({ session, token }) {
+			return {
+				...session,
+				user: {
+					...session.user,
+					id: token.id,
+					username: token.username,
+					email: token.email,
+				},
+			};
+		},
+	},
 
 	pages: {
 		signIn: "/login",
