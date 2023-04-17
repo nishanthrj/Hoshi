@@ -5,9 +5,15 @@ import NavLink from "@/components/navbar/NavLink";
 import NavProfile from "@/components/navbar/NavProfile";
 import NavbarWrapper from "@/components/navbar/NavbarWrapper";
 import LoginButton from "@/components/navbar/LoginButton";
+import { useNavbarStore } from "@/stores/navbar";
 
 export default async function Navbar() {
 	const session = await getServerSession(authOptions);
+	const path = useNavbarStore.getState().currentPath;
+
+	if (path === "/login" || path === "/register") {
+		return <div></div>;
+	}
 	return (
 		<NavbarWrapper>
 			<nav className="ml-2 mt-8 flex h-[85vh] flex-col whitespace-nowrap text-dark-200 transition-colors duration-300">
