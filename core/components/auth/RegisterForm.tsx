@@ -3,6 +3,7 @@
 import * as Yup from "yup";
 import InputField from "./InputField";
 import { useFormik } from "formik";
+import { checkEmail, checkUsername } from "@/utils/validation";
 
 export default function RegisterWrapper() {
 	const formik = useFormik({
@@ -18,8 +19,20 @@ export default function RegisterWrapper() {
 				.min(5, "Username must be at least 5 characters")
 				.max(30, "Username must be at most 30 characters")
 				.matches(/^\w+$/, "Username must be alphanumeric.")
-				.required("Enter your username"),
-			email: Yup.string().email("Enter a valid email").required("Enter your email"),
+				.required("Enter your username")
+				.test(
+					"usernameExists",
+					"Username is already taken",
+					async (value) => !(await checkUsername(value)),
+				),
+			email: Yup.string()
+				.email("Enter a valid email")
+				.required("Enter your email")
+				.test(
+					"emailExists",
+					"Account already exists.",
+					async (value) => !(await checkEmail(value)),
+				),
 			password: Yup.string()
 				.min(8, "Password must be at least 8 characters")
 				.required("Enter a password"),
@@ -29,12 +42,15 @@ export default function RegisterWrapper() {
 		}),
 
 		onSubmit: (values) => {
-			console.log(values);
+			console.log("Working!");
 		},
+
+		validateOnChange: false,
+		validateOnBlur: false,
 	});
 
 	return (
-		<form method="POST" className="flex flex-col">
+		<form method="POST" className="flex flex-col" onSubmit={formik.handleSubmit}>
 			<InputField
 				name="username"
 				type="text"
@@ -46,7 +62,7 @@ export default function RegisterWrapper() {
 			/>
 			<InputField
 				name="email"
-				type="email"
+				type="text"
 				text="E-Mail"
 				value={formik.values.email}
 				error={formik.touched.email ? formik.errors.email : ""}
