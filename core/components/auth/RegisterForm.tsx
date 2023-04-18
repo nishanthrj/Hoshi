@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import InputField from "./InputField";
 import { useFormik } from "formik";
 import { checkEmail, checkUsername } from "@/utils/validation";
-import Image from "next/image";
 import { useState } from "react";
+import Loading from "../common/Loading";
 
 export default function RegisterWrapper() {
 	const router = useRouter();
@@ -76,19 +76,7 @@ export default function RegisterWrapper() {
 
 	return (
 		<>
-			{formik.isSubmitting && (
-				<div className="absolute inset-0 z-50 grid h-screen w-screen place-items-center bg-dark-900/80 backdrop-blur">
-					<Image
-						src="/loader.svg"
-						width={200}
-						height={200}
-						quality={100}
-						priority={true}
-						alt=""
-						className="mb-2 h-36 w-36"
-					/>
-				</div>
-			)}
+			{formik.isSubmitting && <Loading />}
 			{success && (
 				<div className="absolute inset-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-dark-900/95 backdrop-blur">
 					<h1 className="text-3xl font-bold">Account created successfully!</h1>
