@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import InputField from "./InputField";
 import { useFormik } from "formik";
 import { checkEmail, checkUsername } from "@/utils/validation";
+import Image from "next/image";
 
 export default function RegisterWrapper() {
 	const router = useRouter();
@@ -68,51 +69,66 @@ export default function RegisterWrapper() {
 	});
 
 	return (
-		<form method="POST" className="flex flex-col" onSubmit={formik.handleSubmit}>
-			<span className="-mt-6 mb-4 flex justify-center text-xs text-red-400">
-				{formik.errors.server}
-			</span>
-			<InputField
-				name="username"
-				type="text"
-				text="Username"
-				value={formik.values.username}
-				error={formik.touched.username ? formik.errors.username : ""}
-				onChange={formik.handleChange}
-				onBlur={formik.handleBlur}
-			/>
-			<InputField
-				name="email"
-				type="text"
-				text="E-Mail"
-				value={formik.values.email}
-				error={formik.touched.email ? formik.errors.email : ""}
-				onChange={formik.handleChange}
-				onBlur={formik.handleBlur}
-			/>
-			<InputField
-				name="password"
-				type="password"
-				text="Password"
-				value={formik.values.password}
-				error={formik.touched.password ? formik.errors.password : ""}
-				onChange={formik.handleChange}
-				onBlur={formik.handleBlur}
-			/>
-			<InputField
-				name="conpassword"
-				type="password"
-				text="Confirm Password"
-				value={formik.values.conpassword}
-				error={formik.touched.conpassword ? formik.errors.conpassword : ""}
-				onChange={formik.handleChange}
-				onBlur={formik.handleBlur}
-			/>
-			<button
-				type="submit"
-				className="mb-8 mt-3 h-12 rounded-md border-none bg-dark-400 p-3 text-base font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
-				{formik.isSubmitting ? "Loading..." : "Register"}
-			</button>
-		</form>
+		<>
+			{formik.isSubmitting && (
+				<div className="absolute inset-0 z-50 grid h-screen w-screen place-items-center bg-dark-900/80 backdrop-blur">
+					<Image
+						src="/loader.svg"
+						width={200}
+						height={200}
+						quality={100}
+						priority={true}
+						alt=""
+						className="mb-2 h-36 w-36"
+					/>
+				</div>
+			)}
+			<form method="POST" className="flex flex-col" onSubmit={formik.handleSubmit}>
+				<span className="-mt-6 mb-4 flex justify-center text-xs text-red-400">
+					{formik.errors.server}
+				</span>
+				<InputField
+					name="username"
+					type="text"
+					text="Username"
+					value={formik.values.username}
+					error={formik.touched.username ? formik.errors.username : ""}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+				/>
+				<InputField
+					name="email"
+					type="text"
+					text="E-Mail"
+					value={formik.values.email}
+					error={formik.touched.email ? formik.errors.email : ""}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+				/>
+				<InputField
+					name="password"
+					type="password"
+					text="Password"
+					value={formik.values.password}
+					error={formik.touched.password ? formik.errors.password : ""}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+				/>
+				<InputField
+					name="conpassword"
+					type="password"
+					text="Confirm Password"
+					value={formik.values.conpassword}
+					error={formik.touched.conpassword ? formik.errors.conpassword : ""}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+				/>
+				<button
+					type="submit"
+					className="mb-8 mt-3 h-12 rounded-md border-none bg-dark-400 p-3 text-base font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
+					sign up
+				</button>
+			</form>
+		</>
 	);
 }
