@@ -6,9 +6,11 @@ import InputField from "./InputField";
 import { useFormik } from "formik";
 import { checkEmail, checkUsername } from "@/utils/validation";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function RegisterWrapper() {
 	const router = useRouter();
+	const [success, setSuccess] = useState(false);
 
 	const formik = useFormik({
 		initialValues: {
@@ -58,7 +60,11 @@ export default function RegisterWrapper() {
 			});
 
 			if (res.status === 200) {
-				router.push("/login");
+				setSuccess(true);
+				setSubmitting(false);
+				setTimeout(() => {
+					router.push("/login");
+				}, 3000);
 			} else {
 				setErrors({ server: "There seems to be a problem. Please try again." });
 			}
@@ -81,6 +87,14 @@ export default function RegisterWrapper() {
 						alt=""
 						className="mb-2 h-36 w-36"
 					/>
+				</div>
+			)}
+			{success && (
+				<div className="absolute inset-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-dark-900/95 backdrop-blur">
+					<h1 className="text-3xl font-bold">Account created successfully!</h1>
+					<p className="mt-2 text-sm">
+						You will be redirected to the login page shortly.
+					</p>
 				</div>
 			)}
 			<form method="POST" className="flex flex-col" onSubmit={formik.handleSubmit}>
