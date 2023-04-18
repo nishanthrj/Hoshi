@@ -1,17 +1,21 @@
 "use client";
 
 import * as Yup from "yup";
+import { useRouter } from "next/navigation";
 import InputField from "./InputField";
 import { useFormik } from "formik";
 import { checkEmail, checkUsername } from "@/utils/validation";
 
 export default function RegisterWrapper() {
+	const router = useRouter();
+
 	const formik = useFormik({
 		initialValues: {
 			username: "",
 			email: "",
 			password: "",
 			conpassword: "",
+			server: "",
 		},
 
 		validationSchema: Yup.object({
@@ -41,8 +45,22 @@ export default function RegisterWrapper() {
 				.required("Confirm your password"),
 		}),
 
-		onSubmit: (values) => {
-			console.log("Working!");
+		onSubmit: async (values, { setErrors, setSubmitting }) => {
+			setSubmitting(true);
+			const res = await fetch("/api/auth/register", {
+				method: "POST",
+				headers: {
+					Accept: "application.json",
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(values),
+			});
+
+			if (res.status === 200) {
+				router.push("/login");
+			} else {
+				setErrors({ server: "There seems to be a problem. Please try again." });
+			}
 		},
 
 		validateOnChange: false,
@@ -51,6 +69,9 @@ export default function RegisterWrapper() {
 
 	return (
 		<form method="POST" className="flex flex-col" onSubmit={formik.handleSubmit}>
+			<span className="-mt-6 mb-4 flex justify-center text-xs text-red-400">
+				{formik.errors.server}
+			</span>
 			<InputField
 				name="username"
 				type="text"
@@ -89,8 +110,8 @@ export default function RegisterWrapper() {
 			/>
 			<button
 				type="submit"
-				className="mb-8 mt-3 h-12 rounded-md border-none bg-dark-400 p-3 text-lg font-bold text-dark-50 transition-all duration-300 hover:brightness-125">
-				Register
+				className="mb-8 mt-3 h-12 rounded-md border-none bg-dark-400 p-3 text-base font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
+				{formik.isSubmitting ? "Loading..." : "Register"}
 			</button>
 		</form>
 	);
