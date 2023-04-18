@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 		data: {
 			email: data.email,
 			username: data.username,
-			password: bcrypt.hashSync(data.password, 10),
+			password: await bcrypt.hash(data.password, 10),
 			image: null,
 		},
 	});
