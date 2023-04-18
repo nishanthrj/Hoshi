@@ -19,7 +19,7 @@ export default function InputField({
 }: InputFieldProps) {
 	return (
 		<>
-			<label htmlFor={name} className="font-bold">
+			<label htmlFor={name} className="text-sm font-bold">
 				{text}
 			</label>
 			<input
@@ -28,9 +28,9 @@ export default function InputField({
 				onChange={onChange}
 				onBlur={onBlur}
 				value={value}
-				className="mt-2 h-10 rounded-md border-none bg-dark-400 p-3 text-sm font-bold text-dark-50"
+				className="h-10 rounded-md border-none bg-dark-400 p-3 text-sm font-bold text-dark-50"
 			/>
-			<span className="mb-8 mt-2 text-xs text-red-400">{error}</span>
+			<span className="mb-4 mt-2 text-xs text-red-400">{error}</span>
 		</>
 	);
 }
