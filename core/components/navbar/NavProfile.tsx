@@ -22,7 +22,7 @@ export default async function NavProfile() {
 			<div className="inline-flex gap-3 pl-2 font-semibold leading-[3rem] text-dark-100 hover:text-dark-100">
 				<div className="relative h-10 w-10">
 					<Image
-						src={user?.image || "/guest.png"}
+						src={user?.image || "/default.png"}
 						fill={true}
 						quality={100}
 						loading={"eager"}
