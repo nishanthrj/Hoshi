@@ -1,8 +1,5 @@
-"use client";
-
 import Link from "next/link";
 import { MdLogin } from "react-icons/md";
-import { signIn } from "next-auth/react";
 
 export default function LoginButton() {
 	return (
