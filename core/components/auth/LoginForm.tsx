@@ -41,7 +41,7 @@ export default function LoginForm() {
 			<InputField name="password" type="password" text="Password" />
 			<button
 				type="submit"
-				className="mb-8 mt-3 h-12 rounded-md border-none bg-dark-400 p-3 text-lg font-bold text-dark-50 transition-all duration-300 hover:brightness-125">
+				className="mb-8 mt-3 h-12 rounded-md border-none bg-dark-400 p-3 text-base font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
 				Login
 			</button>
 		</form>
