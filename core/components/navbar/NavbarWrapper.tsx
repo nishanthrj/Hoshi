@@ -3,13 +3,15 @@
 import { useEffect } from "react";
 import { useNavbarStore } from "@/stores/navbar";
 import Logo from "@/components/navbar/Logo";
-import MenuIcon from "@/components/navbar/NavIcon";
+import MenuIcon from "@/components/navbar/MenuIcon";
+import { usePathname } from "next/navigation";
 
 interface NavbarWrapperProps {
 	children: React.ReactNode;
 }
 
 export default function NavbarWrapper({ children }: NavbarWrapperProps) {
+	const pathname = usePathname();
 	const isOpen = useNavbarStore((state) => state.isOpen);
 
 	useEffect(() => {
@@ -21,6 +23,10 @@ export default function NavbarWrapper({ children }: NavbarWrapperProps) {
 					.querySelector("body")
 					?.classList.remove("overflow-y-hidden", "md:overflow-y-visible");
 	}, [isOpen]);
+
+	if (pathname === "/login" || pathname === "/register") {
+		return <div></div>;
+	}
 
 	return (
 		<div
