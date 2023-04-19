@@ -16,7 +16,7 @@ export default function TrendingCard({ media, rank, type }: TrendingCardProps) {
 					<span className="text-sm font-semibold">#{rank}</span> Trending {type}
 				</span>
 				<Link
-					href={`/${type}/relation?ext=mal&id=${media.idMal}`}
+					href={`/${type.toLowerCase()}/relation?ext=mal&id=${media.idMal}`}
 					prefetch={false}
 					className="line-clamp-2 text-2xl font-semibold text-dark-50 max-xs:text-center">
 					{media.title.romaji}
