@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getServerSession } from "next-auth/next";
 import LogoutButton from "@/components/navbar/LogoutButton";
 import LoginButton from "@/components/navbar/LoginButton";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/nextAuth/options";
 import { prisma } from "@/prisma/client";
 
 export default async function NavProfile() {
