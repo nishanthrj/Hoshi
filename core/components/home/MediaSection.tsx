@@ -9,7 +9,7 @@ interface MediaSectionProps {
 
 export default function MediaSection({ title, path, data }: MediaSectionProps) {
 	return (
-		<div className="mt-20 w-[min(70rem,100%)] pr-4 md:ml-5">
+		<div className="mt-10 w-[min(70rem,100%)] pr-4 md:ml-5">
 			<div className="flex items-center justify-between">
 				<Link
 					href={path}
