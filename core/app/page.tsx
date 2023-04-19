@@ -33,7 +33,7 @@ export default async function Home() {
 	return (
 		<main>
 			<section className="mt-14 w-full pl-4">
-				<div className="relative mx-auto grid h-96 w-[min(70rem,100%)] pr-4">
+				<div className="relative mx-auto mb-8 grid h-96 w-[min(70rem,100%)] pr-4">
 					<TrendingSection data={trendingData} />
 				</div>
 				<div className="flex flex-col items-center">
