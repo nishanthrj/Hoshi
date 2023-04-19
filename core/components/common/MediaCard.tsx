@@ -96,12 +96,15 @@ export default function MediaCard({
 						{status}
 					</span>
 				</div>
-				<div className="genres mt-3 flex w-full gap-2 overflow-x-scroll text-dark-100">
-					{genres?.slice(0, 3).map((genre) => (
+				<div className="genres mt-3 flex w-full gap-2 text-dark-100">
+					{genres?.slice(0, 2).map((genre) => (
 						<Tag key={uuid()} className="text-[.6rem]">
 							{genre}
 						</Tag>
 					))}
+					<Tag className="text-[.6rem] max-xs:hidden">
+						{genres && genres?.length > 2 && genres[2]}
+					</Tag>
 				</div>
 				<p className="synopsis mt-4 line-clamp-5 text-[.7rem] font-normal leading-[1.6] max-xs:line-clamp-3 max-xs:text-[.6rem]">
 					{synopsis}
