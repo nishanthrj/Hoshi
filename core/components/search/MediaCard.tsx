@@ -97,7 +97,7 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 							className="line-clamp-2 w-4/5 break-words text-base text-dark-50 max-xs:text-sm">
 							{title}
 						</Link>
-						<div className="absolute left-72 flex items-center gap-x-2 text-[.9rem] font-semibold max-xs:text-xs">
+						<div className="invisible absolute left-72 flex items-center gap-x-2 text-[.9rem] font-semibold sm:visible max-xs:text-xs">
 							{score && formatScore(score)}
 						</div>
 					</div>
