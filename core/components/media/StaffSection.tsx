@@ -25,8 +25,7 @@ export default async function StaffSection() {
 				</div>
 			) : (
 				<p className="pl-4 text-base font-normal text-dark-100">
-					D-Don&apos;t think I&apos;m doing this for you (˶ •̀ _•́ ˶), but the staff info is
-					not available.
+					We can&apos;t find any staffs for this media.
 				</p>
 			)}
 		</div>

@@ -51,8 +51,7 @@ export default function EpisodesTab({ id }: EpisodesTabProps) {
 				</div>
 			) : (
 				<p className="pl-4 text-base font-normal text-dark-100">
-					D-Don&apos;t think I&apos;m doing this for you (˶ •̀ _•́ ˶), but the episodes are
-					not available.
+					We can&apos;t find any episodes for this anime.
 				</p>
 			)}
 		</div>
