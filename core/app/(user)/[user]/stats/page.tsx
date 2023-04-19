@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Image from "next/image";
-import { redirect } from "next/navigation";
+import { redirect, notFound } from "next/navigation";
 
 export default async function Stats() {
 	const session = await getServerSession(authOptions);
@@ -18,12 +18,12 @@ export default async function Stats() {
 					alt=""
 					className="h-64 w-64"
 				/>
-				<h1 className="mt-12 text-center text-xl font-bold text-dark-100">
+				<h1 className="mt-12 text-center text-lg font-semibold text-dark-100">
 					We&apos;re currently gathering cosmic materials to form this page.
 				</h1>
 			</div>
 		);
 	else {
-		redirect("/");
+		notFound();
 	}
 }
