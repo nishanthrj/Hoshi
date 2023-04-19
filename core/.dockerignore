@@ -1,0 +1,9 @@
+# Node Modules
+node_modules/
+
+# Typescript
+next-env.d.ts
+
+# NextJS
+.next/
+build/
