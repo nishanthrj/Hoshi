@@ -20,7 +20,7 @@ export default async function MediaHeader() {
 							fill={true}
 							style={{ objectFit: "cover" }}
 							quality={100}
-							sizes="210px"
+							sizes="400px"
 							alt="cover"
 							className="rounded-sm"
 						/>
