@@ -15,7 +15,7 @@ import TrendingSection from "@/components/home/TrendingSection";
 import "./splide.css";
 
 export const metadata: Metadata = {
-	title: "Home | Hoshi",
+	title: "Home",
 };
 
 export default async function Home() {

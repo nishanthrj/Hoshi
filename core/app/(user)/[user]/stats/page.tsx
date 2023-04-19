@@ -2,6 +2,12 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/nextAuth/options";
 import Image from "next/image";
 import { redirect, notFound } from "next/navigation";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+	const session = await getServerSession(authOptions);
+	return { title: `${(session as CustomSession)?.user.username}'s Stats` };
+}
 
 export default async function Stats() {
 	const session = await getServerSession(authOptions);

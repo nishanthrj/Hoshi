@@ -2,6 +2,11 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/nextAuth/options";
 import Image from "next/image";
 import { redirect, notFound } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Settings",
+};
 
 export default async function Settings() {
 	const session = await getServerSession(authOptions);
