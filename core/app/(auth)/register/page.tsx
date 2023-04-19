@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { useNavbarStore } from "@/stores/navbar";
 import RegisterForm from "@/components/auth/RegisterForm";
-import Image from "next/image";
 
 export const metadata: Metadata = {
 	title: "Register",

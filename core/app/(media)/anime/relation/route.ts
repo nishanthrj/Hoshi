@@ -1,5 +1,5 @@
-import { getMediaFromRelation } from "@/utils/fetch";
 import { redirect } from "next/navigation";
+import { getMediaFromRelation } from "@/utils/fetch";
 
 export async function GET(request: Request) {
 	const { searchParams } = new URL(request.url);

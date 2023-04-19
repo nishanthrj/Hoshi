@@ -1,7 +1,7 @@
-import "./globals.css";
 import type { Metadata } from "next";
 import { Overpass } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
 	title: {

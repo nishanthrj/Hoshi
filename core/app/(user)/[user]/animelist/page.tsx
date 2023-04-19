@@ -1,8 +1,8 @@
+import { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/nextAuth/options";
-import Image from "next/image";
-import { redirect, notFound } from "next/navigation";
-import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const session = await getServerSession(authOptions);

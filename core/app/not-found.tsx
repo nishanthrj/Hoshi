@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function NotFound() {
 	return (
-		<div className="absolute inset-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-dark p-4">
+		<div className="flex h-screen w-screen flex-col items-center justify-center bg-dark p-4">
 			<Image
 				src="/missing.png"
 				width={500}

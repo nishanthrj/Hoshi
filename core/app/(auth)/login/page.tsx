@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { useNavbarStore } from "@/stores/navbar";
 import LoginForm from "@/components/auth/LoginForm";
-import Image from "next/image";
 
 export const metadata: Metadata = {
 	title: "Login",

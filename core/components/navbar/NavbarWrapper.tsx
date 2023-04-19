@@ -1,10 +1,10 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useNavbarStore } from "@/stores/navbar";
 import Logo from "@/components/navbar/Logo";
 import MenuIcon from "@/components/navbar/MenuIcon";
-import { usePathname } from "next/navigation";
 
 interface NavbarWrapperProps {
 	children: React.ReactNode;

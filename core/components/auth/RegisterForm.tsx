@@ -1,12 +1,12 @@
 "use client";
 
-import * as Yup from "yup";
 import { useRouter } from "next/navigation";
-import InputField from "./InputField";
-import { useFormik } from "formik";
-import { checkEmail, checkUsername } from "@/utils/validation";
 import { useState } from "react";
-import Loading from "../common/Loading";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { checkEmail, checkUsername } from "@/utils/validation";
+import InputField from "@/components/auth/InputField";
+import Loading from "@/components/common/Loading";
 
 export default function RegisterWrapper() {
 	const router = useRouter();

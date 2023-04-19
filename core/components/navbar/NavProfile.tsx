@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { getServerSession } from "next-auth/next";
-import LogoutButton from "@/components/navbar/LogoutButton";
-import LoginButton from "@/components/navbar/LoginButton";
 import { authOptions } from "@/nextAuth/options";
 import { prisma } from "@/prisma/client";
+import LogoutButton from "@/components/navbar/LogoutButton";
+import LoginButton from "@/components/navbar/LoginButton";
 
 export default async function NavProfile() {
 	const session = await getServerSession(authOptions);

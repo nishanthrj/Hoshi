@@ -12,7 +12,7 @@ import {
 } from "@/utils/fetch";
 import MediaSection from "@/components/home/MediaSection";
 import TrendingSection from "@/components/home/TrendingSection";
-import "./splide.css";
+import "@/app/splide.css";
 
 export const metadata: Metadata = {
 	title: "Home",

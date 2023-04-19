@@ -1,10 +1,9 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRef } from "react";
-import InputField from "./InputField";
-import { useState } from "react";
-import Loading from "../common/Loading";
+import InputField from "@/components/auth/InputField";
+import Loading from "@/components/common/Loading";
 
 export default function LoginForm() {
 	const form = useRef<HTMLFormElement>(null);
