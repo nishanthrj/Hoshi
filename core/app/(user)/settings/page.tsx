@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/nextAuth/options";
+import { authOptions } from "@/lib/auth/options";
 
 export const metadata: Metadata = {
 	title: "Settings",

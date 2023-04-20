@@ -1,7 +1,7 @@
 import DetailsItem from "@/components/media/DetailsItem";
-import { getMedia } from "@/utils/fetch";
+import { getMedia } from "@/lib/fetch";
 import { useMediaStore } from "@/stores/media";
-import { formatDate } from "@/utils/common";
+import { formatDate } from "@/lib/common";
 
 export default async function DetailsCard() {
 	const id = useMediaStore.getState().mediaId;

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { checkEmail, checkUsername } from "@/utils/validation";
+import { checkEmail, checkUsername } from "@/lib/auth/validation";
 import InputField from "@/components/auth/InputField";
 import Loading from "@/components/common/Loading";
 

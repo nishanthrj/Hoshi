@@ -9,10 +9,10 @@ import {
 	getTopManhwa,
 	getCurrentSeason,
 	getNextSeason,
-} from "@/utils/fetch";
+} from "@/lib/fetch";
 import MediaSection from "@/components/home/MediaSection";
 import TrendingSection from "@/components/home/TrendingSection";
-import "@/app/splide.css";
+import "@/styles/splide.css";
 
 export const metadata: Metadata = {
 	title: "Home",

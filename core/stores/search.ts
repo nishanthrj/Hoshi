@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { deleteFromSet } from "../utils/store";
+import { deleteFromSet } from "@/lib/common";
 
 interface SearchStoreState {
 	mediaType: string;

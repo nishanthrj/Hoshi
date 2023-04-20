@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { getEpisodes } from "@/utils/fetch";
+import { getEpisodes } from "@/lib/fetch";
 import EpisodeCard from "@/components/media/EpisodeCard";
 
 interface EpisodesTabProps {

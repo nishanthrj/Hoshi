@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { useMediaStore } from "@/stores/media";
-import { getStaff } from "@/utils/fetch";
+import { getStaff } from "@/lib/fetch";
 import StaffCard from "@/components/media/StaffCard";
 
 export default async function StaffSection() {

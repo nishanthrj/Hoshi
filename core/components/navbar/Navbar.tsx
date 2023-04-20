@@ -1,6 +1,6 @@
 import { MdHome, MdSettings, MdSearch, MdPlayArrow, MdMenuBook, MdAutoGraph } from "react-icons/md";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/nextAuth/options";
+import { authOptions } from "@/lib/auth/options";
 import NavLink from "@/components/navbar/NavLink";
 import NavProfile from "@/components/navbar/NavProfile";
 import NavbarWrapper from "@/components/navbar/NavbarWrapper";

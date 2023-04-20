@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { useMediaStore } from "@/stores/media";
-import { getMedia } from "@/utils/fetch";
+import { getMedia } from "@/lib/fetch";
 import Tag from "@/components/common/Tag";
 
 export default async function HeaderInfo() {
@@ -27,7 +27,7 @@ export default async function HeaderInfo() {
 			<span className="text-[.8rem] text-dark-200 max-xs:hidden ">
 				{"studio" in data && data.studio?.join(", ")}
 			</span>
-			<h1 className="text-xl font-semibold text-dark-50 line-clamp-2 max-xs:text-center">
+			<h1 className="line-clamp-2 text-xl font-semibold text-dark-50 max-xs:text-center">
 				{data.title}
 			</h1>
 			<span className="absolute w-full text-xs text-dark-100 max-xs:text-center ">

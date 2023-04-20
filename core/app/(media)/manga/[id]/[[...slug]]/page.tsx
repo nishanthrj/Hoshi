@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect, notFound } from "next/navigation";
 import { Suspense } from "react";
 import { useMediaStore } from "@/stores/media";
-import { getMedia } from "@/utils/fetch";
+import { getMedia } from "@/lib/fetch";
 import MediaHeader from "@/components/media/MediaHeader";
 import TabNavbar from "@/components/media/TabNavbar";
 import TabWrapper from "@/components/media/TabWrapper";

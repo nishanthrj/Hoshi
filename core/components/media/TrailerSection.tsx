@@ -1,5 +1,5 @@
 import { useMediaStore } from "@/stores/media";
-import { getTrailer } from "@/utils/fetch";
+import { getTrailer } from "@/lib/fetch";
 import Trailer from "@/components/media/Trailer";
 
 export default async function TrailerSection() {

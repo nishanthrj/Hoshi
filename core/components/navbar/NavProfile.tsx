@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/nextAuth/options";
-import { prisma } from "@/prisma/client";
+import { authOptions } from "@/lib/auth/options";
+import { prisma } from "@/lib/db";
 import LogoutButton from "@/components/navbar/LogoutButton";
 import LoginButton from "@/components/navbar/LoginButton";
 

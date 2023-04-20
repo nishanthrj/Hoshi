@@ -3,7 +3,7 @@
 import { v4 as uuid } from "uuid";
 import { useDropdownStore } from "@/stores/common";
 import { useSearchStore } from "@/stores/search";
-import { getOptions } from "@/utils/filters";
+import { getOptions } from "@/lib/filters";
 import DropdownOption from "@/components/search/DropdownOption";
 
 interface DropdownProps {

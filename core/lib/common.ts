@@ -13,3 +13,8 @@ export const formatDate = (dateStr: string) => {
 	const options: Intl.DateTimeFormatOptions = { month: "short", day: "numeric", year: "numeric" };
 	return dateObj.toLocaleDateString("en-US", options);
 };
+
+export const deleteFromSet = function (set: Set<string>, item: string) {
+	set.delete(item);
+	return set;
+};

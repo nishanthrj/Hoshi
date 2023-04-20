@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getCurrentSeason } from "@/utils/fetch";
+import { getCurrentSeason } from "@/lib/fetch";
 import HighlightSection from "@/components/common/HighlightSection";
 
 export const metadata: Metadata = {

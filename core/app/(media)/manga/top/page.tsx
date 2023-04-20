@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTopManga } from "@/utils/fetch";
+import { getTopManga } from "@/lib/fetch";
 import HighlightSection from "@/components/common/HighlightSection";
 
 export const metadata: Metadata = {

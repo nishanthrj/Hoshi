@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { useMediaStore } from "@/stores/media";
-import { getRelatedMedia } from "@/utils/fetch";
+import { getRelatedMedia } from "@/lib/fetch";
 import RelationCard from "@/components/media/RelationCard";
 
 export default async function RelationSection() {

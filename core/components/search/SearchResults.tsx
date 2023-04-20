@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSearchStore } from "@/stores/search";
-import { getSearchResults } from "@/utils/fetch";
+import { getSearchResults } from "@/lib/fetch";
 import MediaCard from "@/components/search/MediaCard";
 
 export default function SearchResults() {

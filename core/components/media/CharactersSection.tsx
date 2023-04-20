@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { useMediaStore } from "@/stores/media";
-import { getCharacters } from "@/utils/fetch";
+import { getCharacters } from "@/lib/fetch";
 import CharacterCard from "@/components/media/CharacterCard";
 
 export default async function CharactersSection() {
