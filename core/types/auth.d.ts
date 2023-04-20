@@ -19,9 +19,9 @@ interface CustomAdapterUser extends AdapterUser {
 
 interface CustomSession extends Session {
 	user: {
-		id: number | null | undefined;
-		username: string | null | undefined;
-		email: string | null | undefined;
+		id: number | undefined;
+		username: string | undefined;
+		email: string | undefined;
 		name?: string | null | undefined;
 		image?: string | null | undefined;
 	};

@@ -4,7 +4,7 @@ import { prisma } from "@/lib/db";
 
 export async function POST(request: Request) {
 	const data = await request.json();
-	const user: User = await prisma.user.create({
+	const user = await prisma.user.create({
 		data: {
 			email: data.email,
 			username: data.username,

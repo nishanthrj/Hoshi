@@ -12,7 +12,7 @@ export default async function NavProfile() {
 	if (session) {
 		user = await prisma.user.findUnique({
 			where: {
-				email: session?.user?.email,
+				email: (session as CustomSession)?.user?.email,
 			},
 		});
 	}
@@ -22,7 +22,7 @@ export default async function NavProfile() {
 			<div className="inline-flex gap-3 pl-2 font-semibold leading-[3rem] text-dark-100 hover:text-dark-100">
 				<div className="relative h-10 w-10">
 					<Image
-						src={user?.image || "/default.png"}
+						src={"/default.png"}
 						fill={true}
 						quality={100}
 						loading={"eager"}
