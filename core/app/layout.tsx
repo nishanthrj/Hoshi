@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Overpass } from "next/font/google";
+import SupabaseProvider from "@/supabase/provider";
 import Navbar from "@/components/navbar/Navbar";
 import "@/styles/globals.css";
 
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body className="grid grid-cols-[min-content_auto] overflow-x-hidden bg-dark">
 				{/* @ts-expect-error Async Server Component */}
 				<Navbar />
-				{children}
+				<SupabaseProvider>{children}</SupabaseProvider>
 			</body>
 		</html>
 	);
