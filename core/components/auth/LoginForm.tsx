@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { signIn } from "next-auth/react";
 import InputField from "@/components/auth/InputField";
 import Loading from "@/components/common/Loading";
 
@@ -13,19 +12,6 @@ export default function LoginForm() {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setLoading(true);
-		const res = await signIn("credentials", {
-			redirect: false,
-			callbackUrl: "/",
-			email: form.current?.email?.value,
-			password: form.current?.password?.value,
-		});
-
-		if (res?.error) {
-			setError(true);
-			setLoading(false);
-		} else {
-			window.location.href = "/";
-		}
 	};
 
 	return (

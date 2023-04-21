@@ -23,8 +23,8 @@ export default function TrendingSection({ data }: TrendingSectionProps) {
 			}}
 			aria-label="Trending Media">
 			<div className="splide__arrows">
-				<MdArrowBack className="splide__arrow splide__arrow--prev top-[92%] left-[1%] text-center text-xs text-dark-100 sm:left-6 max-xs:top-[90%]" />
-				<MdArrowForward className="splide__arrow splide__arrow--next top-[92%] right-[5%] text-center text-xs text-dark-100 sm:left-14 max-xs:top-[90%]" />
+				<MdArrowBack className="splide__arrow splide__arrow--prev left-[1%] top-[92%] text-center text-xs text-dark-100 sm:left-6 max-xs:top-[90%]" />
+				<MdArrowForward className="splide__arrow splide__arrow--next right-[5%] top-[92%] text-center text-xs text-dark-100 sm:left-14 max-xs:top-[90%]" />
 			</div>
 			<SplideTrack>
 				{data.anime.map((media, i) => (
