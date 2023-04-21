@@ -3,7 +3,7 @@
 import { useCallback } from "react";
 import { CgSearch } from "react-icons/cg";
 import { useSearchStore } from "@/stores/search";
-import { debounce } from "@/lib/common";
+import { debounce } from "@/utils/common";
 
 export default function SearchBar() {
 	const setQuery = useSearchStore((state) => state.setQuery);

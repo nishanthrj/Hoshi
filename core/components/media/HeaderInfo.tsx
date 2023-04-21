@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { useMediaStore } from "@/stores/media";
-import { getMedia } from "@/lib/fetch";
+import { getMedia } from "@/utils/fetch";
 import Tag from "@/components/common/Tag";
 
 export default async function HeaderInfo() {

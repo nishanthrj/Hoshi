@@ -9,7 +9,7 @@ import {
 	getTopManhwa,
 	getCurrentSeason,
 	getNextSeason,
-} from "@/lib/fetch";
+} from "@/utils/fetch";
 import MediaSection from "@/components/home/MediaSection";
 import TrendingSection from "@/components/home/TrendingSection";
 import "@/styles/splide.css";

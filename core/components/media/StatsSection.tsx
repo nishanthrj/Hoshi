@@ -1,5 +1,5 @@
 import { useMediaStore } from "@/stores/media";
-import { getStats } from "@/lib/fetch";
+import { getStats } from "@/utils/fetch";
 import StatsCard from "@/components/media/StatsCard";
 
 export default async function StatsSection() {

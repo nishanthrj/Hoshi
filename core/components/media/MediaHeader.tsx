@@ -1,5 +1,5 @@
 import { useMediaStore } from "@/stores/media";
-import { getMedia } from "@/lib/fetch";
+import { getMedia } from "@/utils/fetch";
 import MediaImage from "@/components/common/MediaImage";
 import HeaderInfo from "@/components/media/HeaderInfo";
 import ActionButton from "@/components/media/ActionButton";

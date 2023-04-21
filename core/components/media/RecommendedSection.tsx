@@ -1,5 +1,5 @@
 import { useMediaStore } from "@/stores/media";
-import { getMedia } from "@/lib/fetch";
+import { getMedia } from "@/utils/fetch";
 import RecommendedCard from "@/components/media/RecommendedCard";
 
 export default async function RecommendedSection() {
