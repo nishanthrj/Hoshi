@@ -22,9 +22,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en" className={`${font.variable}`}>
 			<body className="grid grid-cols-[min-content_auto] overflow-x-hidden bg-dark">
-				{/* @ts-expect-error Async Server Component */}
-				<Navbar />
-				<SupabaseProvider>{children}</SupabaseProvider>
+				<SupabaseProvider>
+					{/* @ts-expect-error Async Server Component */}
+					<Navbar />
+					{children}
+				</SupabaseProvider>
 			</body>
 		</html>
 	);
