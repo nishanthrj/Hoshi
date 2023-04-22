@@ -4,11 +4,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { checkEmail, checkUsername } from "@/lib/auth/validation";
+import { checkEmail, checkUsername } from "@/utils/validation";
 import InputField from "@/components/auth/InputField";
 import Loading from "@/components/common/Loading";
+import { useSupabase } from "@/supabase/provider";
 
 export default function RegisterWrapper() {
+	const { supabase } = useSupabase();
 	const router = useRouter();
 	const [success, setSuccess] = useState(false);
 
@@ -50,21 +52,20 @@ export default function RegisterWrapper() {
 
 		onSubmit: async (values, { setErrors, setSubmitting }) => {
 			setSubmitting(true);
-			const res = await fetch("/api/auth/register", {
-				method: "POST",
-				headers: {
-					Accept: "application.json",
-					"Content-Type": "application/json",
+			const { data, error } = await supabase.auth.signUp({
+				email: values.email,
+				password: values.password,
+				options: {
+					data: {
+						username: values.username,
+						avatar: null,
+					},
 				},
-				body: JSON.stringify(values),
 			});
 
-			if (res.status === 200) {
+			if (!error) {
 				setSuccess(true);
 				setSubmitting(false);
-				setTimeout(() => {
-					router.push("/login");
-				}, 3000);
 			} else {
 				setErrors({ server: "There seems to be a problem. Please try again." });
 			}
@@ -79,9 +80,9 @@ export default function RegisterWrapper() {
 			{formik.isSubmitting && <Loading />}
 			{success && (
 				<div className="absolute inset-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-dark-900/95 backdrop-blur">
-					<h1 className="text-3xl font-bold">Account created successfully!</h1>
+					<h1 className="text-3xl font-bold">Verify your email address</h1>
 					<p className="mt-2 text-sm">
-						You will be redirected to the login page shortly.
+						We have sent a link to your email to verify your account.
 					</p>
 				</div>
 			)}
