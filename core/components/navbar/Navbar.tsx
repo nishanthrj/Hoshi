@@ -24,19 +24,19 @@ export default async function Navbar() {
 				<NavLink name="Search" path="/search" Icon={MdSearch} />
 				<NavLink
 					name="AnimeList"
-					path={`/${username}/animelist`}
+					path={`/user/${username}/animelist`}
 					Icon={MdPlayArrow}
 					disabled={!username ? true : false}
 				/>
 				<NavLink
 					name="MangaList"
-					path={`/${username}/mangalist`}
+					path={`/user/${username}/mangalist`}
 					Icon={MdMenuBook}
 					disabled={!username ? true : false}
 				/>
 				<NavLink
 					name="Stats"
-					path={`/${username}/stats`}
+					path={`/user/${username}/stats`}
 					Icon={MdAutoGraph}
 					disabled={!username ? true : false}
 				/>
