@@ -1,5 +1,5 @@
 export const checkUsername = async (username: string): Promise<boolean> => {
-	const res = await fetch("/api/auth/register/checkusername", {
+	const res = await fetch("/api/auth/validate/username", {
 		method: "POST",
 		headers: {
 			Accept: "application.json",
@@ -14,7 +14,7 @@ export const checkUsername = async (username: string): Promise<boolean> => {
 };
 
 export const checkEmail = async (email: string): Promise<boolean> => {
-	const res = await fetch("/api/auth/register/checkemail", {
+	const res = await fetch("/api/auth/validate/email", {
 		method: "POST",
 		headers: {
 			Accept: "application.json",
