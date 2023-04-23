@@ -24,7 +24,12 @@ export default function NavbarWrapper({ children }: NavbarWrapperProps) {
 					?.classList.remove("overflow-y-hidden", "md:overflow-y-visible");
 	}, [isOpen]);
 
-	if (pathname === "/login" || pathname === "/register") {
+	if (
+		pathname === "/login" ||
+		pathname === "/register" ||
+		pathname === "/auth/verified" ||
+		pathname === "/auth/logout"
+	) {
 		return <div></div>;
 	}
 
