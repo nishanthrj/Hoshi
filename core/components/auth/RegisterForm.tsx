@@ -56,6 +56,7 @@ export default function RegisterWrapper() {
 				email: values.email,
 				password: values.password,
 				options: {
+					emailRedirectTo: `${window.location.origin}/auth/verified`,
 					data: {
 						username: values.username,
 						avatar: null,
