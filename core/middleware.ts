@@ -1,5 +1,4 @@
 import { createMiddlewareSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { Database } from "@/types/db";
@@ -16,7 +15,7 @@ export async function middleware(req: NextRequest) {
 	} = await supabase.auth.getSession();
 
 	if (!session && protectedPages.some((page) => req.nextUrl.pathname.includes(page))) {
-		redirect("/");
+		return NextResponse.redirect(new URL("/", req.url));
 	}
 
 	return res;
