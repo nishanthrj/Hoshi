@@ -3,7 +3,6 @@
 import { MdLogout } from "react-icons/md";
 import { useNavbarStore } from "@/stores/navbar";
 import { useSupabase } from "@/supabase/provider";
-import { redirect } from "next/navigation";
 
 export default function LogoutButton() {
 	const { supabase } = useSupabase();
@@ -16,7 +15,7 @@ export default function LogoutButton() {
 		if (error) {
 			console.log(error);
 		} else {
-			redirect("/auth/logout");
+			window.location.href = "/auth/logout";
 		}
 	};
 
