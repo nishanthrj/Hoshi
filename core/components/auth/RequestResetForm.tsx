@@ -43,9 +43,9 @@ export default function LoginForm() {
 			)}
 			{success && (
 				<div className="absolute inset-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-dark-900/95 backdrop-blur">
-					<h1 className="text-3xl font-bold">Verify your email address</h1>
+					<h1 className="text-3xl font-bold">Password reset link sent</h1>
 					<p className="mt-2 text-sm">
-						We have sent a link to your email to verify your account.
+						We have sent a link to your email with instructions to reset your password.
 					</p>
 				</div>
 			)}
