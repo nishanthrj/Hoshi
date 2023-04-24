@@ -5,7 +5,6 @@ import InputField from "@/components/auth/InputField";
 import Loading from "@/components/common/Loading";
 import { useSupabase } from "@/supabase/provider";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 export default function LoginForm() {
 	const { supabase } = useSupabase();
@@ -14,21 +13,26 @@ export default function LoginForm() {
 	const form = useRef<HTMLFormElement>(null);
 
 	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(false);
+	const [error, setError] = useState("");
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setLoading(true);
 
-		const { data, error } = await supabase.auth.signInWithPassword({
-			email: form.current?.email.value,
+		if (form.current?.password.value !== form.current?.conpassword.value) {
+			setError("Passwords does not match");
+			setLoading(false);
+			return;
+		}
+
+		const { data, error } = await supabase.auth.updateUser({
 			password: form.current?.password.value,
 		});
 
 		if (!error) {
 			router.push("/");
 		} else {
-			setError(true);
+			setError("There seems to be a problem. Please try again.");
 			setLoading(false);
 		}
 	};
@@ -37,19 +41,14 @@ export default function LoginForm() {
 		<form method="POST" className="flex flex-col" ref={form} onSubmit={handleSubmit}>
 			{loading && <Loading />}
 			{error && (
-				<span className="-mt-6 mb-4 flex justify-center text-xs text-red-400">
-					Invalid credentials! Check your credentials and try again.
-				</span>
+				<span className="-mt-6 mb-4 flex justify-center text-xs text-red-400">{error}</span>
 			)}
-			<InputField name="email" type="email" text="E-Mail" />
 			<InputField name="password" type="password" text="Password" />
-			<Link href="auth/request-reset" className="-mt-4 text-right text-sm">
-				Forgot password?
-			</Link>
+			<InputField name="conpassword" type="password" text="Confirm Password" />
 			<button
 				type="submit"
-				className="mb-8 mt-8 h-12 rounded-md border-none bg-dark-400 p-3 text-base font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
-				Login
+				className="mb-4 mt-6 h-12 rounded-md border-none bg-dark-400 p-3 text-base font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
+				Reset Password
 			</button>
 		</form>
 	);

@@ -4,29 +4,29 @@ import { useRef, useState } from "react";
 import InputField from "@/components/auth/InputField";
 import Loading from "@/components/common/Loading";
 import { useSupabase } from "@/supabase/provider";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 export default function LoginForm() {
 	const { supabase } = useSupabase();
 
-	const router = useRouter();
 	const form = useRef<HTMLFormElement>(null);
 
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
+	const [success, setSuccess] = useState(false);
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setLoading(true);
 
-		const { data, error } = await supabase.auth.signInWithPassword({
-			email: form.current?.email.value,
-			password: form.current?.password.value,
-		});
+		const { data, error } = await supabase.auth.resetPasswordForEmail(
+			form.current?.email.value,
+			{
+				redirectTo: `${window.location.origin}/auth/reset-password`,
+			},
+		);
 
 		if (!error) {
-			router.push("/");
+			setSuccess(true);
 		} else {
 			setError(true);
 			setLoading(false);
@@ -38,18 +38,22 @@ export default function LoginForm() {
 			{loading && <Loading />}
 			{error && (
 				<span className="-mt-6 mb-4 flex justify-center text-xs text-red-400">
-					Invalid credentials! Check your credentials and try again.
+					There seems to be a problem. Please try again.
 				</span>
 			)}
+			{success && (
+				<div className="absolute inset-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-dark-900/95 backdrop-blur">
+					<h1 className="text-3xl font-bold">Verify your email address</h1>
+					<p className="mt-2 text-sm">
+						We have sent a link to your email to verify your account.
+					</p>
+				</div>
+			)}
 			<InputField name="email" type="email" text="E-Mail" />
-			<InputField name="password" type="password" text="Password" />
-			<Link href="auth/request-reset" className="-mt-4 text-right text-sm">
-				Forgot password?
-			</Link>
 			<button
 				type="submit"
-				className="mb-8 mt-8 h-12 rounded-md border-none bg-dark-400 p-3 text-base font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
-				Login
+				className="mb-4 mt-6 h-12 rounded-md border-none bg-dark-400 p-3 text-base font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
+				Send Reset Link
 			</button>
 		</form>
 	);

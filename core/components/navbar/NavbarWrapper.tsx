@@ -28,7 +28,9 @@ export default function NavbarWrapper({ children }: NavbarWrapperProps) {
 		pathname === "/login" ||
 		pathname === "/register" ||
 		pathname === "/auth/verified" ||
-		pathname === "/auth/logout"
+		pathname === "/auth/logout" ||
+		pathname === "/auth/request-reset" ||
+		pathname === "/auth/reset-password"
 	) {
 		return <div></div>;
 	}
