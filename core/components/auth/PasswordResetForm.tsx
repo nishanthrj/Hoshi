@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import InputField from "@/components/auth/InputField";
+import InputField from "@/components/common/InputField";
 import Loading from "@/components/common/Loading";
 import { useSupabase } from "@/supabase/provider";
 import { useRouter } from "next/navigation";
