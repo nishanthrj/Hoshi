@@ -114,9 +114,9 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 								{genre}
 							</Tag>
 						))}
-						<Tag className="text-[.6rem] max-xs:hidden">
-							{genres && genres?.length > 2 && genres[2]}
-						</Tag>
+						{genres && genres?.length > 2 && (
+							<Tag className="text-[.6rem] max-xs:hidden">{genres[2]}</Tag>
+						)}
 					</div>
 					<p className="synopsis mt-4 line-clamp-5 text-[.7rem] font-normal leading-[1.6] max-xs:line-clamp-3 max-xs:text-[.6rem]">
 						{synopsis}
