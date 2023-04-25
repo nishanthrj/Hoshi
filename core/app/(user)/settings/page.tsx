@@ -1,25 +1,20 @@
-import { Metadata } from "next";
-import Image from "next/image";
+import type { Metadata } from "next";
+import { useNavbarStore } from "@/stores/navbar";
+import AvatarForm from "@/components/settings/AvatarForm";
 
 export const metadata: Metadata = {
 	title: "Settings",
 };
 
 export default async function Settings() {
+	useNavbarStore.setState({ currentPath: "/settings" });
+
 	return (
-		<div className="absolute inset-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-dark p-4">
-			<Image
-				src="/dev.png"
-				width={500}
-				height={500}
-				quality={100}
-				priority={true}
-				alt=""
-				className="h-64 w-64"
-			/>
-			<h1 className="mt-12 text-center text-lg font-semibold text-dark-100">
-				We&apos;re currently gathering cosmic materials to form this page.
-			</h1>
-		</div>
+		<main>
+			<section className="my-12 w-full pl-4">
+				<h1 className="px-12 pt-8 text-2xl font-bold text-dark-50">Settings</h1>
+				<AvatarForm />
+			</section>
+		</main>
 	);
 }
