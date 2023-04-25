@@ -3,6 +3,7 @@ from models.root import Root
 from routers.anime import anime
 from routers.manga import manga
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
 
 description = """
 Website: https://hoshi.ga	|	URL: https://api.hoshi.ga	|	License: [GPL-3.0](https://github.com/nishanthrj/Hoshi-API/blob/master/LICENSE)
@@ -17,21 +18,18 @@ app = FastAPI(
     docs_url=None,
 )
 
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "https://hoshi.ga",
-    "https://api.hoshi.ga",
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[
+        "https://hoshi.ga",
+        "https://api.hoshi.ga",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=["hoshi.ga", "api.hoshi.ga"])
 
 
 @app.get("/", response_model=Root, include_in_schema=False)
