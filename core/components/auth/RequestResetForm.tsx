@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useSupabase } from "@/supabase/provider";
 import InputField from "@/components/common/InputField";
 import Loading from "@/components/common/Loading";
-import { useSupabase } from "@/supabase/provider";
 
 export default function LoginForm() {
 	const { supabase } = useSupabase();

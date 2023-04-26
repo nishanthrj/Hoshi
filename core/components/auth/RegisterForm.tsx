@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useSupabase } from "@/supabase/provider";
 import { checkEmail, checkUsername } from "@/utils/validation";
 import InputField from "@/components/common/InputField";
 import Loading from "@/components/common/Loading";
-import { useSupabase } from "@/supabase/provider";
 
 export default function RegisterWrapper() {
 	const { supabase } = useSupabase();

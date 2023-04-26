@@ -1,11 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import { useSupabase } from "@/supabase/provider";
 import InputField from "@/components/common/InputField";
 import Loading from "@/components/common/Loading";
-import { useSupabase } from "@/supabase/provider";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 export default function LoginForm() {
 	const { supabase } = useSupabase();

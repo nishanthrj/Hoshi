@@ -1,11 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useSupabase } from "@/supabase/provider";
-import ButtonLoading from "@/components/common/ButtonLoading";
 import { checkUsername } from "@/utils/validation";
-import { useEffect, useState } from "react";
+import ButtonLoading from "@/components/common/ButtonLoading";
 
 export default function UsernameForm() {
 	const { supabase } = useSupabase();
@@ -20,7 +20,7 @@ export default function UsernameForm() {
 		};
 
 		setSessionData();
-	}, []);
+	});
 
 	const formik = useFormik({
 		initialValues: {
@@ -57,7 +57,9 @@ export default function UsernameForm() {
 
 	return (
 		<div className="mt-20 w-[min(70rem,100%)] px-12 text-dark-100">
-			<h1 className="mb-3 text-xl font-medium uppercase tracking-wide">Username</h1>
+			<h1 className="mb-3 text-lg font-semibold uppercase tracking-normal text-dark-100">
+				Username
+			</h1>
 			<form method="POST" className="flex flex-col" onSubmit={formik.handleSubmit}>
 				{formik.errors.username && (
 					<span className="-mt-2 mb-2  text-xs text-red-400">
@@ -81,7 +83,7 @@ export default function UsernameForm() {
 				/>
 				<button
 					type="submit"
-					className="mt-4 flex h-12 w-52 items-center justify-center rounded-md border-none bg-dark-400 p-3 text-sm font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
+					className="mt-8 flex h-12 w-52 items-center justify-center rounded-md border-none bg-dark-400 p-3 text-sm font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
 					{formik.isSubmitting && <ButtonLoading />}
 					{formik.isSubmitting ? "Saving..." : "Save"}
 				</button>

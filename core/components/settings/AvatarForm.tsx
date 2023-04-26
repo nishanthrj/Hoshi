@@ -1,8 +1,8 @@
 "use client";
 
-import { useSupabase } from "@/supabase/provider";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useSupabase } from "@/supabase/provider";
 import ButtonLoading from "@/components/common/ButtonLoading";
 
 export default function AvatarForm() {
