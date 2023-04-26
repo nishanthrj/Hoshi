@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MediaCard from "@/components/home/MediaCard";
+import MediaCardMini from "@/components/home/MediaCardMini";
 
 interface MediaSectionProps {
 	title: string;
@@ -29,7 +29,7 @@ export default function MediaSection({ title, path, data }: MediaSectionProps) {
 					data
 						.slice(0, 6)
 						.map((media) => (
-							<MediaCard
+							<MediaCardMini
 								key={media._id}
 								id={media._id}
 								title={media.title}
