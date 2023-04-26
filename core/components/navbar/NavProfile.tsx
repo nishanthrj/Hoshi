@@ -15,7 +15,6 @@ export default async function NavProfile({ username, avatar }: NavProfileProps) 
 						src={avatar ? avatar : "/avatar.png"}
 						fill={true}
 						quality={100}
-						loading={"eager"}
 						alt="profile"
 						sizes="50px"
 						className="object-contain"
