@@ -47,10 +47,9 @@ export default function TrendingCard({ media, rank, type }: TrendingCardProps) {
 						src={media.coverImage.extraLarge || ""}
 						fill={true}
 						style={{ objectFit: "cover" }}
-						quality={100}
+						quality={85}
 						sizes="500px"
-						alt="cover"
-						priority={true}
+						alt=""
 						className="rounded-sm brightness-[25%] sm:brightness-[80%]"
 					/>
 				</div>

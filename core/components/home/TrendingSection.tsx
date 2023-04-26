@@ -20,6 +20,8 @@ export default function TrendingSection({ data }: TrendingSectionProps) {
 				snap: true,
 				autoplay: true,
 				speed: 1000,
+				lazyLoad: "nearby",
+				preloadPages: 3,
 			}}
 			aria-label="Trending Media">
 			<div className="splide__arrows">
