@@ -17,6 +17,7 @@ export default async function NavProfile({ username, avatar }: NavProfileProps) 
 						quality={100}
 						loading={"eager"}
 						alt="profile"
+						sizes="50px"
 						className="object-contain"
 					/>
 				</div>
