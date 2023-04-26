@@ -138,7 +138,7 @@ async def get_manga_relation(kitsuId: int):
     results = []
     relationship = []
 
-    for entry in data["included"]:
+    for entry in data.get("included"):
         if entry["type"] == "anime" or entry["type"] == "manga":
             result = {
                 "id": entry["id"],
