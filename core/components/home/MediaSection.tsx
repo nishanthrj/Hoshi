@@ -4,10 +4,11 @@ import MediaCardMini from "@/components/home/MediaCardMini";
 interface MediaSectionProps {
 	title: string;
 	path: string;
+	mediaType: "anime" | "manga";
 	data: Anime[] | Manga[];
 }
 
-export default function MediaSection({ title, path, data }: MediaSectionProps) {
+export default function MediaSection({ title, path, mediaType, data }: MediaSectionProps) {
 	return (
 		<div className="mt-10 w-[min(70rem,100%)] pr-4 md:ml-5">
 			<div className="flex items-center justify-between">
@@ -32,6 +33,7 @@ export default function MediaSection({ title, path, data }: MediaSectionProps) {
 							<MediaCardMini
 								key={media._id}
 								id={media._id}
+								mediaType={mediaType}
 								title={media.title}
 								slug={media.slug}
 								poster={media.poster}

@@ -6,9 +6,10 @@ interface MediaCardMiniProps {
 	slug: string;
 	title: string;
 	poster: string | null;
+	mediaType: string;
 }
 
-export default function MediaCardMini({ id, slug, title, poster }: MediaCardMiniProps) {
+export default function MediaCardMini({ id, slug, title, poster, mediaType }: MediaCardMiniProps) {
 	return (
 		<div>
 			<div className="relative aspect-[4/6]">
@@ -23,7 +24,7 @@ export default function MediaCardMini({ id, slug, title, poster }: MediaCardMini
 				/>
 			</div>
 			<Link
-				href={`/anime/${id}/${slug}`}
+				href={`/${mediaType}/${id}/${slug}`}
 				prefetch={false}
 				className="mt-2 line-clamp-2 text-sm font-semibold text-dark-100 max-xs:text-xs">
 				{title}

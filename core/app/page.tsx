@@ -40,28 +40,43 @@ export default async function Home() {
 					<MediaSection
 						title="popular this season"
 						path="\anime\this-season"
+						mediaType="anime"
 						data={currentSeason}
 					/>
 					<MediaSection
 						title="upcoming next season"
 						path="\anime\next-season"
+						mediaType="anime"
 						data={nextSeason}
 					/>
-					<MediaSection title="highest rated anime" path="\anime\top" data={topAnime} />
+					<MediaSection
+						title="highest rated anime"
+						path="\anime\top"
+						mediaType="anime"
+						data={topAnime}
+					/>
 					<MediaSection
 						title="most popular anime"
 						path="\anime\popular"
+						mediaType="anime"
 						data={popularAnime}
 					/>
-					<MediaSection title="highest rated manga" path="\manga\top" data={topManga} />
+					<MediaSection
+						title="highest rated manga"
+						path="\manga\top"
+						mediaType="manga"
+						data={topManga}
+					/>
 					<MediaSection
 						title="most popular manga"
 						path="\manga\popular"
+						mediaType="manga"
 						data={popularManga}
 					/>
 					<MediaSection
 						title="most popular manhwa"
 						path="\manga\top-manhwa"
+						mediaType="manga"
 						data={topManhwa}
 					/>
 				</div>
