@@ -96,7 +96,7 @@ export default function AvatarForm() {
 					</div>
 					<div className="flex flex-col items-center justify-center">
 						<Image
-							src={imageUrl || avatar}
+							src={imageUrl || avatar || "/avatar.png"}
 							alt=""
 							width={200}
 							height={200}

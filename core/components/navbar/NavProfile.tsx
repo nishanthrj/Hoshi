@@ -12,7 +12,7 @@ export default async function NavProfile({ username, avatar }: NavProfileProps) 
 			<div className="inline-flex gap-3 pl-2 font-semibold leading-[3rem] text-dark-100 hover:text-dark-100">
 				<div className="relative h-10 w-10">
 					<Image
-						src={avatar ? avatar : "/default.png"}
+						src={avatar ? avatar : "/avatar.png"}
 						fill={true}
 						quality={100}
 						loading={"eager"}
