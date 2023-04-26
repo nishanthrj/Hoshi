@@ -69,7 +69,7 @@ export default function UsernameForm() {
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
 					value={formik.values.conpassword}
-					className="mt-6 h-10 w-full rounded-md border-none bg-dark-600 p-3 text-sm font-bold text-dark-50 sm:w-1/2"
+					className="mt-6 h-12 w-full rounded-md border-none bg-dark-600 p-3 text-sm font-bold text-dark-50 sm:w-1/2"
 				/>
 				<button
 					type="submit"

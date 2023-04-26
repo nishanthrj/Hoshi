@@ -79,7 +79,7 @@ export default function UsernameForm() {
 					placeholder={username}
 					value={formik.values.username}
 					autoComplete="off"
-					className="h-10 w-full rounded-md border-none bg-dark-600 p-3 text-sm font-bold text-dark-50 sm:w-1/2"
+					className="h-12 w-full rounded-md border-none bg-dark-600 p-3 text-sm font-bold text-dark-50 sm:w-1/2"
 				/>
 				<button
 					type="submit"
