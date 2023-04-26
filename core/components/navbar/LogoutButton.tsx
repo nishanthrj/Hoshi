@@ -15,7 +15,7 @@ export default function LogoutButton() {
 		if (error) {
 			console.log(error);
 		} else {
-			window.location.href = "/auth/logout";
+			window.location.href = "/logout";
 		}
 	};
 

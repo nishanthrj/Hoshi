@@ -25,10 +25,10 @@ export default function NavbarWrapper({ children }: NavbarWrapperProps) {
 	}, [isOpen]);
 
 	if (
-		pathname === "/login" ||
 		pathname === "/register" ||
+		pathname === "/login" ||
+		pathname === "/logout" ||
 		pathname === "/auth/verified" ||
-		pathname === "/auth/logout" ||
 		pathname === "/auth/request-reset" ||
 		pathname === "/auth/reset-password"
 	) {
