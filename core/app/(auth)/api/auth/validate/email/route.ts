@@ -1,15 +1,17 @@
-import { createRouteHandlerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import "server-only";
+
+import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
-import { headers, cookies } from "next/headers";
 import type { Database } from "@/types/db";
 
 export const revalidate = 0;
 
 export async function POST(request: Request) {
-	const supabase = createRouteHandlerSupabaseClient<Database>({
-		headers,
-		cookies,
-	});
+	const supabase = createClient<Database>(
+		process.env.SUPABASE_ADMIN_URL!,
+		process.env.SUPABASE_ADMIN_KEY!,
+	);
+
 	const { email } = await request.json();
 
 	const { data } = await supabase.from("profiles").select("*").eq("email", email);
