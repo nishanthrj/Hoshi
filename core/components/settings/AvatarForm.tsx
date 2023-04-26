@@ -58,7 +58,7 @@ export default function AvatarForm() {
 			if (error) {
 				setError("Error uploading avatar");
 			} else {
-				const avatarUrl = `https://fxwjqggdvzhwhieoqzmq.supabase.co/storage/v1/object/public/avatars/${data.path}`;
+				const avatarUrl = `${process.env.NEXT_PUBLIC_AVATAR_BUCKET}${data.path}`;
 				await supabase.auth.updateUser({
 					data: { avatar: avatarUrl },
 				});
@@ -72,7 +72,9 @@ export default function AvatarForm() {
 
 	return (
 		<div className="mt-10 w-[min(70rem,100%)] px-12 text-dark-100">
-			<h1 className="mb-8 text-xl font-medium uppercase tracking-wide">Avatar</h1>
+			<h1 className="mb-8 text-lg font-semibold uppercase tracking-normal text-dark-100">
+				Avatar
+			</h1>
 			<form
 				method="POST"
 				className="flex flex-col"
