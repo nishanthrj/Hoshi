@@ -2,16 +2,27 @@
 
 import { useSupabase } from "@/supabase/provider";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonLoading from "@/components/common/ButtonLoading";
 
 export default function AvatarForm() {
 	const { supabase } = useSupabase();
 
+	const [avatar, setAvatar] = useState<string>("");
 	const [file, setFile] = useState<File | null>(null);
 	const [imageUrl, setImageUrl] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
+	const [success, setSuccess] = useState(false);
 	const [error, setError] = useState<string | null>(null);
+
+	useEffect(() => {
+		const setSessionData = async () => {
+			const { data } = await supabase.auth.getSession();
+			setAvatar(data.session?.user.user_metadata.avatar);
+		};
+
+		setSessionData();
+	});
 
 	const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedFile = e?.target?.files?.[0] || null;
@@ -54,8 +65,9 @@ export default function AvatarForm() {
 			}
 		}
 		await supabase.auth.refreshSession();
-		window.location.reload();
 		setLoading(false);
+		setSuccess(true);
+		setTimeout(() => window.location.reload(), 2000);
 	};
 
 	return (
@@ -80,17 +92,25 @@ export default function AvatarForm() {
 						/>
 						<p className="py-12 text-center text-sm">Drop image or click to upload</p>
 					</div>
-					{imageUrl && (
+					<div className="flex flex-col items-center justify-center">
 						<Image
-							src={imageUrl}
+							src={imageUrl || avatar}
 							alt=""
 							width={200}
 							height={200}
 							className="h-52 w-52"
 						/>
-					)}
+						<p className="mt-4 text-center text-sm text-dark-200">
+							{imageUrl ? "Selected Avatar" : "Current Avatar"}
+						</p>
+					</div>
 				</div>
-				{error && <span className="mt-4 text-xs text-red-400">{error}</span>}
+				{error && <span className="mt-2 text-xs text-red-400">{error}</span>}
+				{success && (
+					<span className="mt-2 text-xs text-green-400">
+						Avatar updated successfully!
+					</span>
+				)}
 				<button
 					type="submit"
 					className="mt-4 flex h-12 w-52 items-center justify-center rounded-md border-none bg-dark-400 p-3 text-sm font-bold uppercase tracking-widest text-dark-50 transition-all duration-300 hover:brightness-125">
