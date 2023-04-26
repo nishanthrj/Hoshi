@@ -25,7 +25,7 @@ export default function LoginForm() {
 			return;
 		}
 
-		const { data, error } = await supabase.auth.updateUser({
+		const { error } = await supabase.auth.updateUser({
 			password: form.current?.password.value,
 		});
 

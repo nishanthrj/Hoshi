@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -11,7 +10,6 @@ import Loading from "@/components/common/Loading";
 
 export default function RegisterWrapper() {
 	const { supabase } = useSupabase();
-	const router = useRouter();
 	const [success, setSuccess] = useState(false);
 
 	const formik = useFormik({
@@ -52,7 +50,7 @@ export default function RegisterWrapper() {
 
 		onSubmit: async (values, { setErrors, setSubmitting }) => {
 			setSubmitting(true);
-			const { data, error } = await supabase.auth.signUp({
+			const { error } = await supabase.auth.signUp({
 				email: values.email,
 				password: values.password,
 				options: {
