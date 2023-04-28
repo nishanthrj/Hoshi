@@ -19,8 +19,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-	useNavbarStore.setState({ currentPath: "/" });
-
 	const trendingData = await getTrendingMedia();
 	const popularAnime = await getPopularAnime();
 	const popularManga = await getPopularManga();

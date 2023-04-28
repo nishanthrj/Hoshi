@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { IconType } from "react-icons/lib";
-import { useNavbarStore } from "@/stores/navbar";
 
 interface NavLinkProp {
 	name: string;
@@ -10,15 +9,12 @@ interface NavLinkProp {
 }
 
 export default function NavLink({ name, path, Icon, disabled }: NavLinkProp) {
-	const pathname = useNavbarStore.getState().currentPath;
-
 	return (
 		<Link href={path} prefetch={false} className={disabled ? "pointer-events-none" : ""}>
 			<span
 				className={`mb-5 inline-flex cursor-pointer select-none gap-5 pl-2
 				text-base font-medium leading-9 transition-colors duration-300 hover:text-dark-100
-				${disabled ? "text-dark-400" : ""}
-				${pathname === path ? "text-dark-50" : ""}`}>
+				${disabled ? "text-dark-400" : ""}`}>
 				<Icon className="p-px text-3xl" />
 				{name}
 			</span>

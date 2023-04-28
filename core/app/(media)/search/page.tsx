@@ -13,8 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function Search() {
-	useNavbarStore.setState({ currentPath: "/search" });
-
 	return (
 		<main className="mt-8">
 			<section className="mt-12 w-full sm:pl-4">

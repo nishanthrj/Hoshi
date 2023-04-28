@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { useNavbarStore } from "@/stores/navbar";
 import LoginForm from "@/components/auth/LoginForm";
 
 export const metadata: Metadata = {
@@ -9,8 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Login() {
-	useNavbarStore.setState({ currentPath: "/login" });
-
 	return (
 		<main className="flex w-full flex-col items-center justify-center p-4">
 			<Link href="/" prefetch={false}>

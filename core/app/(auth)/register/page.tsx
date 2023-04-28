@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { useNavbarStore } from "@/stores/navbar";
 import RegisterForm from "@/components/auth/RegisterForm";
 
 export const metadata: Metadata = {
@@ -9,8 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Register() {
-	useNavbarStore.setState({ currentPath: "/register" });
-
 	return (
 		<main className="flex w-full flex-col items-center justify-center p-2">
 			<Link href="/" prefetch={false}>

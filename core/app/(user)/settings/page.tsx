@@ -9,8 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Settings() {
-	useNavbarStore.setState({ currentPath: "/settings" });
-
 	return (
 		<main>
 			<section className="my-12 w-full pl-4">
