@@ -20,7 +20,9 @@ export default async function NavProfile({ username, avatar }: NavProfileProps) 
 						className="object-contain"
 					/>
 				</div>
-				{username}
+				<div className="w-[9.5rem]">
+					{username.length > 15 ? username.slice(0, 15) + "..." : username}
+				</div>
 			</div>
 			<LogoutButton />
 		</div>
