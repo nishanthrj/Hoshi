@@ -1,9 +1,11 @@
 "use client";
 
 export default function Logout() {
-	setTimeout(() => {
-		window.location.href = "/";
-	}, 1500);
+	if (typeof window !== "undefined") {
+		setTimeout(() => {
+			window.location.href = "/";
+		}, 1500);
+	}
 
 	return (
 		<div className="absolute inset-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-dark-900/95 text-dark-100 backdrop-blur">
