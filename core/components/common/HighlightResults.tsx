@@ -1,13 +1,13 @@
 import MediaCard from "@/components/common/MediaCard";
 
-interface HighlightSectionProps {
+interface HighlightResultsProps {
 	mediaType: "anime" | "manga";
 	data: Anime[] | Manga[];
 }
 
-export default function HighlightSection({ mediaType, data }: HighlightSectionProps) {
+export default function HighlightResults({ mediaType, data }: HighlightResultsProps) {
 	return (
-		<div className="my-8 grid w-full grid-cols-[repeat(auto-fill,minmax(min(26rem,100%),35rem))] justify-center gap-y-8 gap-x-12 overflow-hidden">
+		<div className="my-8 grid w-full grid-cols-[repeat(auto-fill,minmax(min(26rem,100%),35rem))] justify-center gap-x-12 gap-y-8 overflow-hidden">
 			{data?.map((media) => {
 				let length = null;
 				if ("runtime" in media) length = media.runtime as string;

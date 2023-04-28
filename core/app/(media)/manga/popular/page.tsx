@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getPopularManga } from "@/utils/fetch";
-import HighlightSection from "@/components/common/HighlightSection";
+import HighlightResults from "@/components/common/HighlightResults";
 
 export const metadata: Metadata = {
 	title: "Most Popular Manga",
@@ -15,7 +15,7 @@ export default async function PopularManga() {
 				<h1 className="mb-4 text-center text-3xl font-bold capitalize tracking-normal text-dark-100 md:text-4xl">
 					Most popular manga
 				</h1>
-				<HighlightSection data={data} mediaType="manga" />
+				<HighlightResults data={data} mediaType="manga" />
 			</section>
 		</main>
 	);

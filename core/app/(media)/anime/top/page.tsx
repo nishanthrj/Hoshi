@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTopAnime } from "@/utils/fetch";
-import HighlightSection from "@/components/common/HighlightSection";
+import HighlightResults from "@/components/common/HighlightResults";
 
 export const metadata: Metadata = {
 	title: "Highest Rated Anime",
@@ -15,7 +15,7 @@ export default async function TopAnime() {
 				<h1 className="mb-4 text-center text-3xl font-bold capitalize tracking-normal text-dark-100 md:text-4xl">
 					Highest rated anime
 				</h1>
-				<HighlightSection data={data} mediaType="anime" />
+				<HighlightResults data={data} mediaType="anime" />
 			</section>
 		</main>
 	);
