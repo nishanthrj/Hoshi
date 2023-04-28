@@ -18,3 +18,8 @@ export const deleteFromSet = function (set: Set<string>, item: string) {
 	set.delete(item);
 	return set;
 };
+
+export const getImageUrl = function (src: string, width: number, quality: number) {
+	const params = ["c_fit", `w_${width}`, "f_auto", `q_${quality || "auto"}`];
+	return `https://res.cloudinary.com/dkziuw7g2/image/fetch/${params.join(",")}/${src}`;
+};

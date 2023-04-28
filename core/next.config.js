@@ -30,6 +30,10 @@ module.exports = {
 				protocol: "https",
 				hostname: "fxwjqggdvzhwhieoqzmq.supabase.co",
 			},
+			{
+				protocol: "https",
+				hostname: "res.cloudinary.com",
+			},
 		],
 	},
 };

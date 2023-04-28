@@ -4,7 +4,7 @@ import { forwardRef, Ref } from "react";
 import { v4 as uuid } from "uuid";
 import { FaRegSmile, FaRegMeh, FaRegFrown } from "react-icons/fa";
 import { useSearchStore } from "@/stores/search";
-import MediaImage from "@/components/common/MediaImage";
+import Image from "@/components/common/Image";
 import Tag from "@/components/common/Tag";
 
 interface MediaCardProps {
@@ -79,12 +79,12 @@ const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 				className="grid h-60 grid-cols-[10.75rem_auto] overflow-hidden rounded-md bg-dark-600 text-sm font-medium text-dark-200 shadow sm:rounded-md max-xs:h-48 max-xs:grid-cols-[8rem_auto] max-xs:rounded-none">
 				<div className="relative aspect-[4/6] h-full w-full">
 					{poster && (
-						<MediaImage
+						<Image
 							src={poster ? poster : ""}
 							fill={true}
 							style={{ objectFit: "cover" }}
-							quality={85}
-							sizes="172px"
+							quality={80}
+							sizes="340px"
 							alt="cover"
 						/>
 					)}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MediaImage from "@/components/common/MediaImage";
+import Image from "@/components/common/Image";
 
 interface MediaCardMiniProps {
 	id: number;
@@ -13,12 +13,12 @@ export default function MediaCardMini({ id, slug, title, poster, mediaType }: Me
 	return (
 		<div>
 			<div className="relative aspect-[4/6]">
-				<MediaImage
+				<Image
 					src={poster ? poster : ""}
 					fill={true}
 					style={{ objectFit: "cover" }}
-					quality={100}
-					sizes="250px"
+					quality={80}
+					sizes="340px"
 					alt="cover"
 					className="rounded-sm"
 				/>

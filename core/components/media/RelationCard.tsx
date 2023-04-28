@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MediaImage from "@/components/common/MediaImage";
+import Image from "@/components/common/Image";
 
 interface RelationCardProps {
 	id: number;
@@ -23,12 +23,12 @@ export default function RelationCard({
 	return (
 		<div className="grid h-32 grid-cols-[6rem_auto] gap-4 overflow-hidden rounded bg-dark-600 pr-4 leading-5 text-dark-200 max-xs:h-24 max-xs:grid-cols-[5rem_auto]">
 			<div className="relative">
-				<MediaImage
+				<Image
 					src={poster ? poster : ""}
 					fill={true}
 					style={{ objectFit: "cover" }}
-					quality={100}
-					sizes="150px"
+					quality={80}
+					sizes="340px"
 					alt="cover"
 					className="rounded-sm"
 				/>

@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, Ref } from "react";
-import MediaImage from "@/components/common/MediaImage";
+import Image from "@/components/common/Image";
 
 interface EpisodeCardProps {
 	title: string | null;
@@ -15,18 +15,18 @@ const EpisodeCard = forwardRef<HTMLDivElement, EpisodeCardProps>(
 		return (
 			<div ref={ref} className="capitalize leading-5">
 				<div className="relative h-[11.8rem] w-[21rem]">
-					<MediaImage
+					<Image
 						src={image ? image : ""}
 						fill={true}
 						style={{ objectFit: "cover" }}
-						quality={100}
-						sizes="336px"
+						quality={80}
+						sizes="672px"
 						alt="cover"
 						className="rounded"
 					/>
 				</div>
 				<p className="mt-2 text-sm font-medium text-dark-300">Episode {number}</p>
-				<p className="text-dark-100 line-clamp-2">{title}</p>
+				<p className="line-clamp-2 text-dark-100">{title}</p>
 			</div>
 		);
 	},

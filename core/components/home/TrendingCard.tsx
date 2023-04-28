@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MediaImage from "@/components/common/MediaImage";
+import Image from "@/components/common/Image";
 import Tag from "@/components/common/Tag";
 
 interface TrendingCardProps {
@@ -43,12 +43,12 @@ export default function TrendingCard({ media, rank, type }: TrendingCardProps) {
 				<div className="absolute aspect-[4/6] h-full w-full">
 					<div className="absolute inset-0 z-50 hidden bg-gradient-to-r from-[#171520] opacity-100 sm:block"></div>
 
-					<MediaImage
+					<Image
 						src={media.coverImage.extraLarge || ""}
 						fill={true}
 						style={{ objectFit: "cover" }}
-						quality={85}
-						sizes="500px"
+						quality={80}
+						sizes="640px"
 						alt=""
 						className="rounded-sm brightness-[25%] sm:brightness-[80%]"
 					/>

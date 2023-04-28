@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MediaImage from "@/components/common/MediaImage";
+import Image from "@/components/common/Image";
 import FancyBox from "@/components/common/FancyBox";
 
 interface TrailerProps {
@@ -17,13 +17,14 @@ export default function Trailer({ video, thumbnail }: TrailerProps) {
 				data-fancybox
 				prefetch={false}
 				href={video}>
-				<MediaImage
+				<Image
 					src={thumbnail}
 					fill={true}
 					style={{ objectFit: "cover" }}
-					quality={100}
-					sizes="480px"
+					quality={80}
+					sizes="640px"
 					alt="cover"
+					unoptimized={true}
 					className="rounded-sm transition-all duration-300 hover:brightness-50"
 				/>
 			</Link>

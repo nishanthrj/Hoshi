@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MediaImage from "@/components/common/MediaImage";
+import Image from "@/components/common/Image";
 
 interface RecommendedCardProps {
 	id: number;
@@ -12,12 +12,12 @@ export default function RecommendedCard({ id, slug, title, poster }: Recommended
 	return (
 		<div className="w-36 max-xs:w-32">
 			<div className="relative h-[12.65rem] max-xs:h-[11.25rem]">
-				<MediaImage
+				<Image
 					src={poster ? poster : ""}
 					fill={true}
 					style={{ objectFit: "cover" }}
-					quality={100}
-					sizes="200px"
+					quality={80}
+					sizes="340px"
 					alt="cover"
 					className="rounded-sm"
 				/>
@@ -25,7 +25,7 @@ export default function RecommendedCard({ id, slug, title, poster }: Recommended
 			<Link
 				href={`/anime/${id}/${slug}`}
 				prefetch={false}
-				className="mt-2 text-sm font-semibold text-dark-100 line-clamp-2 max-xs:text-xs">
+				className="mt-2 line-clamp-2 text-sm font-semibold text-dark-100 max-xs:text-xs">
 				{title}
 			</Link>
 		</div>
