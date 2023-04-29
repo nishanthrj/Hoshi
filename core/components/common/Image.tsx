@@ -12,7 +12,7 @@ export default function OImage({ src, unoptimized, sizes, quality, ...props }: I
 
 	if (sizes) {
 		const size = parseInt(sizes.slice(0, -2));
-		placeholder = size >= 300 ? "/placeholderXL.png" : "/placeholder.png";
+		placeholder = size >= 640 ? "/placeholderXL.png" : "/placeholder.png";
 	}
 
 	const image = unoptimized
