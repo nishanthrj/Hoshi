@@ -19,7 +19,7 @@ export default async function Navbar() {
 
 	return (
 		<NavbarWrapper>
-			<nav className="ml-2 mt-8 flex h-[85vh] select-none flex-col whitespace-nowrap text-dark-200 transition-colors duration-300">
+			<nav className="ml-2 mt-8 flex h-[85vh] select-none flex-col whitespace-nowrap text-dark-200 transition-colors duration-300 max-xs:h-[80vh]">
 				<NavLink name="Home" path="/" Icon={MdHome} />
 				<NavLink name="Search" path="/search" Icon={MdSearch} />
 				<NavLink
