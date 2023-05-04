@@ -9,7 +9,7 @@ export default async function RelationSection() {
 	const data = id ? await getRelatedMedia(mediaType, id) : null;
 
 	return (
-		<div className="mt-20 w-[min(70rem,100%)] md:ml-5">
+		<div className="mt-20 w-[min(70rem,100%)] pr-2 md:ml-5">
 			<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
 				Relations
 			</h1>

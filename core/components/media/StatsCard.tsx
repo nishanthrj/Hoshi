@@ -27,9 +27,9 @@ export default function StatsCard({
 	};
 
 	return (
-		<div className="w-[min(30rem,100%)]">
-			<div className="flex h-28 justify-between gap-4 rounded-t bg-dark-600 p-6">
-				<div className="flex flex-col items-center text-sm font-medium text-dark-200">
+		<div className="aspect-[30/7] w-[min(30rem,90vw)]">
+			<div className="flex justify-between gap-4 overflow-hidden rounded-t bg-dark-600 p-6 max-xs:flex-col">
+				<div className="flex flex-col items-center text-sm font-medium text-dark-200 max-xs:grid max-xs:grid-cols-[8rem_auto] max-xs:gap-2">
 					<h6 className="mb-2 w-full rounded bg-stats-green p-2 text-center text-sm font-medium text-dark-50">
 						Completed
 					</h6>
@@ -37,7 +37,7 @@ export default function StatsCard({
 						<span className="text-stats-green">{completed}</span> Users
 					</p>
 				</div>
-				<div className="flex flex-col items-center text-sm font-medium text-dark-200">
+				<div className="flex flex-col items-center text-sm font-medium text-dark-200 max-xs:grid max-xs:grid-cols-[8rem_auto] max-xs:gap-2">
 					<h6 className="mb-2 w-full rounded bg-stats-blue p-2 text-center text-sm font-medium text-dark-50">
 						Planning
 					</h6>
@@ -46,7 +46,7 @@ export default function StatsCard({
 					</p>
 				</div>
 				{watching && (
-					<div className="flex flex-col items-center text-sm font-medium text-dark-200">
+					<div className="flex flex-col items-center text-sm font-medium text-dark-200 max-xs:grid max-xs:grid-cols-[8rem_auto] max-xs:gap-2">
 						<h6 className="mb-2 w-full rounded bg-stats-violet p-2 text-center text-sm font-medium text-dark-50">
 							Watching
 						</h6>
@@ -56,7 +56,7 @@ export default function StatsCard({
 					</div>
 				)}
 				{reading && (
-					<div className="flex flex-col items-center text-sm font-medium text-dark-200">
+					<div className="flex flex-col items-center text-sm font-medium text-dark-200 max-xs:grid max-xs:grid-cols-[8rem_auto] max-xs:gap-2">
 						<h6 className="mb-2 w-full rounded bg-stats-violet p-2 text-center text-sm font-medium text-dark-50">
 							Reading
 						</h6>
@@ -65,7 +65,7 @@ export default function StatsCard({
 						</p>
 					</div>
 				)}
-				<div className="flex flex-col items-center text-sm font-medium text-dark-200">
+				<div className="flex flex-col items-center text-sm font-medium text-dark-200 max-xs:grid max-xs:grid-cols-[8rem_auto] max-xs:gap-2">
 					<h6 className="mb-2 w-full rounded bg-stats-red p-2 text-center text-sm font-medium text-dark-50">
 						Dropped
 					</h6>

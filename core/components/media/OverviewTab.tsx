@@ -18,7 +18,7 @@ export default function OverviewTab() {
 				<CharactersSection />
 			</Suspense>
 
-			<div className="mt-20 grid w-[min(70rem,100%)] grid-cols-[repeat(auto-fill,30rem)] gap-x-20 gap-y-10 pr-4 md:ml-5">
+			<div className="mt-20 grid w-[min(70rem,100%)] grid-cols-[repeat(auto-fill,min(30rem,100%))] gap-x-20 gap-y-10 pr-2 md:ml-5 max-xs:flex max-xs:flex-col max-xs:gap-x-0">
 				<Suspense>
 					<DetailsSection />
 				</Suspense>

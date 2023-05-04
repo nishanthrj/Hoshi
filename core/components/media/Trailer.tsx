@@ -13,7 +13,7 @@ export default function Trailer({ video, thumbnail }: TrailerProps) {
 			<FancyBox />
 
 			<Link
-				className="relative inline-block h-72 w-[min(30rem,100%)] overflow-hidden rounded bg-dark-600"
+				className="relative block aspect-video w-[min(30rem,90vw)] overflow-hidden rounded bg-dark-600"
 				data-fancybox
 				prefetch={false}
 				href={video}>

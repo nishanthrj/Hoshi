@@ -11,7 +11,7 @@ export default async function DetailsCard() {
 	return (
 		<>
 			{data && (
-				<>
+				<div className="w-[min(30rem,90vw)] rounded-lg bg-dark-600 p-8 font-medium capitalize leading-9 text-dark-200">
 					<DetailsItem title="English">{data.en}</DetailsItem>
 					<DetailsItem title="Romaji">{data.enjp}</DetailsItem>
 					<DetailsItem title="Native">{data.jp}</DetailsItem>
@@ -45,7 +45,7 @@ export default async function DetailsCard() {
 					<DetailsItem title="Score">{data.score}</DetailsItem>
 					<DetailsItem title="Genres">{data.genres?.sort()?.join(", ")}</DetailsItem>
 					<DetailsItem title="Tags">{data.tags?.sort()?.join(", ")}</DetailsItem>
-				</>
+				</div>
 			)}
 		</>
 	);

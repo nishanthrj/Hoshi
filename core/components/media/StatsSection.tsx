@@ -10,7 +10,7 @@ export default async function StatsSection() {
 
 	return (
 		<div>
-			<h1 className="mb-4 text-lg font-semibold uppercase tracking-widest text-dark-100">
+			<h1 className="mb-4 pr-2 text-lg font-semibold uppercase tracking-widest text-dark-100">
 				Stats
 			</h1>
 			{data ? (

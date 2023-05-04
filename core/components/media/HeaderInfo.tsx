@@ -35,7 +35,7 @@ export default async function HeaderInfo() {
 				{length ? length : ""} {length && data.status && " • "}
 				{data.status}
 			</span>
-			<div className="mt-8 flex w-full gap-2 text-dark-100 max-xs:justify-center">
+			<div className="mt-8 flex w-full flex-wrap gap-2 text-dark-100 max-xs:justify-center">
 				{data.genres?.sort().map((genre: string) => (
 					<Tag key={uuid()}>{genre}</Tag>
 				))}
