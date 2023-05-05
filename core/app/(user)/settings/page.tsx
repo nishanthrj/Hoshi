@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { useNavbarStore } from "@/stores/navbar";
 import AvatarForm from "@/components/settings/AvatarForm";
 import UsernameForm from "@/components/settings/UsernameForm";
 import PasswordForm from "@/components/settings/PasswordForm";
