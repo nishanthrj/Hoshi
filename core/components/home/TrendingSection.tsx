@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 import TrendingCard from "@/components/home/TrendingCard";
 
 interface TrendingSectionProps {
-	data: TrendingData;
+	data: TrendingData | null;
 }
 
 export default function TrendingSection({ data }: TrendingSectionProps) {
@@ -29,16 +29,18 @@ export default function TrendingSection({ data }: TrendingSectionProps) {
 				<MdArrowForward className="splide__arrow splide__arrow--next right-[5%] top-[92%] text-center text-xs text-dark-100 sm:left-14" />
 			</div>
 			<SplideTrack>
-				{data.anime.map((media, i) => (
-					<SplideSlide key={uuid()}>
-						<TrendingCard media={media} rank={i + 1} type="Anime" />
-					</SplideSlide>
-				))}
-				{data.manga.map((media, i) => (
-					<SplideSlide key={uuid()}>
-						<TrendingCard media={media} rank={i + 1} type="Manga" />
-					</SplideSlide>
-				))}
+				{data &&
+					data.anime.map((media, i) => (
+						<SplideSlide key={uuid()}>
+							<TrendingCard media={media} rank={i + 1} type="Anime" />
+						</SplideSlide>
+					))}
+				{data &&
+					data.manga.map((media, i) => (
+						<SplideSlide key={uuid()}>
+							<TrendingCard media={media} rank={i + 1} type="Manga" />
+						</SplideSlide>
+					))}
 			</SplideTrack>
 		</Splide>
 	);

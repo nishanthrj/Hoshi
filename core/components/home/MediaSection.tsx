@@ -5,7 +5,7 @@ interface MediaSectionProps {
 	title: string;
 	path: string;
 	mediaType: "anime" | "manga";
-	data: Anime[] | Manga[];
+	data: Anime[] | Manga[] | null;
 }
 
 export default function MediaSection({ title, path, mediaType, data }: MediaSectionProps) {
