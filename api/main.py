@@ -21,15 +21,14 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://hoshi.ga",
-        "https://api.hoshi.ga",
+        "https://hoshi.vercel.app",
+        "https://hoshiapi.up.railway.app",
+        "http://localhost:3000",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-app.add_middleware(TrustedHostMiddleware, allowed_hosts=["hoshi.ga", "api.hoshi.ga"])
 
 
 @app.get("/", response_model=Root, include_in_schema=False)
