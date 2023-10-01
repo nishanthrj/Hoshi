@@ -34,7 +34,6 @@ def build_pipeline(
     sort_by="score",
     page=1,
 ):
-
     pipeline = [
         {
             "$search": {
@@ -145,7 +144,18 @@ def build_pipeline(
 def season_pipeline(season: str):
     x = 0 if season == "current" else 1
     seasons = ["Winter", "Spring", "Summer", "Fall"]
-    this_season = f"{seasons[math.floor((int(datetime.today().month) - 1) / 3) + x]} {datetime.today().year}"
+
+    current_month = datetime.today().month
+    current_year = datetime.today().year
+
+    season_index = math.floor((current_month - 1) / 3) + x
+
+    if season_index >= len(seasons):
+        season_index = season_index % len(seasons)
+        current_year += 1
+
+    this_season = f"{seasons[season_index]} {current_year}"
+
     pipeline = [
         {
             "$search": {
