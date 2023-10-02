@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 
 description = """
-Website: https://hoshi.ga	|	URL: https://api.hoshi.ga	|	License: [GPL-3.0](https://github.com/nishanthrj/Hoshi/blob/master/LICENSE)
+Website: https://hoshi-beta.vercel.app	|	URL: https://hoshiapi.up.railway.app	|	License: [GPL-3.0](https://github.com/nishanthrj/Hoshi/blob/master/LICENSE)
 
 A simple REST API used in Hoshi.
 """
@@ -21,7 +21,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://hoshi.vercel.app",
+        "https://hoshi-beta.vercel.app",
         "https://hoshiapi.up.railway.app",
         "http://localhost:3000",
     ],
@@ -35,9 +35,9 @@ app.add_middleware(
 async def root():
     data = {
         "version": "1.0.0",
-        "website": "https://hoshi.ga",
+        "website": "https://hoshi-beta.vercel.app",
         "author": "https://github.com/nishanthrj",
-        "documentation": "https://api.hoshi.ga/docs",
+        "documentation": "https://hoshiapi.up.railway.app/docs",
         "github": "https://github.com/nishanthrj/Hoshi",
     }
     return data
