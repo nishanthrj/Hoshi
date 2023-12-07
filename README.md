@@ -22,9 +22,9 @@ Hoshi was developed with the objective of creating a platform that assists users
 <br><br>
 
 ## Screenshots
-![App Screenshot](https://fxwjqggdvzhwhieoqzmq.supabase.co/storage/v1/object/sign/assets/Screenshots/1.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhc3NldHMvU2NyZWVuc2hvdHMvMS5wbmciLCJpYXQiOjE2ODM0NjA1OTEsImV4cCI6MTcxNDk5NjU5MX0.21Miew7oDYU5-wKqtgZQOcbXSUVC6g5xpVL0WoVm1YI&t=2023-05-07T11%3A56%3A32.701Z)
-![App Screenshot](https://fxwjqggdvzhwhieoqzmq.supabase.co/storage/v1/object/sign/assets/Screenshots/2.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhc3NldHMvU2NyZWVuc2hvdHMvMi5wbmciLCJpYXQiOjE2ODM0NjA2MjYsImV4cCI6MTcxNDk5NjYyNn0.D427ZQqifXkVwD91YU8pe10diW6Tc4A5oliLGO3kj4A&t=2023-05-07T11%3A57%3A07.600Z)
-![App Screenshot](https://fxwjqggdvzhwhieoqzmq.supabase.co/storage/v1/object/sign/assets/Screenshots/3.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhc3NldHMvU2NyZWVuc2hvdHMvMy5wbmciLCJpYXQiOjE2ODM0NjA5NDAsImV4cCI6MTcxNDk5Njk0MH0.YTqPTKJ2VqTQ7HrXkHeMbKBHP3KcOPz7nC7SJN9vYxc&t=2023-05-07T12%3A02%3A21.607Z)
+![App Screenshot](https://ik.imagekit.io/dkziuw7g2/Sample/Hoshi/1.png)
+![App Screenshot](https://ik.imagekit.io/dkziuw7g2/Sample/Hoshi/2.png)
+![App Screenshot](https://ik.imagekit.io/dkziuw7g2/Sample/Hoshi/3.png)
 <br><br>
 
 ## License
