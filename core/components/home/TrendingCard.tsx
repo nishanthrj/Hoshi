@@ -36,7 +36,7 @@ export default function TrendingCard({ media, rank, type }: TrendingCardProps) {
 					))}
 				</div>
 				<p className="mt-4 line-clamp-6 text-justify text-xs font-normal leading-5 text-dark-100 sm:text-sm sm:leading-6 max-xs:mt-6 max-xs:line-clamp-5 max-xs:text-xs">
-					{media.description.replace(/<\/?[^>]+(>|$)/g, "")}
+					{media.description ? media.description.replace(/<\/?[^>]+(>|$)/g, "") : ""}
 				</p>
 			</div>
 			<div className="absolute h-full w-full sm:relative">
