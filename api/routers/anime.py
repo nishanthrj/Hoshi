@@ -125,6 +125,9 @@ async def get_anime_relation(kitsuId: int):
     )
     data = await res.json()
 
+    if not data.get("included"):
+        return JSONResponse(content=[])
+
     results = []
     relationship = []
 

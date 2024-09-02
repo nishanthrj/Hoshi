@@ -135,6 +135,9 @@ async def get_manga_relation(kitsuId: int):
     )
     data = await res.json()
 
+    if not data.get("included"):
+        return JSONResponse(content=[])
+
     results = []
     relationship = []
 
